@@ -24,9 +24,9 @@ const DefaulHeader2 = () => {
   return (
     // <!-- Main Header-->
     <header
-      className={`main-header  ${
-        navbar ? "fixed-header animated slideInDown" : ""
-      }`}
+    className={`main-header header-style-two alternate  ${
+      navbar ? "fixed-header animated slideInDown" : ""
+    }`}
     >
       {/* <!-- Main box --> */}
       <div className="main-box">

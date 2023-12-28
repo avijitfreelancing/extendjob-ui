@@ -8,12 +8,12 @@ import {
   findJobItems,
   homeItems,
   pageItems,
-  shopItems,
+  shopItems
 } from "../../data/mainMenuData";
 import {
   isActiveParent,
   isActiveLink,
-  isActiveParentChaild,
+  isActiveParentChaild
 } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 
@@ -26,34 +26,10 @@ const HeaderNavContent = () => {
           <li
             className={`${
               isActiveParent(homeItems, usePathname()) ? "current" : ""
-            } dropdown`}
+            } `}
           >
             <span>Home</span>
-            <div className="mega-menu">
-              <div className="mega-menu-bar row pt-0">
-                {homeItems.map((item) => (
-                  <div
-                    className="column col-lg-3 col-md-3 col-sm-12"
-                    key={item.id}
-                  >
-                    <ul>
-                      {item.items.map((menu, i) => (
-                        <li
-                          className={
-                            isActiveLink(menu.routePath, usePathname())
-                              ? "current"
-                              : ""
-                          }
-                          key={i}
-                        >
-                          <Link href={menu.routePath}>{menu.name}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
+           
           </li>
           {/* End homepage menu items */}
 

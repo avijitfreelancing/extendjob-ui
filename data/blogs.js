@@ -1,7 +1,7 @@
 module.exports = [
   {
     id: 1,
-    img: "/images/resource/blog/1.jpg",
+    img: "/images/resource/blog/1.webp",
     title: "Attract Sales And Profits ",
     blogSingleTitle:
       "Attract Sales And Profits toward the sunshine - and shadows will fall behind you.",
@@ -9,7 +9,7 @@ module.exports = [
   },
   {
     id: 2,
-    img: "/images/resource/blog/2.jpg",
+    img: "/images/resource/blog/2.webp",
     title: "5 Tips For Your Job Interviews",
     blogSingleTitle:
       "5 Tips For Your Job Interviews toward the sunshine - and shadows will fall behind you.",
@@ -17,7 +17,7 @@ module.exports = [
   },
   {
     id: 3,
-    img: "/images/resource/blog/3.jpg",
+    img: "/images/resource/blog/3.webp",
     title: "Overworked Newspaper Editor",
     blogSingleTitle:
       "Overworked Newspaper Editor toward the sunshine - and shadows will fall behind you.",
