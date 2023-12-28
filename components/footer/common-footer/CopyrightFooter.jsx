@@ -6,13 +6,13 @@ const CopyrightFooter = () => {
       <div className="auto-container">
         <div className="outer-box">
           <div className="copyright-text">
-            © {new Date().getFullYear()} Superio by{" "}
+            © {new Date().getFullYear()} Extendjob by{" "}
             <a
-              href="https://themeforest.net/user/ib-themes"
+              href="https://devtechmsaters.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              ib-themes
+            devtechmsaters
             </a>
             . All Right Reserved.
           </div>

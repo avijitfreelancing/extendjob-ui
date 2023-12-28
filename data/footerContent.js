@@ -7,10 +7,6 @@ module.exports = [
       { name: "Browse Categories", route: "/job-list-v3" },
       { name: "Candidate Dashboard", route: "/candidates-dashboard/dashboard" },
       { name: "Job Alerts", route: "/candidates-dashboard/job-alerts" },
-      {
-        name: "My Bookmarks",
-        route: "/candidates-dashboard/short-listed-jobs",
-      },
     ],
   },
   {
@@ -31,9 +27,7 @@ module.exports = [
     title: "About Us",
     menuList: [
       { name: "About Us", route: "/about" },
-      { name: "Job Page Invoice", route: "/invoice" },
       { name: "Terms Page", route: "/terms" },
-      { name: "Blog", route: "/blog-list-v1" },
       { name: "Contact", route: "/contact" },
     ],
   },
@@ -44,8 +38,6 @@ module.exports = [
       { name: "Site Map", route: "/" },
       { name: "Terms of Use", route: "/terms" },
       { name: "Privacy Center", route: "/" },
-      { name: "Security Center", route: "/" },
-      { name: "Accessibility Center", route: "/" },
     ],
   },
 ];
