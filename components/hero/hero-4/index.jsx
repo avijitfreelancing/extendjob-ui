@@ -1,10 +1,11 @@
 import SearchForm3 from "../../common/job-search/SearchForm3";
 import PopularSearch from "../PopularSearch";
+import Funfact2 from "@/components/fun-fact-counter/Funfact2";
 
 const index = () => {
   return (
     <section
-      className="banner-section-four"
+      className="banner-section-nine"
       style={{ backgroundImage: "url(/images/background/2.png)" }}
     >
       <div className="auto-container">
@@ -27,6 +28,12 @@ const index = () => {
         {/* <!-- Popular Search --> */}
         <PopularSearch />
         {/* <!-- End Popular Search --> */}
+        <div className="fun-fact-section">
+          <div className="row">
+            <Funfact2 />
+          </div>
+        </div>
+        {/* <!-- Fun Fact Section --> */}
       </div>
     </section>
   );

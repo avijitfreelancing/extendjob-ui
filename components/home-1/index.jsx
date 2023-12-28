@@ -2,13 +2,13 @@ import Link from "next/link";
 import LoginPopup from "../common/form/login/LoginPopup";
 import Partner from "../common/partner/Partner";
 import FooterDefault from "../footer/common-footer";
-import Funfact from "../fun-fact-counter/Funfact";
 import MobileMenu from "../header/MobileMenu";
 import Hero4 from "../hero/hero-4";
 import JobCategorie1 from "../job-categories/JobCategorie1";
 import RegBanner2 from "../block/RegBanner2";
 import JobFeatured10 from "../job-featured/JobFeatured10";
 import Header from "./Header"
+import Footer from "./Footer"
 
 
 const index = () => {
@@ -25,15 +25,6 @@ const index = () => {
 
       <Hero4 />
       {/* End Hero Section */}
-
-      {/* <!-- Fun Fact Section --> */}
-      <div className="fun-fact-section">
-        <div className="row">
-          <Funfact />
-        </div>
-      </div>
-      {/* <!-- Fun Fact Section --> */}
-
       <section className="registeration-banners">
         <div className="auto-container">
           <div className="row" data-aos="fade-up">
@@ -88,14 +79,7 @@ const index = () => {
       </section>
       {/* <!-- End Clients Section--> */}
 
-
-      {/* <!-- End News Section --> */}
-
-      {/* <!-- End App Section --> */}
-
-      {/* <!-- End Call To Action --> */}
-
-      <FooterDefault />
+      <Footer />
       {/* <!-- End Main Footer --> */}
     </>
   );
