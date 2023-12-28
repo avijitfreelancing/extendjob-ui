@@ -1,6 +1,4 @@
-
-
-'use client'
+"use client";
 
 import Image from "next/image";
 import testimonilaContent from "../../data/testimonial";
@@ -13,7 +11,7 @@ const Testimonial = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    center: true,
+    center: true
   };
 
   return (

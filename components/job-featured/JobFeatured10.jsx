@@ -1,12 +1,11 @@
-
-'use client'
+"use client";
 
 import Link from "next/link";
 import jobFeatured from "../../data/job-featured";
 import { useState } from "react";
 import Image from "next/image";
 
-const tab = ["Popular", "Recent", "Recent"];
+const tab = ["Popular", "Recent", "Urgent"];
 
 const JobFeatured10 = () => {
   const [currentTab, setTab] = useState(1);

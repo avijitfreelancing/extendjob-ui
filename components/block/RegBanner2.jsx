@@ -15,7 +15,7 @@ const RegBanner2 = () => {
     },
     {
       id: 2,
-      name: "Candidate",
+      name: "Job Seekers",
       text: ` Sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt. Labore et dolore nostrud exercitation.`,
       avatar: "/images/resource/candidate.png",

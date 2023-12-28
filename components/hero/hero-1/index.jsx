@@ -1,4 +1,4 @@
-import SearchForm from "../../common/job-search/SearchForm";
+import SearchForm5 from "../../common/job-search/SearchForm5";
 import ImageBox from "./ImageBox";
 import PopularSearch from "../PopularSearch";
 
@@ -26,7 +26,7 @@ const index = () => {
 
               {/* <!-- Job Search Form --> */}
               <div className="job-search-form">
-                <SearchForm />
+                <SearchForm5 />
               </div>
               {/* <!-- Job Search Form --> */}
 
