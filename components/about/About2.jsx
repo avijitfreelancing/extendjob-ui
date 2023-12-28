@@ -6,7 +6,7 @@ const About2 = () => {
   return (
     <>
       {/* <!-- Content Column --> */}
-      <div className="content-column col-lg-6 col-md-12 col-sm-12 order-2">
+      <div className="content-column col-lg-12 col-md-12 col-sm-12 order-2">
         <div className="inner-column" data-aos="fade-left">
           <div className="sec-title">
             <h2>
@@ -35,7 +35,7 @@ const About2 = () => {
       {/* End .content-column */}
 
       {/* <!-- Image Column --> */}
-      <div className="image-column col-lg-6 col-md-12 col-sm-12">
+      <div className="image-column col-lg-12 col-md-12 col-sm-12">
         <figure className="image-box" data-aos="fade-right">
           <Image
             width={660}

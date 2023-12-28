@@ -8,20 +8,22 @@ const RegBanner2 = () => {
       name: "Employers",
       text: ` Sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt. Labore et dolore nostrud exercitation.`,
-      avatar: "/images/resource/employ.png",
+      avatar: "/images/resource/image-3.png",
       bannerClass: "banner-style-one",
-      width: "221",
-      height: "281",
+      width: "300",
+      height: "600",
+      linkTitle:"Post a Job",
     },
     {
       id: 2,
       name: "Job Seekers",
       text: ` Sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt. Labore et dolore nostrud exercitation.`,
-      avatar: "/images/resource/candidate.png",
+      avatar: "/images/resource/banner-img-3.png",
       bannerClass: "banner-style-two",
-      width: "207",
-      height: "283",
+      width: "350",
+      height: "600",
+      linkTitle:"Find a Job",
     },
   ];
   return (
@@ -32,11 +34,28 @@ const RegBanner2 = () => {
           key={item.id}
         >
           <div className="inner-box">
-            <div className="content">
-              <h3>{item.name}</h3>
-              <p>{item.text}</p>
-              <Link href="/register" className="theme-btn btn-style-five">
-                Register Account
+            <div className="inner-column" data-aos="fade-left">
+              <div className="sec-title">
+                <h2>
+                  Get applications from the <br />
+                  world best talents.
+                </h2>
+                <div className="text">
+                  Search all the open positions on the web. Get your own
+                  personalized salary estimate. Read reviews on over 600,000
+                  companies worldwide.
+                </div>
+              </div>
+              <ul className="list-style-one">
+                <li>Bring to the table win-win survival</li>
+                <li>Capitalize on low hanging fruit to identify</li>
+                <li>But I must explain to you how all this</li>
+              </ul>
+              <Link
+                  href="/employers-dashboard/post-jobs"
+                  className="theme-btn btn-style-one"
+              >
+                {item.linkTitle}
               </Link>
             </div>
             <figure className="image">
