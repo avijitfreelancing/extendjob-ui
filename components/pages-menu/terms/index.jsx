@@ -10,15 +10,6 @@ const index = () => {
       {/* <!-- Header Span --> */}
       <span className="header-span"></span>
 
-      <LoginPopup />
-      {/* End Login Popup Modal */}
-
-      <DefaulHeader />
-      {/* <!--End Main Header --> */}
-
-      <MobileMenu />
-      {/* End MobileMenu */}
-
       <section className="tnc-section">
         <div className="auto-container">
           <div className="sec-title text-center">
@@ -30,9 +21,6 @@ const index = () => {
         </div>
       </section>
       {/* <!-- End TNC Section --> */}
-
-      <FooterDefault footerStyle="alternate5" />
-      {/* <!-- End Main Footer --> */}
     </>
   );
 };

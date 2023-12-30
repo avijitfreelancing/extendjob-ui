@@ -134,7 +134,7 @@ export const findJobItems = [
       },
       {
         name: "Job List V9",
-        routePath: "/job-list-v9",
+        routePath: "/job-list",
       },
       {
         name: "Job List V10",
@@ -307,10 +307,6 @@ export const pageItems = [
     routePath: "/about",
   },
   {
-    name: "Pricing",
-    routePath: "/pricing",
-  },
-  {
     name: "FAQ's",
     routePath: "/faq",
   },
@@ -319,16 +315,8 @@ export const pageItems = [
     routePath: "/terms",
   },
   {
-    name: "Invoice",
-    routePath: "/invoice",
-  },
-  {
     name: "Contact",
     routePath: "/contact",
-  },
-  {
-    name: "404",
-    routePath: "/404",
   },
 ];
 

@@ -1,21 +1,17 @@
 import dynamic from "next/dynamic";
-import Contact from "@/components/pages-menu/contact";
+import JobList from "components/jobs/job-list";
 import Wrapper from "@/layout/Wrapper";
 
 export const metadata = {
-  title: 'Contact',
-  description:
-    'Extend Job Board',
-  
-}
-
-
+  title: "Jobs",
+  description: "Extend Job Board",
+};
 
 const index = () => {
   return (
     <>
       <Wrapper>
-        <Contact />
+        <JobList />
       </Wrapper>
     </>
   );

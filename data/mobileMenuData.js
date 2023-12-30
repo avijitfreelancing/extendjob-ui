@@ -111,7 +111,7 @@ module.exports = [
       },
       {
         name: "Job List V9",
-        routePath: "/job-list-v9",
+        routePath: "/job-list",
       },
       {
         name: "Job List V10",

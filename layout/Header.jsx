@@ -1,11 +1,14 @@
+
 'use client'
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import HeaderNavContent from "./HeaderNavContent";
+import HeaderNavContent from "@/components/header/HeaderNavContent";
 import Image from "next/image";
-const DefaulHeader = () => {
+
+const Header = () => {
   const [navbar, setNavbar] = useState(false);
+
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
@@ -17,15 +20,16 @@ const DefaulHeader = () => {
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
   }, []);
+
   return (
     // <!-- Main Header-->
     <header
-      className={`main-header header-style-two  ${
+      className={`main-header header-style-two alternate  ${
         navbar ? "fixed-header animated slideInDown" : ""
       }`}
     >
-      {/* <!-- Main box --> */}
       <div className="auto-container">
+        {/* <!-- Main box --> */}
         <div className="main-box">
           {/* <!--Nav Outer --> */}
           <div className="nav-outer">
@@ -33,10 +37,10 @@ const DefaulHeader = () => {
               <div className="logo">
                 <Link href="/">
                   <Image
-                      width={154}
-                      height={50}
-                      src="/images/logo.svg"
-                      alt="brand"
+                    width={154}
+                    height={50}
+                    src="/images/logo-2.png"
+                    alt="brand"
                   />
                 </Link>
               </div>
@@ -49,19 +53,18 @@ const DefaulHeader = () => {
           {/* End .nav-outer */}
 
           <div className="outer-box">
-            {/* <!-- Login/Register --> */}
-            <div className="btn-box">
+            <div className="d-flex align-items-center btn-box2">
               <a
-                  href="#"
-                  className="theme-btn btn-style-three call-modal"
-                  data-bs-toggle="modal"
-                  data-bs-target="#loginPopupModal"
+                href="#"
+                className="theme-btn btn-style-six call-modal"
+                data-bs-toggle="modal"
+                data-bs-target="#loginPopupModal"
               >
                 Login / Register
               </a>
               <Link
-                  href="/employers-dashboard/post-jobs"
-                  className="theme-btn btn-style-one"
+                href="/employers-dashboard/post-jobs"
+                className="theme-btn btn-style-five"
               >
                 Job Post
               </Link>
@@ -73,4 +76,4 @@ const DefaulHeader = () => {
   );
 };
 
-export default DefaulHeader;
+export default Header;

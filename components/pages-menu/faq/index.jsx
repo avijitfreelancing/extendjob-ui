@@ -10,19 +10,8 @@ const index = () => {
     <>
       {/* <!-- Header Span --> */}
       <span className="header-span"></span>
-
-      <LoginPopup />
-      {/* End Login Popup Modal */}
-
-      <DefaulHeader />
-      {/* <!--End Main Header --> */}
-
-      <MobileMenu />
-      {/* End MobileMenu */}
-
       <Breadcrumb title="Faq's" meta="Faq's" />
       {/* <!--End Page Title--> */}
-
       <section className="faqs-section">
         <div className="auto-container">
           <div className="sec-title text-center">
@@ -44,9 +33,6 @@ const index = () => {
         </div>
       </section>
       {/* <!-- End Faqs Section --> */}
-
-      <FooterDefault footerStyle="alternate5" />
-      {/* <!-- End Main Footer --> */}
     </>
   );
 };
