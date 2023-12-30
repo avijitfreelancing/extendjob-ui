@@ -29,43 +29,17 @@ const HeaderNavContent = () => {
             } `}
           >
             <span>Home</span>
-           
           </li>
           {/* End homepage menu items */}
 
           <li
             className={`${
               isActiveParent(findJobItems, usePathname()) ? "current" : ""
-            } dropdown has-mega-menu`}
+            } `}
             id="has-mega-menu"
           >
-            <span>Find Jobs</span>
-            <div className="mega-menu">
-              <div className="mega-menu-bar row">
-                {findJobItems.map((item) => (
-                  <div
-                    className="column col-lg-3 col-md-3 col-sm-12"
-                    key={item.id}
-                  >
-                    <h3>{item.title}</h3>
-                    <ul>
-                      {item.items.map((menu, i) => (
-                        <li
-                          className={
-                            isActiveLink(menu.routePath, usePathname())
-                              ? "current"
-                              : ""
-                          }
-                          key={i}
-                        >
-                          <Link href={menu.routePath}>{menu.name}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <Link href="/job-list-v4">Jobs</Link>
+           
           </li>
           {/* End findjobs menu items */}
 
