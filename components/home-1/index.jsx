@@ -1,7 +1,6 @@
 import Link from "next/link";
 import LoginPopup from "../common/form/login/LoginPopup";
 import Partner from "../common/partner/Partner";
-import FooterDefault from "../footer/common-footer";
 import MobileMenu from "../header/MobileMenu";
 import Hero4 from "../hero/hero-4";
 import JobCategorie1 from "../job-categories/JobCategorie1";
