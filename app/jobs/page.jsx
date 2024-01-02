@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import JobList from "components/jobs/job-list";
+import JobList from "@/components/jobs/job-list";
 import Wrapper from "@/layout/Wrapper";
 
 export const metadata = {

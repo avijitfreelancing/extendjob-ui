@@ -13,14 +13,15 @@ const DefaulHeader = () => {
       setNavbar(false);
     }
   };
-
+  // Check if the current page is the home page
+  const isHomePage = window.location.pathname === "/";
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
   }, []);
   return (
     // <!-- Main Header-->
     <header
-      className={`main-header header-style-two  ${
+      className={`main-header ${isHomePage ? "header-style-two" : ""}  ${
         navbar ? "fixed-header animated slideInDown" : ""
       }`}
     >
@@ -35,7 +36,7 @@ const DefaulHeader = () => {
                   <Image
                       width={154}
                       height={50}
-                      src="/images/logo.svg"
+                      src="/images/logo-2.png"
                       alt="brand"
                   />
                 </Link>

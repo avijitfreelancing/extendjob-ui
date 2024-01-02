@@ -12,21 +12,9 @@ import MenuToggler from "../../MenuToggler";
 
 const Index = () => {
   return (
-    <div className="page-wrapper dashboard">
+    <div >
       <span className="header-span"></span>
       {/* <!-- Header Span for hight --> */}
-
-      <LoginPopup />
-      {/* End Login Popup Modal */}
-
-      <DashboardHeader />
-      {/* End Header */}
-
-      <MobileMenu />
-      {/* End MobileMenu */}
-
-      <DashboardEmployerSidebar />
-      {/* <!-- End User Sidebar Menu --> */}
 
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
@@ -64,7 +52,6 @@ const Index = () => {
               </div>
             </div>
             {/* End .col */}
-
             <div className="col-lg-12">
               {/* <!-- applicants Widget --> */}
               <div className="applicants-widget ls-widget">
@@ -74,7 +61,6 @@ const Index = () => {
                 <div className="widget-content">
                   <div className="row">
                     {/* <!-- Candidate block three --> */}
-
                     <Applicants />
                   </div>
                 </div>
@@ -87,9 +73,6 @@ const Index = () => {
         {/* End dashboard-outer */}
       </section>
       {/* <!-- End Dashboard --> */}
-
-      <CopyrightFooter />
-      {/* <!-- End Copyright --> */}
     </div>
     // End page-wrapper
   );

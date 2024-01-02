@@ -1,13 +1,11 @@
-import Header from "@/layout/Header";
 import Footer from "@/layout/Footer"
 import MobileMenu from "@/components/header/MobileMenu"
-import Header2 from "@/components/header/DefaulHeader2"
-import Header1 from "@/components/header/DefaulHeader"
+import Header from "@/components/header/DefaulHeader"
+import LoginPopup from "@/components/common/form/login/LoginPopup";
 const Wrapper = ({ children }) => {
   return <>
-    {/*<Header/>*/}
-    {/*<Header2/>*/}
-    <Header1/>
+    <LoginPopup />
+    <Header/>
     <MobileMenu/>
     {children}
     <Footer/>

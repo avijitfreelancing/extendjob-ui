@@ -2,13 +2,13 @@ const CopyrightFooter = () => {
   return (
     <div className="copyright-text">
       <p>
-        © {new Date().getFullYear()} Superio by{" "}
+        © {new Date().getFullYear()} Extend by{" "}
         <a
-          href="https://themeforest.net/user/ib-themes"
+          href="https://devtechmasters.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          ib-themes
+          Dev Tech Masters
         </a>
         . All Right Reserved.
       </p>
