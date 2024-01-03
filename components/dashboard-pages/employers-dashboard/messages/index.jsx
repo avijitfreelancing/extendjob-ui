@@ -1,11 +1,6 @@
 
 'use client'
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
-import LoginPopup from "../../../common/form/login/LoginPopup";
-import DashboardEmployerSidebar from "../../../header/DashboardEmployerSidebar";
 import BreadCrumb from "../../BreadCrumb";
-import CopyrightFooter from "../../CopyrightFooter";
 import ChatBox from "./components";
 import MenuToggler from "../../MenuToggler";
 import { useSelector } from "react-redux";
@@ -13,21 +8,9 @@ import { useSelector } from "react-redux";
 const Index = () => {
   const { chatSidebar } = useSelector((state) => state.toggle);
   return (
-    <div className="page-wrapper dashboard">
+    <div>
       <span className="header-span"></span>
       {/* <!-- Header Span for hight --> */}
-
-      <LoginPopup />
-      {/* End Login Popup Modal */}
-
-      <DashboardHeader />
-      {/* End Header */}
-
-      <MobileMenu />
-      {/* End MobileMenu */}
-
-      <DashboardEmployerSidebar />
-      {/* <!-- End User Sidebar Menu --> */}
 
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
@@ -57,8 +40,6 @@ const Index = () => {
         {/* End dashboard-outer */}
       </section>
       {/* <!-- End Dashboard --> */}
-
-      <CopyrightFooter />
       {/* <!-- End Copyright --> */}
     </div>
     // End page-wrapper

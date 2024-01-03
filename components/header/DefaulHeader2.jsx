@@ -5,10 +5,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import HeaderNavContent from "./HeaderNavContent";
 import Image from "next/image";
-
+import { useRouter } from "next/router";
 const DefaulHeader2 = () => {
   const [navbar, setNavbar] = useState(false);
-
+  const router = useRouter();
+  const isHomePage = router.pathname === "/";
+  console.log(isHomePage)
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);

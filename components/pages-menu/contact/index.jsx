@@ -11,16 +11,6 @@ const index = () => {
     <>
       {/* <!-- Header Span --> */}
       <span className="header-span"></span>
-
-      <LoginPopup />
-      {/* End Login Popup Modal */}
-
-      <DefaulHeader />
-      {/* <!--End Main Header --> */}
-
-      <MobileMenu />
-      {/* End MobileMenu */}
-
       <section className="map-section">
         <div className="map-outer">
           <MapBox />
@@ -48,9 +38,6 @@ const index = () => {
         </div>
       </section>
       {/* <!-- Contact Section --> */}
-
-      <FooterDefault footerStyle="alternate5" />
-      {/* <!-- End Main Footer --> */}
     </>
   );
 };

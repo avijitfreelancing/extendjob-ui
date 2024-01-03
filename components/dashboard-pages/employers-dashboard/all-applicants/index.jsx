@@ -10,7 +10,7 @@ import MenuToggler from "../../MenuToggler";
 
 const index = () => {
   return (
-    <div className="page-wrapper dashboard">
+    <div>
       <span className="header-span"></span>
       {/* <!-- Header Span for hight --> */}
 
@@ -58,7 +58,7 @@ const index = () => {
       </section>
       {/* <!-- End Dashboard --> */}
 
-      <CopyrightFooter />
+      
       {/* <!-- End Copyright --> */}
     </div>
     // End page-wrapper

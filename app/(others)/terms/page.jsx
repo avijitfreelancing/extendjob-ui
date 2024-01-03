@@ -1,11 +1,11 @@
 import dynamic from "next/dynamic";
-
 import Terms from "@/components/pages-menu/terms";
+import Wrapper from "@/layout/Wrapper";
 
 export const metadata = {
-  title: 'Terms || Superio - Job Borad React NextJS Template',
+  title: 'Terms',
   description:
-    'Superio - Job Borad React NextJS Template',
+    'Extend Job Board',
   
 }
 
@@ -14,8 +14,9 @@ export const metadata = {
 const index = () => {
   return (
     <>
-      
-      <Terms />
+      <Wrapper>
+        <Terms />
+      </Wrapper>
     </>
   );
 };
