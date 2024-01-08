@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -14,7 +14,8 @@ const DefaulHeader = () => {
     }
   };
   // Check if the current page is the home page
-  const isHomePage = window.location.pathname === "/";
+  // const isHomePage = window.location.pathname === "/";
+  const isHomePage = true;
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
   }, []);
@@ -34,10 +35,10 @@ const DefaulHeader = () => {
               <div className="logo">
                 <Link href="/">
                   <Image
-                      width={154}
-                      height={50}
-                      src="/images/logo-2.png"
-                      alt="brand"
+                    width={154}
+                    height={50}
+                    src="/images/logo-2.png"
+                    alt="brand"
                   />
                 </Link>
               </div>
@@ -53,16 +54,16 @@ const DefaulHeader = () => {
             {/* <!-- Login/Register --> */}
             <div className="btn-box">
               <a
-                  href="#"
-                  className="theme-btn btn-style-three call-modal"
-                  data-bs-toggle="modal"
-                  data-bs-target="#loginPopupModal"
+                href="#"
+                className="theme-btn btn-style-three call-modal"
+                data-bs-toggle="modal"
+                data-bs-target="#loginPopupModal"
               >
                 Login / Register
               </a>
               <Link
-                  href="/employers-dashboard/post-jobs"
-                  className="theme-btn btn-style-one"
+                href="/employers-dashboard/post-jobs"
+                className="theme-btn btn-style-one"
               >
                 Job Post
               </Link>

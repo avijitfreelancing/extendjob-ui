@@ -1,12 +1,21 @@
-
-'use client'
+"use client";
 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import LoginWithSocial from "./LoginWithSocial";
 import Form from "./FormContent";
 import Link from "next/link";
+import { useState } from "react";
 
 const Register = () => {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+    user_type: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
   return (
     <div className="form-inner">
       <h3>Create a Free Superio Account</h3>
@@ -30,12 +39,22 @@ const Register = () => {
         {/* End .form-group */}
 
         <TabPanel>
-          <Form />
+          <Form
+            userData={userData}
+            setUserData={setUserData}
+            errors={errors}
+            setErrors={setErrors}
+          />
         </TabPanel>
         {/* End cadidates Form */}
 
         <TabPanel>
-          <Form />
+          <Form
+            userData={userData}
+            setUserData={setUserData}
+            errors={errors}
+            setErrors={setErrors}
+          />
         </TabPanel>
         {/* End Employer Form */}
       </Tabs>
