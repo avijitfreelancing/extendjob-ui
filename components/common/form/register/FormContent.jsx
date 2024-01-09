@@ -1,6 +1,12 @@
 import validation from "@/helper/validation";
 
-const FormContent = ({ userData, setUserData, errors, setErrors }) => {
+const FormContent = ({
+  userData,
+  setUserData,
+  errors,
+  setErrors,
+  onFormSubmit,
+}) => {
   const handleOnChange = (e) => {
     let { name, value } = e.target;
 
@@ -18,7 +24,7 @@ const FormContent = ({ userData, setUserData, errors, setErrors }) => {
   };
 
   return (
-    <form>
+    <form onSubmit={onFormSubmit}>
       <div className="form-group">
         <label>Email Address</label>
         <input
@@ -45,12 +51,18 @@ const FormContent = ({ userData, setUserData, errors, setErrors }) => {
           type="password"
           name="password"
           placeholder="Password"
+          validaterule={["required", "password"]}
+          validatemsg={["Password is required"]}
+          value={userData.password}
+          onChange={handleOnChange}
+          required
         />
+        <p className="invalid_input">{errors.password}</p>
       </div>
       {/* password */}
 
       <div className="form-group">
-        <button className="theme-btn btn-style-one" type="button">
+        <button className="theme-btn btn-style-one" type="submit">
           Register
         </button>
       </div>

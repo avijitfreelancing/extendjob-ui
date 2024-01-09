@@ -5,16 +5,54 @@ import LoginWithSocial from "./LoginWithSocial";
 import Form from "./FormContent";
 import Link from "next/link";
 import { useState } from "react";
+import axios from "@/helper/axios";
 
 const Register = () => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
-    user_type: "",
+    user_type: "1",
   });
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const isValidForm = (errors) => {
+    let isValid = true;
+    for (const [, value] of Object.entries(errors)) {
+      if (value.length > 0) {
+        isValid = false;
+      }
+    }
+    return isValid;
+  };
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    if (isValidForm(errors)) {
+      setLoading(true);
+      axios
+        .post("/auth/register", userData)
+        .then((res) => {
+          setLoading(false);
+          if (res.data.success) {
+            alert(res.data.message);
+            setUserData({
+              email: "",
+              password: "",
+              user_type: "1",
+            });
+          } else {
+            alert(res.data.message);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          setLoading(false);
+          alert("Something went wrong !!!");
+        });
+    }
+  };
 
   return (
     <div className="form-inner">
@@ -24,13 +62,25 @@ const Register = () => {
         <div className="form-group register-dual">
           <TabList className="btn-box row">
             <Tab className="col-lg-6 col-md-12">
-              <button className="theme-btn btn-style-four">
+              <button
+                className="theme-btn btn-style-four"
+                onClick={() => {
+                  userData.user_type = "1";
+                  setUserData(userData);
+                }}
+              >
                 <i className="la la-user"></i> Candidate
               </button>
             </Tab>
 
             <Tab className="col-lg-6 col-md-12">
-              <button className="theme-btn btn-style-four">
+              <button
+                className="theme-btn btn-style-four"
+                onClick={() => {
+                  userData.user_type = "2";
+                  setUserData(userData);
+                }}
+              >
                 <i className="la la-briefcase"></i> Employer
               </button>
             </Tab>
@@ -44,6 +94,7 @@ const Register = () => {
             setUserData={setUserData}
             errors={errors}
             setErrors={setErrors}
+            onFormSubmit={onFormSubmit}
           />
         </TabPanel>
         {/* End cadidates Form */}
@@ -54,6 +105,7 @@ const Register = () => {
             setUserData={setUserData}
             errors={errors}
             setErrors={setErrors}
+            onFormSubmit={onFormSubmit}
           />
         </TabPanel>
         {/* End Employer Form */}
