@@ -67,6 +67,14 @@ const DefaulHeader = () => {
                 Job Post
               </Link>
             </div>
+            <div className="btn-box">
+            <Link
+                href="/candidates-dashboard/dashboard"
+                className="theme-btn btn-style-one"
+            >
+            Candidates Dashboard
+            </Link>
+          </div>
           </div>
         </div>
       </div>
