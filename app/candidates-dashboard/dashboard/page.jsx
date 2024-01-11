@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import DashboadHome from "@/components/dashboard-pages/candidates-dashboard/dashboard";
-import EmployerWrapper from "@/layout/EmployerWrapper";
+import CandidateWrapper from "@/layout/CandidateWrapper";
 
 export const metadata = {
   title: "Candidates Dashboard || Superio - Job Borad React NextJS Template",
@@ -10,9 +10,9 @@ export const metadata = {
 const index = () => {
   return (
     <>
-      <EmployerWrapper>
+      <CandidateWrapper>
         <DashboadHome />
-      </EmployerWrapper>
+      </CandidateWrapper>
     </>
   );
 };
