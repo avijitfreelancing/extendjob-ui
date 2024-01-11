@@ -1,19 +1,19 @@
 import MobileMenu from "@/components/header/MobileMenu"
 import DashboardHeader from "@/components/header/DashboardHeader";
-import DashboardEmployerSidebar from "@/components/header/DashboardEmployerSidebar";
+import DashboardCandidatesSidebar from "@/components/header/DashboardCandidatesSidebar";
 import CopyrightFooter from "@/components/dashboard-pages/CopyrightFooter";
 import LoginPopup from "@/components/common/form/login/LoginPopup";
-const EmployerWrapper = ({ children }) => {
+const CandidateWrapper = ({ children }) => {
   return <>
     <div className="page-wrapper dashboard">
       <LoginPopup />
       <DashboardHeader />
       <MobileMenu />
-      <DashboardEmployerSidebar />
+      <DashboardCandidatesSidebar />
       {children}
       <CopyrightFooter />
     </div>
   </>;
 };
 
-export default EmployerWrapper;
+export default CandidateWrapper;

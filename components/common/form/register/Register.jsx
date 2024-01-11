@@ -6,6 +6,8 @@ import Form from "./FormContent";
 import Link from "next/link";
 import { useState } from "react";
 import axios from "@/helper/axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const [userData, setUserData] = useState({
@@ -36,20 +38,26 @@ const Register = () => {
         .then((res) => {
           setLoading(false);
           if (res.data.success) {
-            alert(res.data.message);
+            toast.success(res.data.message);
             setUserData({
               email: "",
               password: "",
               user_type: "1",
             });
           } else {
-            alert(res.data.message);
+            toast.error(res.data.message, {
+              position: toast.POSITION.TOP_LEFT,
+              autoClose: 4000
+            });
           }
         })
         .catch((err) => {
           console.error(err);
           setLoading(false);
-          alert("Something went wrong !!!");
+          toast.error("Something went wrong !!!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 4000
+          });
         });
     }
   };
