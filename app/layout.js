@@ -44,12 +44,9 @@ export default function RootLayout({ children }) {
       <body>
         <Provider store={store}>
           <div className="page-wrapper">
-            {children}
-
-            {/* Toastify */}
             <ToastContainer
-              position="bottom-right"
-              autoClose={500}
+              position="top-right"
+              autoClose={5000}
               hideProgressBar={false}
               newestOnTop={false}
               closeOnClick
@@ -59,6 +56,8 @@ export default function RootLayout({ children }) {
               pauseOnHover
               theme="colored"
             />
+            {children}
+
             {/* <!-- Scroll To Top --> */}
             <ScrollToTop />
           </div>
