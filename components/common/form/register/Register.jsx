@@ -6,6 +6,8 @@ import Form from "./FormContent";
 import Link from "next/link";
 import { useState } from "react";
 import axios from "@/helper/axios";
+import { toast } from "react-toastify";
+import Loader from "../../loader/Loader";
 
 const Register = () => {
   const [userData, setUserData] = useState({
@@ -36,20 +38,20 @@ const Register = () => {
         .then((res) => {
           setLoading(false);
           if (res.data.success) {
-            alert(res.data.message);
+            toast.success(res.data.message);
             setUserData({
               email: "",
               password: "",
               user_type: "1",
             });
           } else {
-            alert(res.data.message);
+            toast.error(res.data.message);
           }
         })
         .catch((err) => {
           console.error(err);
           setLoading(false);
-          alert("Something went wrong !!!");
+          toast.error("Something went wrong !!!");
         });
     }
   };
@@ -57,6 +59,8 @@ const Register = () => {
   return (
     <div className="form-inner">
       <h3>Create a Free Superio Account</h3>
+
+      {loading && <Loader />}
 
       <Tabs>
         <div className="form-group register-dual">
