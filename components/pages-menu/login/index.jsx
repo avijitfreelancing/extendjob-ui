@@ -3,18 +3,21 @@ import MobileMenu from "../../header/MobileMenu";
 import Header from "./Header";
 
 const index = () => {
+    const bgImg = {
+        backgroundImage: "url(/images/background/12.jpg)"
+    }
   return (
     <>
-      <Header />
+      {/*<Header />*/}
       {/* <!--End Main Header -->  */}
 
-      <MobileMenu />
+      {/*<MobileMenu />*/}
       {/* End MobileMenu */}
 
       <div className="login-section">
         <div
           className="image-layer"
-          style={{ backgroundImage: "url(/images/background/12.jpg)" }}
+          style={ bgImg }
         ></div>
         <div className="outer-box">
           {/* <!-- Login Form --> */}

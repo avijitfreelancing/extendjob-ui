@@ -4,18 +4,18 @@ import LoginWithSocial from "./LoginWithSocial";
 const FormContent2 = () => {
   return (
     <div className="form-inner">
-      <h3>Login to Superio</h3>
+      <h3>Login</h3>
 
       {/* <!--Login Form--> */}
       <form method="post">
         <div className="form-group">
-          <label>Username</label>
+          <label>Username or Email</label><span className="text-danger">*</span>
           <input type="text" name="username" placeholder="Username" required />
         </div>
         {/* name */}
 
         <div className="form-group">
-          <label>Password</label>
+          <label>Password</label><span className="text-danger">*</span>
           <input
             type="password"
             name="password"

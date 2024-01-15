@@ -257,9 +257,15 @@ Login Section
   align-items: center;
 }
 
-.login-section .login-form {
+.login-section .login-form-custom {
   margin: 0 auto;
   max-width: 610px;
+  width: 100%;
+  padding: 0 30px;
+}
+.login-section .login-form {
+  margin: 0 auto;
+  max-width: 1000px;
   width: 100%;
   padding: 0 30px;
 }
