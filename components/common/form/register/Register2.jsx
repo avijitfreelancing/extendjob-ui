@@ -1,5 +1,4 @@
-
-'use client'
+"use client";
 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import LoginWithSocial from "./LoginWithSocial";
@@ -10,17 +9,11 @@ const Register2 = () => {
   return (
     <div className="form-inner">
       <h3>Create a Free Extend-job Account</h3>
-      <Tabs>
+      <FormContent2 />
+      {/* <Tabs>
         <TabPanel>
-          <FormContent2 />
         </TabPanel>
-        {/* End cadidates Form */}
-
-        <TabPanel>
-          <FormContent2 />
-        </TabPanel>
-        {/* End Employer Form */}
-      </Tabs>
+      </Tabs> */}
       {/* End form-group */}
 
       <div className="bottom-box">
