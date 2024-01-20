@@ -32,20 +32,20 @@ const index = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // fetch("https://api.ipregistry.co/?key=tryout")
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((payload) => {
-    //     let { code, calling_code } = payload.location.country;
-    //     let selected_country = _.findIndex(countries, (o) => {
-    //       return o.calling_code === calling_code;
-    //     });
-    //     userData.calling_code = "+" + calling_code;
-    //     userData.country_code = code;
-    //     userData.selected_country = selected_country;
-    //     setUserData({ ...userData });
-    //   });
+    fetch("https://api.ipregistry.co/?key=tryout")
+      .then((response) => {
+        return response.json();
+      })
+      .then((payload) => {
+        let { code, calling_code } = payload.location.country;
+        let selected_country = _.findIndex(countries, (o) => {
+          return o.calling_code === calling_code;
+        });
+        userData.calling_code = "+" + calling_code;
+        userData.country_code = code;
+        userData.selected_country = selected_country;
+        setUserData({ ...userData });
+      });
   }, []);
 
   const handleOnChange = (e) => {
