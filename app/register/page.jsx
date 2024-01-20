@@ -7,6 +7,9 @@ import validation from "@/helper/validation";
 import { useEffect, useState } from "react";
 import axios from "@/helper/axios";
 import LoadingOverlay from "react-loading-overlay";
+import countries from "@/helper/countries";
+import _ from "lodash";
+import { toast } from "react-toastify";
 
 // export const metadata = {
 //   title: "Register || Superio - Job Borad React NextJS Template",
@@ -19,40 +22,31 @@ const index = () => {
     email: "",
     password: "",
     c_password: "",
-    country: "",
+    calling_code: "",
     country_code: "",
+    selected_country: "",
+    mobile: "",
   });
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // fetch("https://api.ipregistry.co/?key=tryout")
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((payload) => {
-    //     console.log(payload.location.country);
-    //     let { code, calling_code } = payload.location.country;
-    //     userData.country = code;
-    //     userData.country_code = calling_code;
-    //     setUserData({ ...userData });
-    //   });
+    fetch("https://api.ipregistry.co/?key=tryout")
+      .then((response) => {
+        return response.json();
+      })
+      .then((payload) => {
+        let { code, calling_code } = payload.location.country;
+        let selected_country = _.findIndex(countries, (o) => {
+          return o.calling_code === calling_code;
+        });
+        userData.calling_code = "+" + calling_code;
+        userData.country_code = code;
+        userData.selected_country = selected_country;
+        setUserData({ ...userData });
+      });
   }, []);
-
-  function createJsonFile(data, fileName) {
-    const jsonData = JSON.stringify(data, null, 2);
-    const blob = new Blob([jsonData], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = fileName || "data.json";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }
 
   const handleOnChange = (e) => {
     let { name, value } = e.target;
@@ -83,6 +77,16 @@ const index = () => {
       setErrors({ ...errors });
     }
 
+    if (name === "selected_country") {
+      let { country_code, calling_code } = countries[value];
+
+      userData.calling_code = "+" + calling_code;
+      userData.country_code = country_code;
+      userData.selected_country = value;
+
+      setUserData({ ...userData });
+    }
+
     const valid_obj = {
       value,
       rules: e.target.getAttribute("validaterule"),
@@ -108,7 +112,6 @@ const index = () => {
     e.preventDefault();
     if (isValidForm(errors)) {
       setLoading(true);
-      return;
       axios
         .post("/auth/register", userData)
         .then((res) => {
@@ -116,9 +119,14 @@ const index = () => {
           if (res.data.success) {
             toast.success(res.data.message);
             setUserData({
+              username: "",
               email: "",
               password: "",
-              user_type: "1",
+              c_password: "",
+              calling_code: "",
+              country_code: "",
+              selected_country: "",
+              mobile: "",
             });
           } else {
             toast.error(res.data.message);
@@ -188,17 +196,38 @@ const index = () => {
                   <div className="form-group col-lg-6 col-md-12">
                     <label>Country</label>
                     <span className="text-danger">*</span>
-                    <select className="chosen-single form-select" required>
-                      <option>Bangladesh</option>
-                      <option>India</option>
-                      <option>USA</option>
+                    <select
+                      className="chosen-single form-select"
+                      onChange={handleOnChange}
+                      name="selected_country"
+                      value={userData.selected_country}
+                      required
+                    >
+                      <option value="">Select country</option>
+                      {countries.map((data, key) => {
+                        return (
+                          <option value={key} key={key}>
+                            {data.name}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
 
                   <div className="form-group col-lg-6 col-md-12">
                     <label>Mobile</label>
                     <span className="text-danger">*</span>
-                    <input type="text" name="phone" placeholder="" required />
+                    <input
+                      type="text"
+                      name="mobile"
+                      placeholder="Enter mobile"
+                      validaterule={["required", "isMobile"]}
+                      validatemsg={["Mobile is required"]}
+                      value={userData.mobile}
+                      onChange={handleOnChange}
+                      required
+                    />
+                    <p className="invalid_input">{errors.mobile}</p>
                   </div>
 
                   <div className="form-group col-lg-6 col-md-12">
