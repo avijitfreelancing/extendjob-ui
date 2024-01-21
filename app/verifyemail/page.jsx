@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import axios from "@/helper/axios";
 import { toast } from "react-toastify";
 import Loader from "@/components/common/loader/Loader";
+import { useRouter } from "next/navigation";
 
 export default function VerifyEmail() {
+  const router = useRouter();
+
   const [token, setToken] = useState(null);
-  const [verified, setVerified] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -30,8 +32,8 @@ export default function VerifyEmail() {
         setLoading(false);
 
         if (res.data.success) {
-          setVerified(true);
           toast.success(res.data.message);
+          router.push("/login");
         } else {
           toast.error(res.data.message);
         }
@@ -50,16 +52,6 @@ export default function VerifyEmail() {
       <h2 className="p-2 bg-orange-500 text-black">
         {token ? `${token}` : "no token"}
       </h2>
-
-      {verified ? (
-        <div>
-          <h2 className="text-2xl">Email Verified</h2>
-
-          <p className="text-blue-500">Login</p>
-        </div>
-      ) : (
-        <></>
-      )}
     </div>
   );
 }
