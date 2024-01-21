@@ -10,6 +10,7 @@ import LoadingOverlay from "react-loading-overlay";
 import countries from "@/helper/countries";
 import _ from "lodash";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 // export const metadata = {
 //   title: "Register || Superio - Job Borad React NextJS Template",
@@ -17,6 +18,7 @@ import { toast } from "react-toastify";
 // };
 
 const index = () => {
+  const router = useRouter();
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -118,16 +120,19 @@ const index = () => {
           setLoading(false);
           if (res.data.success) {
             toast.success(res.data.message);
-            setUserData({
-              username: "",
-              email: "",
-              password: "",
-              c_password: "",
-              calling_code: "",
-              country_code: "",
-              selected_country: "",
-              mobile: "",
-            });
+            // setUserData({
+            //   username: "",
+            //   email: "",
+            //   password: "",
+            //   c_password: "",
+            //   calling_code: "",
+            //   country_code: "",
+            //   selected_country: "",
+            //   mobile: "",
+            // });
+
+            // GOTO LOGIN PAGE
+            router.push("/login");
           } else {
             toast.error(res.data.message);
           }

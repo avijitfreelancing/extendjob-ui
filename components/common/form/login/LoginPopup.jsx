@@ -1,6 +1,3 @@
-import Register from "../register/Register";
-import FormContent from "./FormContent";
-
 const LoginPopup = () => {
   return (
     <>
@@ -17,9 +14,7 @@ const LoginPopup = () => {
               {/* <!-- Login modal --> */}
               <div id="login-modal">
                 {/* <!-- Login Form --> */}
-                <div className="login-form default-form">
-                  <FormContent />
-                </div>
+                <div className="login-form default-form"></div>
                 {/* <!--End Login Form --> */}
               </div>
               {/* <!-- End Login Module --> */}
@@ -45,9 +40,7 @@ const LoginPopup = () => {
               {/* <!-- Login modal --> */}
               <div id="login-modal">
                 {/* <!-- Login Form --> */}
-                <div className="login-form default-form">
-                  <Register />
-                </div>
+                <div className="login-form default-form"></div>
                 {/* <!--End Login Form --> */}
               </div>
               {/* <!-- End Login Module --> */}
