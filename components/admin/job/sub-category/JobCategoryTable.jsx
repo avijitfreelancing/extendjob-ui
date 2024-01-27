@@ -1,32 +1,22 @@
 import Link from "next/link.js";
 import jobs from "@/data/job-featured.js";
 import Image from "next/image.js";
-import CreateModal from "@/components/admin/job/createModal";
-import EditModal from "@/components/admin/job/EditModal";
 
 const JobAlertsTable = () => {
   return (
     <div className="tabs-box">
-      <CreateModal/>
-      <EditModal/>
       <div className="widget-title">
-        <h4>Job Category</h4>
+        <h4>Sub Category</h4>
 
         <div className="chosen-outer">
           {/* <!--Tabs Box--> */}
-          <div className="btn-box">
-            <a
-                href="#"
-                className="theme-btn btn-style-three call-modal"
-                data-bs-toggle="modal"
-                data-bs-target="#createPopupModal"
-            >
-              ADD <span className="la la-plus"></span>
-            </a>
-          </div>
-          {/*<button data-text="Add Job Category">*/}
-          {/*  ADD <span className="la la-plus"></span>*/}
-          {/*</button>*/}
+          <select className="chosen-single form-select">
+            <option>Last 6 Months</option>
+            <option>Last 12 Months</option>
+            <option>Last 16 Months</option>
+            <option>Last 24 Months</option>
+            <option>Last 5 year</option>
+          </select>
         </div>
       </div>
       {/* End filter top bar */}
@@ -86,14 +76,12 @@ const JobAlertsTable = () => {
                       <div className="option-box">
                         <ul className="option-list">
                           <li>
-                            <button data-bs-toggle="modal"
-                                    data-bs-target="#editPopupModal"
-                                    data-text="Edit Job Category">
-                              <span className="la la-edit"></span>
+                            <button data-text="View Aplication">
+                              <span className="la la-eye"></span>
                             </button>
                           </li>
                           <li>
-                            <button data-text="Delete Job Category">
+                            <button data-text="Delete Aplication">
                               <span className="la la-trash"></span>
                             </button>
                           </li>
