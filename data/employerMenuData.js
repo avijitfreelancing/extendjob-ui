@@ -17,7 +17,7 @@ module.exports = [
     id: 3,
     name: "Job Category",
     icon: "la-paper-plane",
-    routePath: "/employers-dashboard/post-jobs",
+    routePath: "/admin/job/job-category",
     active: "",
   },
   {

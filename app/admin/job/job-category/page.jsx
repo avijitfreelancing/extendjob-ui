@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import DashboadHome from "@/components/dashboard-pages/employers-dashboard/dashboard";
+import JobCategory from "@/components/admin/job/job-category"
 import AdminWrapper from "@/layout/AdminWrapper";
 
 export const metadata = {
@@ -11,7 +11,7 @@ const index = () => {
   return (
     <>
       <AdminWrapper>
-        <DashboadHome />
+        <JobCategory />
       </AdminWrapper>
     </>
   );
