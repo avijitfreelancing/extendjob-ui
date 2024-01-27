@@ -15,9 +15,16 @@ module.exports = [
   },
   {
     id: 3,
-    name: "Post a New Job",
+    name: "Job Category",
     icon: "la-paper-plane",
     routePath: "/employers-dashboard/post-jobs",
+    active: "",
+  },
+  {
+    id: 3,
+    name: "Sub Category",
+    icon: "la-paper-plane",
+    routePath: "/employers-dashboard/subcategory",
     active: "",
   },
   {
