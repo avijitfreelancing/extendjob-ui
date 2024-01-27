@@ -6,7 +6,7 @@ const JobAlertsTable = () => {
   return (
     <div className="tabs-box">
       <div className="widget-title">
-        <h4>Job Category</h4>
+        <h4>Sub Category</h4>
 
         <div className="chosen-outer">
           {/* <!--Tabs Box--> */}
