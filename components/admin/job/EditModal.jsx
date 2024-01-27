@@ -17,12 +17,12 @@ const EditModal = () => {
                 {/* <!-- Login Form --> */}
                 <div className="login-form default-form">
                   <div className="form-inner">
-                    <h3>Update Job Category</h3>
+                    <h3>Update Sub Category</h3>
 
                     {/* <!--Login Form--> */}
                     <form method="post">
                       <div className="form-group">
-                        <label>Category Title</label>
+                        <label>Sub Category Title</label>
                         <input type="text" name="title" placeholder="Title" required />
                       </div>
                       {/* name */}

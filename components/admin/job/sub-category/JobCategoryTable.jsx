@@ -1,22 +1,29 @@
 import Link from "next/link.js";
 import jobs from "@/data/job-featured.js";
 import Image from "next/image.js";
+import CreateModal from "@/components/admin/job/createModal";
+import EditModal from "@/components/admin/job/EditModal";
 
 const JobAlertsTable = () => {
   return (
     <div className="tabs-box">
+    <CreateModal/>
+    <EditModal/>
       <div className="widget-title">
         <h4>Sub Category</h4>
 
         <div className="chosen-outer">
           {/* <!--Tabs Box--> */}
-          <select className="chosen-single form-select">
-            <option>Last 6 Months</option>
-            <option>Last 12 Months</option>
-            <option>Last 16 Months</option>
-            <option>Last 24 Months</option>
-            <option>Last 5 year</option>
-          </select>
+          <div className="btn-box">
+          <a
+              href="#"
+              className="theme-btn btn-style-three call-modal"
+              data-bs-toggle="modal"
+              data-bs-target="#createPopupModal"
+          >
+            ADD <span className="la la-plus"></span>
+          </a>
+        </div>
         </div>
       </div>
       {/* End filter top bar */}
@@ -76,12 +83,14 @@ const JobAlertsTable = () => {
                       <div className="option-box">
                         <ul className="option-list">
                           <li>
-                            <button data-text="View Aplication">
-                              <span className="la la-eye"></span>
-                            </button>
+                          <button data-bs-toggle="modal"
+                          data-bs-target="#editPopupModal"
+                          data-text="Edit Sub Category">
+                    <span className="la la-edit"></span>
+                  </button>
                           </li>
                           <li>
-                            <button data-text="Delete Aplication">
+                            <button data-text="Delete Sub Category">
                               <span className="la la-trash"></span>
                             </button>
                           </li>
