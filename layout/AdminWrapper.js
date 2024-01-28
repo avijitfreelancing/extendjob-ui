@@ -1,19 +1,36 @@
-import MobileMenu from "@/components/header/MobileMenu"
+"use client";
+
+import MobileMenu from "@/components/header/MobileMenu";
 import DashboardHeader from "@/components/header/DashboardHeader";
 import CopyrightFooter from "@/components/dashboard-pages/CopyrightFooter";
-import LoginPopup from "@/components/common/form/login/LoginPopup";
 import DashboardAdminSidebar from "@/components/header/DashboardAdminSidebar";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 const EmployerWrapper = ({ children }) => {
-  return <>
+  const router = useRouter();
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    console.log("token", token);
+    if (token) {
+      let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+      if (!userDetails.isAdmin) {
+        router.push("/admin");
+      }
+    } else {
+      router.push("/admin");
+    }
+  }, []);
+
+  return (
     <div className="page-wrapper dashboard">
-      <LoginPopup />
       <DashboardHeader />
       <MobileMenu />
       <DashboardAdminSidebar />
       {children}
       <CopyrightFooter />
     </div>
-  </>;
+  );
 };
 
 export default EmployerWrapper;
