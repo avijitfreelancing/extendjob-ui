@@ -18,7 +18,7 @@ const EmployerWrapper = ({ children }) => {
         router.push("/admin");
       }
     } else {
-      router.push("/admin");
+      // router.push("/admin");
     }
   }, []);
 
