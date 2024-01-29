@@ -7,9 +7,12 @@ import employerMenuData from "../../data/employerMenuData";
 import HeaderNavContent from "./HeaderNavContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const DashboardHeader = () => {
+  const router = useRouter();
   const [navbar, setNavbar] = useState(false);
+  const [userData, setUserData] = useState({});
 
   const changeBackground = () => {
     if (window.scrollY >= 0) {
@@ -18,6 +21,19 @@ const DashboardHeader = () => {
       setNavbar(false);
     }
   };
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token) {
+      let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+      if (!userDetails.isAdmin) {
+        router.push("/admin");
+      }
+      setUserData({ ...userDetails });
+    } else {
+      router.push("/admin");
+    }
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
@@ -80,7 +96,7 @@ const DashboardHeader = () => {
                   width={50}
                   height={50}
                 />
-                <span className="name">My Account</span>
+                <span className="name">{userData.name || "Admin"}</span>
               </a>
 
               <ul className="dropdown-menu">
