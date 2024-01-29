@@ -11,14 +11,13 @@ const EmployerWrapper = ({ children }) => {
 
   useEffect(() => {
     let token = localStorage.getItem("token");
-    console.log("token", token);
     if (token) {
       let userDetails = JSON.parse(localStorage.getItem("userDetails"));
       if (!userDetails.isAdmin) {
         router.push("/admin");
       }
     } else {
-      // router.push("/admin");
+      router.push("/admin");
     }
   }, []);
 

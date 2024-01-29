@@ -110,7 +110,6 @@ const Login = () => {
       {/* End MobileMenu */}
 
       <div className="login-section">
-        {/* {console.log(errors)} */}
         <div
           className="image-layer"
           style={{ backgroundImage: "url(/images/background/12.jpg)" }}

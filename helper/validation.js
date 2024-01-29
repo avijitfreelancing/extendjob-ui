@@ -39,6 +39,13 @@ const validation = ({ value, rules, message }) => {
               error = error.concat(msg + ", ");
             }
             break;
+
+          case "notRequired":
+            if (value.length < 1 || value.length < 0) {
+              msg = "";
+              error = error.concat(msg + ", ");
+            }
+            break;
           // FOR EMAIL
           case "isEmail":
             if (!validEmailRegex.test(value)) {
