@@ -4,7 +4,7 @@ import jobs from "@/data/job-featured.js";
 import Image from "next/image.js";
 import EditModal from "@/components/admin/job/EditModal";
 import axios from "@/helper/axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import validation from "@/helper/validation";
 import _ from "lodash";
 import { toast } from "react-toastify";
@@ -20,6 +20,31 @@ const JobAlertsTable = () => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const [allCategories, setAllCategories] = useState([]);
+
+  useEffect(() => {
+    getAllCategory();
+  }, []);
+
+  const getAllCategory = () => {
+    setLoading(true);
+
+    axios
+      .get("/job/all-categories", config)
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
+          let { job_category } = res.data;
+          setAllCategories(job_category);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        toast.error("Something went wrong !!!");
+      });
+  };
 
   const handleOnChange = (e) => {
     let { name, value } = e.target;
@@ -116,9 +141,31 @@ const JobAlertsTable = () => {
     }
   };
 
+  const activeInactiveCategory = (id) => {
+    setLoading(true);
+
+    axios
+      .put("/job/active-inactive-category", { id }, config)
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
+          toast.success(res.data.message);
+          getAllCategory();
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        toast.error("Something went wrong !!!");
+      });
+  };
+
   return (
     <LoadingOverlay active={loading} spinner text="Loading...">
       <div className="tabs-box">
+        {/* ADD category modal */}
         <div className="modal fade" id="createPopupModal">
           <div className="modal-dialog modal-lg modal-dialog-centered login-modal modal-dialog-scrollable">
             <div className="modal-content">
@@ -218,6 +265,7 @@ const JobAlertsTable = () => {
         </div>
 
         <EditModal />
+
         <div className="widget-title">
           <h4>Job Category</h4>
 
@@ -242,50 +290,32 @@ const JobAlertsTable = () => {
               <table className="default-table manage-job-table">
                 <thead>
                   <tr>
-                    <th>Title</th>
-                    <th>Criteria</th>
-                    <th>Created</th>
+                    <th>Category</th>
+                    <th>Sub Category</th>
                     <th>Action</th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  {jobs.slice(4, 8).map((item) => (
-                    <tr key={item.id}>
+                  {allCategories.map((item, key) => (
+                    <tr key={key}>
                       <td>
-                        {/* <!-- Job Block --> */}
                         <div className="job-block">
                           <div className="inner-box">
-                            <div className="content">
-                              <span className="company-logo">
-                                <Image
-                                  width={50}
-                                  height={49}
-                                  src={item.logo}
-                                  alt="logo"
-                                />
-                              </span>
-                              <h4>
-                                <Link href={`/job-single-v3/${item.id}`}>
-                                  {item.jobTitle}
-                                </Link>
-                              </h4>
-                              <ul className="job-info">
-                                <li>
-                                  <span className="icon flaticon-briefcase"></span>
-                                  Segment
-                                </li>
-                                <li>
-                                  <span className="icon flaticon-map-locator"></span>
-                                  London, UK
-                                </li>
-                              </ul>
-                            </div>
+                            <h4>{item.category}</h4>
                           </div>
                         </div>
                       </td>
-                      <td>Human Resources, Junior</td>
-                      <td>Nov 12, 2021 </td>
+                      <td>
+                        {item.sub_category.map((sub, key) => {
+                          return (
+                            <div className="subcat" key={key}>
+                              {sub}
+                            </div>
+                          );
+                        })}
+                      </td>
+
                       <td>
                         <div className="option-box">
                           <ul className="option-list">
@@ -295,12 +325,27 @@ const JobAlertsTable = () => {
                                 data-bs-target="#editPopupModal"
                                 data-text="Edit Job Category"
                               >
-                                <span className="la la-edit"></span>
+                                <span className="la la-edit" />
                               </button>
                             </li>
                             <li>
-                              <button data-text="Delete Job Category">
-                                <span className="la la-trash"></span>
+                              <button
+                                data-text={
+                                  item.active
+                                    ? "Inactive Job Category"
+                                    : "Active Job Category"
+                                }
+                                onClick={() => {
+                                  activeInactiveCategory(item._id);
+                                }}
+                              >
+                                <span
+                                  className={
+                                    item.active
+                                      ? "la la-eye-slash"
+                                      : "la la-eye"
+                                  }
+                                ></span>
                               </button>
                             </li>
                           </ul>
