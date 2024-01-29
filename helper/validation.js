@@ -1,5 +1,5 @@
 const validEmailRegex = RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
-const nameRegex = RegExp(/^[a-zA-Z ]{2,30}$\b/);
+const nameRegex = RegExp(/^[a-zA-Z ]{2,50}$\b/);
 const decimalNumber = RegExp(/^-?\d+(\.\d+)?$/);
 const mobileNumber = RegExp(/^[0-9]{6,14}$/);
 const userNameRegex = RegExp(/^[a-zA-Z0-9_]{6,20}$/);

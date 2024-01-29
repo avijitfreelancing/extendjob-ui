@@ -1,8 +1,4 @@
 "use client";
-import Link from "next/link.js";
-import jobs from "@/data/job-featured.js";
-import Image from "next/image.js";
-import EditModal from "@/components/admin/job/EditModal";
 import axios from "@/helper/axios";
 import { useEffect, useState } from "react";
 import validation from "@/helper/validation";
@@ -16,10 +12,12 @@ const JobAlertsTable = () => {
     category: "",
     sub_category: [],
     sub_cat_text: "",
+    id: "",
   });
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [subCatPos, setSubCatPos] = useState(-1);
 
   const [allCategories, setAllCategories] = useState([]);
 
@@ -96,8 +94,10 @@ const JobAlertsTable = () => {
       category: "",
       sub_category: [],
       sub_cat_text: "",
+      id: "",
     });
     setErrors({});
+    setSubCatPos(-1);
   };
 
   const isValidForm = (errors) => {
@@ -162,6 +162,61 @@ const JobAlertsTable = () => {
       });
   };
 
+  const onEditCategorySubmit = (e) => {
+    e.preventDefault();
+    if (isValidForm(errors)) {
+      let { sub_category, sub_cat_text } = userData;
+      if (sub_cat_text) {
+        sub_category.push(sub_cat_text);
+        userData.sub_cat_text = "";
+        userData.sub_category = [...sub_category];
+        setUserData({ ...userData });
+      }
+
+      setLoading(true);
+      axios
+        .put("/job/update-category", userData, config)
+        .then((res) => {
+          setLoading(false);
+          if (res.data.success) {
+            toast.success(res.data.message);
+            clearUserData();
+            getAllCategory();
+          } else {
+            toast.error(res.data.message);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          setLoading(false);
+          toast.error("Something went wrong !!!");
+        });
+    }
+  };
+
+  const updateSubCategory = () => {
+    let { sub_category, sub_cat_text } = userData;
+    if (errors.sub_cat_text || !sub_cat_text) {
+      return;
+    }
+
+    let text = sub_cat_text.toLowerCase();
+    if (
+      _.find(sub_category, (sub) => {
+        return sub.toLowerCase() == text;
+      })
+    ) {
+      toast.error("Sub category already present");
+      return;
+    }
+
+    sub_category[subCatPos] = sub_cat_text;
+    userData.sub_cat_text = "";
+    userData.sub_category = [...sub_category];
+    setUserData({ ...userData });
+    setSubCatPos(-1);
+  };
+
   return (
     <LoadingOverlay active={loading} spinner text="Loading...">
       <div className="tabs-box">
@@ -208,13 +263,11 @@ const JobAlertsTable = () => {
                                 <div className="sub_cat_item" key={key}>
                                   {sub_cat}
                                   <span
-                                    className="mx-2"
                                     onClick={() => {
                                       delteSubcat(key);
                                     }}
-                                  >
-                                    X
-                                  </span>
+                                    className="la la-times-circle"
+                                  />
                                 </div>
                               );
                             })}
@@ -264,13 +317,152 @@ const JobAlertsTable = () => {
           </div>
         </div>
 
-        <EditModal />
+        {/* EDIT category modal */}
+        <div className="modal fade" id="editPopupModal">
+          <div className="modal-dialog modal-lg modal-dialog-centered login-modal modal-dialog-scrollable">
+            <div className="modal-content">
+              <button
+                type="button"
+                className="closed-modal"
+                data-bs-dismiss="modal"
+                onClick={clearUserData}
+              />
+
+              <div className="modal-body">
+                <div id="login-modal">
+                  <div className="login-form">
+                    <h3>Update Category</h3>
+
+                    <form
+                      onSubmit={onEditCategorySubmit}
+                      className="default-form"
+                    >
+                      <div className="row">
+                        <div className="form-group">
+                          <label>Category Title</label>
+                          <input
+                            type="text"
+                            name="category"
+                            placeholder="Enter category"
+                            required
+                            validaterule={["required", "isName"]}
+                            validatemsg={[
+                              "category is required",
+                              "Enter valid category name",
+                            ]}
+                            value={userData.category}
+                            onChange={handleOnChange}
+                          />
+                          <p className="invalid_input">{errors.category}</p>
+                        </div>
+                        {userData.sub_category.length > 0 && (
+                          <div className="form-group col-lg-12 col-md-12">
+                            <label>Sub Categories List </label>
+                            {userData.sub_category.map((sub_cat, key) => {
+                              return (
+                                <div className="sub_cat_item" key={key}>
+                                  {sub_cat}
+                                  <span
+                                    onClick={() => {
+                                      setSubCatPos(key);
+                                      userData.sub_cat_text = sub_cat;
+                                      setUserData({ ...userData });
+                                    }}
+                                    className="la la-pen"
+                                  />
+                                  <span
+                                    onClick={() => {
+                                      delteSubcat(key);
+                                    }}
+                                    className="la la-times-circle"
+                                  />
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                        <div className="form-group col-lg-9 col-md-12">
+                          <label>Sub Category Title</label>
+                          <input
+                            type="text"
+                            name="sub_cat_text"
+                            placeholder="Enter sub category"
+                            validaterule={["notRequired", "isName"]}
+                            validatemsg={["Enter valid sub category"]}
+                            value={userData.sub_cat_text}
+                            onChange={handleOnChange}
+                          />
+                          <p className="invalid_input">{errors.sub_cat_text}</p>
+                        </div>
+
+                        {subCatPos !== -1 ? (
+                          <>
+                            <div className="form-group col-lg-3 col-md-12">
+                              <label>Update</label>
+                              <div className="btn-box">
+                                <button
+                                  className="theme-btn btn-style-three"
+                                  type="button"
+                                  onClick={updateSubCategory}
+                                >
+                                  <span className="la la-check" />
+                                </button>
+                              </div>
+                            </div>
+                            <div className="form-group col-lg-3 col-md-12">
+                              <label>Cancel</label>
+                              <div className="btn-box">
+                                <button
+                                  className="theme-btn btn-style-three"
+                                  type="button"
+                                  onClick={() => {
+                                    setSubCatPos(-1);
+                                    userData.sub_cat_text = "";
+                                    setUserData({ ...userData });
+                                  }}
+                                >
+                                  <span className="la la-times" />
+                                </button>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="form-group col-lg-3 col-md-12">
+                            <label>Add</label>
+                            <div className="btn-box">
+                              <button
+                                className="theme-btn btn-style-three"
+                                type="button"
+                                onClick={addSubCategory}
+                              >
+                                <span className="la la-plus" />
+                              </button>
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="form-group">
+                          <button
+                            className="theme-btn btn-style-one"
+                            type="submit"
+                            name="log-in"
+                          >
+                            Update
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="widget-title">
           <h4>Job Category</h4>
 
           <div className="chosen-outer">
-            {/* <!--Tabs Box--> */}
             <div className="btn-box">
               <a
                 href="#"
@@ -324,6 +516,14 @@ const JobAlertsTable = () => {
                                 data-bs-toggle="modal"
                                 data-bs-target="#editPopupModal"
                                 data-text="Edit Job Category"
+                                onClick={() => {
+                                  userData.category = item.category;
+                                  userData.sub_category = [
+                                    ...item.sub_category,
+                                  ];
+                                  userData.id = item._id;
+                                  setUserData({ ...userData });
+                                }}
                               >
                                 <span className="la la-edit" />
                               </button>
@@ -345,7 +545,7 @@ const JobAlertsTable = () => {
                                       ? "la la-eye-slash"
                                       : "la la-eye"
                                   }
-                                ></span>
+                                />
                               </button>
                             </li>
                           </ul>
