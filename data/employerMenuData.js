@@ -21,13 +21,6 @@ module.exports = [
     active: "",
   },
   {
-    id: 3,
-    name: "Sub Category",
-    icon: "la-paper-plane",
-    routePath:  "/admin/job/sub-category",
-    active: "",
-  },
-  {
     id: 4,
     name: "Manage Jobs",
     icon: "la-briefcase",
