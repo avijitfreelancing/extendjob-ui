@@ -20,12 +20,12 @@ const CreateModal = () => {
             {/* End close modal btn */}
 
             <div className="modal-body">
-              {/* <!-- Login modal --> */}
+              {/* <!-- Login.jsx modal --> */}
               <div id="login-modal">
-                {/* <!-- Login Form --> */}
+                {/* <!-- Login.jsx Form --> */}
                 <div className="login-form">
                   <h3>Create Category</h3>
-                  {/* <!--Login Form--> */}
+                  {/* <!--Login.jsx Form--> */}
                   <form method="post" className="default-form">
                     <div className="row">
                       <div className="form-group">
@@ -82,16 +82,16 @@ const CreateModal = () => {
                   </form>
                   {/* End form */}
                 </div>
-                {/* <!--End Login Form --> */}
+                {/* <!--End Login.jsx Form --> */}
               </div>
-              {/* <!-- End Login Module --> */}
+              {/* <!-- End Login.jsx Module --> */}
             </div>
             {/* En modal-body */}
           </div>
           {/* End modal-content */}
         </div>
       </div>
-      {/* <!-- Login Popup Modal --> */}
+      {/* <!-- Login.jsx Popup Modal --> */}
     </>
   );
 };

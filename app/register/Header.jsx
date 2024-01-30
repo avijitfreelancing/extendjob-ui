@@ -55,7 +55,7 @@ const Header = () => {
           {/* End nav-outer */}
 
           <div className="outer-box">
-            {/* <!-- Login/Register --> */}
+            {/* <!-- Login.jsx/Register --> */}
             <div className="btn-box">
               <Link
                 href="/employers-dashboard/post-jobs"

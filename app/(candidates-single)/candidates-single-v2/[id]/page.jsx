@@ -28,7 +28,7 @@ const CandidateSingleDynamicV2 = ({ params }) => {
       <span className="header-span"></span>
 
       <LoginPopup />
-      {/* End Login Popup Modal */}
+      {/* End Login.jsx Popup Modal */}
 
       <DefaulHeader />
       {/* <!--End Main Header --> */}

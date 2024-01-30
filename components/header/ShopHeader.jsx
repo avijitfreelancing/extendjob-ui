@@ -61,7 +61,7 @@ const ShopHeader = () => {
         {/* End .nav-outer */}
 
         <div className="outer-box">
-          {/* <!-- Login/Register --> */}
+          {/* <!-- Login.jsx/Register --> */}
           <Link href="/shop/cart">
             <button className="menu-btn me-3">
               <span className="count">{cart?.length}</span>

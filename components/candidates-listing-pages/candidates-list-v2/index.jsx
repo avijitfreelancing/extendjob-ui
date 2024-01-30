@@ -13,7 +13,7 @@ const Index = () => {
       <span className="header-span"></span>
 
       <LoginPopup />
-      {/* End Login Popup Modal */}
+      {/* End Login.jsx Popup Modal */}
 
       <DefaulHeader2 />
       {/* End Header with upload cv btn */}

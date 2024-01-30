@@ -59,7 +59,7 @@ const index = () => {
       </section>
       {/* <!-- End Clients Section--> */}
       {/*<LoginPopup />*/}
-      {/* End Login Popup Modal */}
+      {/* End Login.jsx Popup Modal */}
     </>
   );
 };

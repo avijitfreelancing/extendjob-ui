@@ -12,7 +12,7 @@ const index = () => {
       <span className="header-span"></span>
 
       <LoginPopup />
-      {/* End Login Popup Modal */}
+      {/* End Login.jsx Popup Modal */}
 
       <ShopHeader />
       {/* <!--End Main Header --> */}

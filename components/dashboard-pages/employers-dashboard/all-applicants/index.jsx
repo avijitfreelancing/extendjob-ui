@@ -15,7 +15,7 @@ const index = () => {
       {/* <!-- Header Span for hight --> */}
 
       <LoginPopup />
-      {/* End Login Popup Modal */}
+      {/* End Login.jsx Popup Modal */}
 
       <DashboardHeader />
       {/* End Header */}

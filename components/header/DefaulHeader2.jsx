@@ -58,7 +58,7 @@ const DefaulHeader2 = () => {
           <Link href="/candidates-dashboard/cv-manager" className="upload-cv">
             Upload your CV
           </Link>
-          {/* <!-- Login/Register --> */}
+          {/* <!-- Login.jsx/Register --> */}
           <div className="btn-box">
             <a
               href="#"
