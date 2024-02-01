@@ -90,7 +90,7 @@ const AdminLogin = () => {
                 <div className="outer-box">
                     <div className="login-form default-form">
                         <div className="form-inner">
-                            <h3>Login</h3>
+                            <h3>Admin Login</h3>
 
                             <form onSubmit={onFormSubmit}>
                                 <div className="form-group">
