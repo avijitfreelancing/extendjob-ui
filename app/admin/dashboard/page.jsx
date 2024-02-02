@@ -1,18 +1,16 @@
 import dynamic from "next/dynamic";
-import DashboadHome from "@/components/dashboard-pages/employers-dashboard/dashboard";
+import AdminHome from "@/components/admin/dashboard";
 import AdminWrapper from "@/layout/AdminWrapper";
 
 export const metadata = {
-  title: "Employees Dashboard",
+  title: "Admin Dashboard",
   description: "Job Board",
 };
 
 const index = () => {
   return (
     <>
-      <AdminWrapper>
-        <DashboadHome />
-      </AdminWrapper>
+        <AdminHome />
     </>
   );
 };

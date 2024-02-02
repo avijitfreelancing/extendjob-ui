@@ -10,9 +10,7 @@ export const metadata = {
 const index = () => {
   return (
     <>
-      <AdminWrapper>
         <JobCategory />
-      </AdminWrapper>
     </>
   );
 };

@@ -2,19 +2,19 @@
 
 import MobileMenu from "@/components/header/MobileMenu";
 import DashboardHeader from "@/components/header/DashboardHeader";
-import CopyrightFooter from "@/components/dashboard-pages/CopyrightFooter";
-import DashboardAdminSidebar from "@/components/header/DashboardAdminSidebar";
+import CopyrightFooter from "@/layout/CopyrightFooter";
+import AdminSidebar from "@/components/header/AdminSidebar";
 
-const EmployerWrapper = ({ children }) => {
+const AdminWrapper = ({ children }) => {
   return (
     <div className="page-wrapper dashboard">
       <DashboardHeader />
       <MobileMenu />
-      <DashboardAdminSidebar />
+      <AdminSidebar />
       {children}
       <CopyrightFooter />
     </div>
   );
 };
 
-export default EmployerWrapper;
+export default AdminWrapper;
