@@ -38,7 +38,7 @@ module.exports = [
     id: 10,
     name: "Change Password",
     icon: "la-lock",
-    routePath: "/candidates-dashboard/change-password",
+    routePath: "/change-password",
     active: "",
   },
   {

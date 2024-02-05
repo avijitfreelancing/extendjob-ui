@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import employerMenuData from "../../data/AdminMenuData";
+import UserMenuData from "../../data/userMenuData";
 import UserHeaderContent from "./UserHeaderContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
@@ -22,18 +22,18 @@ const UserHeader = () => {
     }
   };
 
-  useEffect(() => {
-    let token = localStorage.getItem("token");
-    if (token) {
-      let userDetails = JSON.parse(localStorage.getItem("userDetails"));
-      if (!userDetails.isAdmin) {
-        router.push("/admin");
-      }
-      setUserData({ ...userDetails });
-    } else {
-      router.push("/admin");
-    }
-  }, []);
+  // useEffect(() => {
+  //   let token = localStorage.getItem("token");
+  //   if (token) {
+  //     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  //     if (!userDetails.isAdmin) {
+  //       router.push("/admin");
+  //     }
+  //     setUserData({ ...userDetails });
+  //   } else {
+  //     router.push("/admin");
+  //   }
+  // }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
@@ -100,7 +100,7 @@ const UserHeader = () => {
               </a>
 
               <ul className="dropdown-menu">
-                {employerMenuData.map((item) => (
+                {UserMenuData.map((item) => (
                   <li
                     className={`${
                       isActiveLink(item.routePath, usePathname())
