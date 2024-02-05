@@ -10,9 +10,9 @@ export const metadata = {
 const index = () => {
   return (
     <>
-      <UserWrapper>
+      {/*<UserWrapper>*/}
         <UserHome />
-      </UserWrapper>
+      {/*</UserWrapper>*/}
     </>
   );
 };

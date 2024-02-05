@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import candidatesuData from "../../data/candidatesMenuData";
+import userData from "../../data/userMenuData";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -33,7 +33,7 @@ const DashboardCandidatesSidebar = () => {
 
       <div className="sidebar-inner">
         <ul className="navigation">
-          {candidatesuData.map((item) => (
+          {userData.map((item) => (
             <li
               className={`${
                 isActiveLink(item.routePath, usePathname()) ? "active" : ""

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import HeaderNavContent from "./HeaderNavContent";
+import AdminHeaderContent from "./AdminHeaderContent";
 import Image from "next/image";
 const DefaulHeader = () => {
   const [navbar, setNavbar] = useState(false);
@@ -40,7 +40,7 @@ const DefaulHeader = () => {
               </div>
             </div>
 
-            <HeaderNavContent />
+            <AdminHeaderContent />
             {/* <!-- Main Menu End--> */}
           </div>
 
@@ -61,7 +61,7 @@ const DefaulHeader = () => {
             </div>
             <div className="btn-box">
               <Link
-                href="/candidates-dashboard/dashboard"
+                href="/dashboard"
                 className="theme-btn btn-style-one"
               >
                 Candidates Dashboard

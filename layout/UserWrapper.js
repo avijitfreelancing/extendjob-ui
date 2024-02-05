@@ -1,11 +1,11 @@
 import MobileMenu from "@/components/header/MobileMenu"
-import DashboardHeader from "@/components/header/DashboardHeader";
-import UserSidebar from "@/components/header/DashboardUserSidebar";
+import UserHeader from "@/components/header/UserHeader";
+import UserSidebar from "@/components/header/UserSidebar";
 import CopyrightFooter from "@/layout/CopyrightFooter";
 const UserWrapper = ({ children }) => {
   return <>
     <div className="page-wrapper dashboard">
-      <DashboardHeader />
+      <UserHeader />
       <MobileMenu />
       <UserSidebar />
       {children}

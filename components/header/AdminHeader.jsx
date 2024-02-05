@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import AdminMenuData from "../../data/AdminMenuData";
-import HeaderNavContent from "./HeaderNavContent";
+import AdminHeaderContent from "./AdminHeaderContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -64,7 +64,7 @@ const DashboardHeader = () => {
             </div>
             {/* End .logo-box */}
 
-            <HeaderNavContent />
+            <AdminHeaderContent />
             {/* <!-- Main Menu End--> */}
           </div>
           {/* End .nav-outer */}

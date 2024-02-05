@@ -2,13 +2,18 @@
 
 import Link from "next/link";
 import {
+  findJobItems,
+  homeItems,
+  pageItems,
+} from "../../data/mainMenuData";
+import {
   isActiveParent,
   isActiveLink,
   isActiveParentChaild
 } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 
-const HeaderNavContent = () => {
+const AdminHeaderNavContent = () => {
   return (
     <>
       <nav className="nav main-menu">
@@ -78,4 +83,4 @@ const HeaderNavContent = () => {
   );
 };
 
-export default HeaderNavContent;
+export default AdminHeaderNavContent;

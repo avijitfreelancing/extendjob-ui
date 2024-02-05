@@ -13,7 +13,7 @@ import {
 } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 
-const HeaderNavContent = () => {
+const AdminHeaderContent = () => {
   return (
     <>
       <nav className="nav main-menu">
@@ -83,4 +83,4 @@ const HeaderNavContent = () => {
   );
 };
 
-export default HeaderNavContent;
+export default AdminHeaderContent;
