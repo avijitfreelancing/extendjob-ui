@@ -3,6 +3,8 @@
 
 import Select from "react-select";
 import {useState} from "react";
+import {CKEditor} from "@ckeditor/ckeditor5-react";
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const PostForm = () => {
   const [logoImg, setLogoImg] = useState("");
@@ -104,10 +106,80 @@ const PostForm = () => {
           <label>Total Budget</label>
           <input type="text" readOnly name="price" placeholder="0.00" />
         </div>
+        <div className="form-group col-lg-12 col-md-12">
+          <div className="row" id="choiceOption">
+            <label > Select File Upload Option</label>
+            <div className="input-group">
+              <div className="form-group me-2 switchbox">
+                <label className="switch">
+                  <input
+                      type="checkbox"
+                  />
+                  <span className="slider round"></span>
+                  <span className="title">Select All</span>
+                </label>
+              </div>
+              <div className="form-group me-2 switchbox">
+                <label className="switch">
+                  <input
+                      type="checkbox"
+                  />
+                  <span className="slider round"></span>
+                  <span className="title">png</span>
+                </label>
+              </div>
+              <div className="form-group me-2 switchbox">
+                <label className="switch">
+                  <input
+                      type="checkbox"
+                  />
+                  <span className="slider round"></span>
+                  <span className="title">jpg</span>
+                </label>
+              </div>
+              <div className="form-group me-2 switchbox">
+                <label className="switch">
+                  <input
+                      type="checkbox"
+                  />
+                  <span className="slider round"></span>
+                  <span className="title">jpeg</span>
+                </label>
+              </div>
+              <div className="form-group me-2 switchbox">
+                <label className="switch">
+                  <input
+                      type="checkbox"
+                  />
+                  <span className="slider round"></span>
+                  <span className="title">webp</span>
+                </label>
+              </div>
+              <div className="form-group me-2 switchbox">
+                <label className="switch">
+                  <input
+                      type="checkbox"
+                  />
+                  <span className="slider round"></span>
+                  <span className="title">txt</span>
+                </label>
+              </div>
+              <div className="form-group me-2 switchbox">
+                <label className="switch">
+                  <input
+                      type="checkbox"
+                  />
+                  <span className="slider round"></span>
+                  <span className="title">csv</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* <!-- Input --> */}
         <div className="form-group col-lg-12 col-md-12">
           <label>Job Description</label><span className="text-danger">*</span>
-          <textarea placeholder="Spent several years working on sheep on Wall Street. Had moderate success investing in Yugo's on Wall Street. Managed a small team buying and selling Pogo sticks for farmers. Spent several years licensing licorice in West Palm Beach, FL. Developed several new methods for working it banjos in the aftermarket. Spent a weekend importing banjos in West Palm Beach, FL.In this position, the Software Engineer collaborates with Evention's Development team to continuously enhance our current software solutions as well as create new solutions to eliminate the back-office operations and management challenges present"></textarea>
+          <CKEditor editor={ClassicEditor} data="<p>Hello, world!</p>" />
         </div>
         {/* <!-- Input --> */}
         <div className="form-group col-lg-12 col-md-12">
