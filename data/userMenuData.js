@@ -15,9 +15,9 @@ module.exports = [
   },
   {
     id: 3,
-    name: "My Job",
+    name: "Job History",
     icon: "la la-file-invoice",
-    routePath: "/my-jobs",
+    routePath: "/job-history",
     active: "",
   },
   {
@@ -25,6 +25,13 @@ module.exports = [
     name: "Post A New Job",
     icon: "la la-plus",
     routePath: "/post-job",
+    active: "",
+  },
+  {
+    id: 3,
+    name: "Finish Job",
+    icon: "la la-check",
+    routePath: "/finish-job",
     active: "",
   },
   {
