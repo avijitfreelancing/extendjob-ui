@@ -3,13 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import AdminMenuData from "../../data/AdminMenuData";
-import AdminHeaderContent from "./AdminHeaderContent";
+import UserMenuData from "../../data/userMenuData";
+import UserHeaderContent from "./UserHeaderContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
-const DashboardHeader = () => {
+const UserHeader = () => {
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const [userData, setUserData] = useState({});
@@ -22,18 +22,18 @@ const DashboardHeader = () => {
     }
   };
 
-  useEffect(() => {
-    let token = localStorage.getItem("token");
-    if (token) {
-      let userDetails = JSON.parse(localStorage.getItem("userDetails"));
-      if (!userDetails.isAdmin) {
-        router.push("/admin");
-      }
-      setUserData({ ...userDetails });
-    } else {
-      router.push("/admin");
-    }
-  }, []);
+  // useEffect(() => {
+  //   let token = localStorage.getItem("token");
+  //   if (token) {
+  //     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  //     if (!userDetails.isAdmin) {
+  //       router.push("/admin");
+  //     }
+  //     setUserData({ ...userDetails });
+  //   } else {
+  //     router.push("/admin");
+  //   }
+  // }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
@@ -64,7 +64,7 @@ const DashboardHeader = () => {
             </div>
             {/* End .logo-box */}
 
-            <AdminHeaderContent />
+            <UserHeaderContent />
             {/* <!-- Main Menu End--> */}
           </div>
           {/* End .nav-outer */}
@@ -100,7 +100,7 @@ const DashboardHeader = () => {
               </a>
 
               <ul className="dropdown-menu">
-                {AdminMenuData.map((item) => (
+                {UserMenuData.map((item) => (
                   <li
                     className={`${
                       isActiveLink(item.routePath, usePathname())
@@ -125,4 +125,4 @@ const DashboardHeader = () => {
   );
 };
 
-export default DashboardHeader;
+export default UserHeader;

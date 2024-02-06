@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import HeaderNavContent from "@/components/header/HeaderNavContent";
+import AdminHeaderContent from "@/components/header/AdminHeaderContent";
 import Image from "next/image";
 
 const Header = () => {
@@ -47,7 +47,7 @@ const Header = () => {
             </div>
             {/* End .logo-box */}
 
-            <HeaderNavContent />
+            <AdminHeaderContent />
             {/* <!-- Main Menu End--> */}
           </div>
           {/* End .nav-outer */}

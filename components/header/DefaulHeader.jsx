@@ -1,28 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import HeaderNavContent from "./HeaderNavContent";
+import AdminHeaderContent from "./AdminHeaderContent";
 import Image from "next/image";
 const DefaulHeader = () => {
-  const [navbar, setNavbar] = useState(false);
-  const changeBackground = () => {
-    if (window.scrollY >= 10) {
-      setNavbar(true);
-    } else {
-      setNavbar(false);
-    }
-  };
-  // Check if the current page is the home page
-  const isHomePage = window.location.pathname === "/";
-  useEffect(() => {
-    window.addEventListener("scroll", changeBackground);
-  }, []);
   return (
     <header
-      className={`main-header ${isHomePage ? "header-style-two" : ""}  ${
-        navbar ? "fixed-header animated slideInDown" : ""
-      }`}
+      className="main-header header-style-two fixed-header animated slideInDown"
     >
       <div className="auto-container">
         <div className="main-box">
@@ -40,7 +24,7 @@ const DefaulHeader = () => {
               </div>
             </div>
 
-            <HeaderNavContent />
+            <AdminHeaderContent />
             {/* <!-- Main Menu End--> */}
           </div>
 
@@ -53,7 +37,7 @@ const DefaulHeader = () => {
                 Login
               </Link>
               <Link
-                href="/employers-dashboard/post-jobs"
+                href="/post-job"
                 className="theme-btn btn-style-one"
               >
                 Job Post
@@ -61,7 +45,7 @@ const DefaulHeader = () => {
             </div>
             <div className="btn-box">
               <Link
-                href="/candidates-dashboard/dashboard"
+                href="/dashboard"
                 className="theme-btn btn-style-one"
               >
                 Candidates Dashboard

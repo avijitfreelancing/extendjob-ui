@@ -5,7 +5,7 @@ import Notification from "@/components/admin/dashboard/Notification";
 import JobApplied from "@/components/admin/dashboard/JobApplied";
 import MenuToggler from "@/components/admin/dashboard/MenuToggler";
 import MobileMenu from "@/components/header/MobileMenu";
-import DashboardHeader from "@/components/header/DashboardHeader";
+import UserHeader from "@/components/header/UserHeader";
 import CopyrightFooter from "@/layout/CopyrightFooter";
 import AdminSidebar from "@/components/header/AdminSidebar";
 
@@ -15,7 +15,7 @@ const Index = () => {
             {/*<div >*/}
             <span className="header-span"></span>
             {/* <!-- Header Span for hight --> */}
-            <DashboardHeader />
+            <UserHeader />
             {/* End Header */}
             <MobileMenu />
             {/* End MobileMenu */}
