@@ -1,16 +1,15 @@
 "use client";
 
-import Select from "react-select";
 import { useEffect, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { toast } from "react-toastify";
-import { getFileExtension } from "@/helper/Helper";
 import _ from "lodash";
 import axios from "@/helper/axios";
 import LoadingOverlay from "react-loading-overlay";
 import validation from "@/helper/validation";
 import config from "@/helper/config";
+import { getFileExtension } from "@/helper/Helper";
 
 const PostForm = () => {
   const [formData, setFormData] = useState({

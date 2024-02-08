@@ -9,6 +9,7 @@ export const BUCKET_DOMAIN =
 export const DATE_TIME_HELPER = {
   DATE_FORMAT: "MM-DD-YYYY",
   DATE_TIME_FORMAT: "MM-DD-YYYY hh:mm a",
+  JOB_DATE_FORMAT: "MMM D, YYYY",
 };
 
 export const deleteObjectFields = (data, keys = []) => {
