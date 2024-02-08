@@ -22,18 +22,18 @@ const UserHeader = () => {
     }
   };
 
-  // useEffect(() => {
-  //   let token = localStorage.getItem("token");
-  //   if (token) {
-  //     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
-  //     if (!userDetails.isAdmin) {
-  //       router.push("/admin");
-  //     }
-  //     setUserData({ ...userDetails });
-  //   } else {
-  //     router.push("/admin");
-  //   }
-  // }, []);
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token) {
+      let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+      if (userDetails.isAdmin) {
+        router.push("/admin");
+      }
+      setUserData({ ...userDetails });
+    } else {
+      router.push("/login");
+    }
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
@@ -96,7 +96,7 @@ const UserHeader = () => {
                   width={50}
                   height={50}
                 />
-                <span className="name">{userData.name || "Admin"}</span>
+                <span className="name">{userData.username}</span>
               </a>
 
               <ul className="dropdown-menu">
