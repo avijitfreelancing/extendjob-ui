@@ -1,6 +1,8 @@
 const validEmailRegex = RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
 const nameRegex = RegExp(/^[a-zA-Z ]{2,50}$\b/);
 const decimalNumber = RegExp(/^-?\d+(\.\d+)?$/);
+const integerNumber = RegExp(/^\d+$/);
+const floatingNumber = RegExp(/^\d*\.?\d+$/);
 const mobileNumber = RegExp(/^[0-9]{6,14}$/);
 const userNameRegex = RegExp(/^[a-zA-Z0-9_]{6,20}$/);
 
@@ -86,12 +88,32 @@ const validation = ({ value, rules, message }) => {
             }
             break;
 
-          // FOR DECIMAL NUMBER OR PRICE
-          case "isPrice":
-            if (!decimalNumber.test(value) || parseInt(value) === 0) {
+          // FOR DECIMAL NUMBER
+          case "isDecimal":
+            if (!decimalNumber.test(value) || Number(value) === 0) {
               msg = empty_custom(message[i])
                 ? message[i]
                 : "Enter a valid price";
+              error = error.concat(msg + ", ");
+            }
+            break;
+
+          // FOR  PRICE
+          case "isPrice":
+            if (!floatingNumber.test(value) || Number(value) < 0.02) {
+              msg = empty_custom(message[i])
+                ? message[i]
+                : "Enter a valid price";
+              error = error.concat(msg + ", ");
+            }
+            break;
+
+          // FOR QUENTITY
+          case "isQuentity":
+            if (!integerNumber.test(value) || parseInt(value) < 5) {
+              msg = empty_custom(message[i])
+                ? message[i]
+                : "Enter a valid quentity";
               error = error.concat(msg + ", ");
             }
             break;
