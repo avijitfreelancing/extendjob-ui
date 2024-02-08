@@ -43,6 +43,27 @@ const Index = () => {
       });
   };
 
+  const activeInactiveJob = (id) => {
+    setLoading(true);
+
+    axios
+      .put("/job/active-inactive-job", { id }, config)
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
+          toast.success(res.data.message);
+          getMyJobs();
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        toast.error("Something went wrong !!!");
+      });
+  };
+
   return (
     <LoadingOverlay active={loading} spinner text="Loading...">
       <div className="page-wrapper dashboard">
@@ -135,7 +156,12 @@ const Index = () => {
                                         DATE_TIME_HELPER.JOB_DATE_FORMAT
                                       )}
                                     </td>
-                                    <td className="status">
+                                    <td
+                                      className="status"
+                                      onClick={() => {
+                                        activeInactiveJob(jobs._id);
+                                      }}
+                                    >
                                       {jobs.active ? "Active" : "Inactive"}
                                     </td>
                                     <td>
