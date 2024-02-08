@@ -4,7 +4,7 @@ import LoginWithSocial from "@/components/common/form/login/LoginWithSocial";
 import axios from "@/helper/axios";
 import validation from "@/helper/validation";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadingOverlay from "react-loading-overlay";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -22,6 +22,18 @@ const Login = () => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token) {
+      let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+      if (userDetails.isAdmin) {
+        router.push("/admin/dashboard");
+      } else {
+        router.push("/dashboard");
+      }
+    }
+  }, []);
 
   const handleOnChange = (e) => {
     let { name, value } = e.target;
