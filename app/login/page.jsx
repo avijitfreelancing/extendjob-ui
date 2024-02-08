@@ -27,9 +27,7 @@ const Login = () => {
     let token = localStorage.getItem("token");
     if (token) {
       let userDetails = JSON.parse(localStorage.getItem("userDetails"));
-      if (userDetails.isAdmin) {
-        router.push("/admin/dashboard");
-      } else {
+      if (!userDetails.isAdmin) {
         router.push("/dashboard");
       }
     }
