@@ -32,8 +32,9 @@ const Index = () => {
         setLoading(false);
         if (res.data.success) {
           let { jobs } = res.data;
-
           setMyJobs(jobs);
+        } else {
+          toast.error(res.data.message);
         }
       })
       .catch((err) => {
