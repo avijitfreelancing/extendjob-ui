@@ -16,6 +16,7 @@ const FilterJobBox = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(1);
   const [sort, setSort] = useState(-1);
+  const [search, setSearch] = useState("");
 
   const optionPerpage = [1, 10, 25, 50];
 
@@ -26,7 +27,9 @@ const FilterJobBox = () => {
   const getAllJobs = () => {
     setLoading(true);
     axios
-      .get(`/job/jobs?page=${currentPage}&per_page=${perPage}&sort=${sort}`)
+      .get(
+        `/job/jobs?page=${currentPage}&per_page=${perPage}&sort=${sort}&search=${search}`
+      )
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
