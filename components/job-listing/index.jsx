@@ -1,24 +1,13 @@
-'use client'
+"use client";
 
 import FooterDefault from "../footer/common-footer";
-import Header from "@/components/header/DefaulHeader";
-import MobileMenu from "../header/MobileMenu";
 import Breadcrumb from "../common/Breadcrumb";
-import FilterSidebar from "./FilterSidebar";
 import FilterJobBox from "./FilterJobBox";
 
 const index = () => {
   return (
     <>
-      {/* <!-- Header Span --> */}
-      <span className="header-span"></span>
-      {/* End Login.jsx Popup Modal */}
-
-      <Header />
-      {/* End Header with upload cv btn */}
-
-      <MobileMenu />
-      {/* End MobileMenu */}
+      <span className="header-span" />
 
       <Breadcrumb title="Find Jobs" meta="Jobs" />
       {/* <!--End Breadcrumb Start--> */}
@@ -33,7 +22,7 @@ const index = () => {
               aria-labelledby="offcanvasLabel"
             >
               <div className="filters-column hide-left">
-                {/*<FilterSidebar />*/}
+                {/* <FilterSidebar /> */}
               </div>
             </div>
             {/* <!-- End Filters Column --> */}
