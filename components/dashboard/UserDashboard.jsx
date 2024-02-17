@@ -1,39 +1,39 @@
+"use client";
+
 import BreadCrumb from "@/components/bread-crumb/BreadCrumb";
 import TopCardBlock from "@/components/dashboard/TopCardBlock";
 import ProfileChart from "@/components/dashboard/ProfileChart";
 import Notification from "@/components/dashboard/Notification";
 import JobApplied from "@/components/dashboard/JobApplied";
-import MenuToggler from "@/components/dashboard/MenuToggler";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 const UserDashboard = () => {
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    setUserData({ ...userDetails });
+  }, []);
+
   return (
     <div>
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title="Howdy, Jerome!!" />
-          {/* breadCrumb */}
-
-          <MenuToggler />
-          {/* Collapsible sidebar button */}
+          <BreadCrumb title={`Hello, ${userData.username || "User"}!!`} />
 
           <div className="row">
             <TopCardBlock />
           </div>
-          {/* End .row top card block */}
 
           <div className="row">
             <div className="col-xl-7 col-lg-12">
-              {/* <!-- Graph widget --> */}
               <div className="graph-widget ls-widget">
                 <ProfileChart />
               </div>
-              {/* End profile chart */}
             </div>
-            {/* End .col */}
 
             <div className="col-xl-5 col-lg-12">
-              {/* <!-- Notification Widget --> */}
               <div className="notification-widget ls-widget">
                 <div className="widget-title">
                   <h4>Notifications</h4>
@@ -43,28 +43,21 @@ const UserDashboard = () => {
                 </div>
               </div>
             </div>
-            {/* End .col */}
 
             <div className="col-lg-12">
-              {/* <!-- applicants Widget --> */}
               <div className="applicants-widget ls-widget">
                 <div className="widget-title">
                   <h4>Jobs Applied Recently</h4>
                 </div>
                 <div className="widget-content">
                   <div className="row">
-                    {/* <!-- Candidate block three --> */}
-
                     <JobApplied />
                   </div>
                 </div>
               </div>
             </div>
-            {/* End .col */}
           </div>
-          {/* End .row profile and notificatins */}
         </div>
-        {/* End dashboard-outer */}
       </section>
     </div>
   );
