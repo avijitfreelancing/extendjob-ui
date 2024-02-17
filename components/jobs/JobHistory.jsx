@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import CopyrightFooter from "../footer/common-footer/CopyrightFooter";
 import axios from "@/helper/axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
@@ -182,7 +181,6 @@ const JobHistory = () => {
           </div>
         </div>
       </section>
-      <CopyrightFooter />
     </LoadingOverlay>
   );
 };
