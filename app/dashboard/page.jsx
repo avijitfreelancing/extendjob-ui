@@ -9,11 +9,9 @@ export const metadata = {
 
 const index = () => {
   return (
-    <>
-      <UserWrapper>
-        <UserDashboard />
-      </UserWrapper>
-    </>
+    <UserWrapper>
+      <UserDashboard />
+    </UserWrapper>
   );
 };
 
