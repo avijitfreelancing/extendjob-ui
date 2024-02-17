@@ -3,11 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import AdminMenuData from "../../data/AdminMenuData";
 import AdminHeaderContent from "./AdminHeaderContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const AdminHeader = () => {
   const router = useRouter();
@@ -36,15 +36,40 @@ const AdminHeader = () => {
     window.addEventListener("scroll", changeBackground);
   }, []);
 
+  const DropDownData = [
+    {
+      id: 1,
+      name: "Dashboard",
+      icon: "la-home",
+      routePath: "/admin/dashboard",
+      active: "active",
+    },
+    {
+      id: 10,
+      name: "Change Password",
+      icon: "la-lock",
+      routePath: "/admin/change-password",
+      active: "",
+    },
+  ];
+
+  const logout = () => {
+    const aa = toast.loading("Please Wait");
+
+    setTimeout(() => {
+      localStorage.clear();
+      router.push("/admin");
+      toast.done(aa);
+    }, 1500);
+  };
+
   return (
     // <!-- Main Header-->
     <header
       className={`main-header header-shaddow  ${navbar ? "fixed-header " : ""}`}
     >
       <div className="container-fluid">
-        {/* <!-- Main box --> */}
         <div className="main-box">
-          {/* <!--Nav Outer --> */}
           <div className="nav-outer">
             <div className="logo-box">
               <div className="logo">
@@ -59,26 +84,20 @@ const AdminHeader = () => {
                 </Link>
               </div>
             </div>
-            {/* End .logo-box */}
 
             <AdminHeaderContent />
-            {/* <!-- Main Menu End--> */}
           </div>
-          {/* End .nav-outer */}
 
           <div className="outer-box">
             <button className="menu-btn">
               <span className="count">1</span>
               <span className="icon la la-heart-o"></span>
             </button>
-            {/* wishlisted menu */}
 
             <button className="menu-btn">
               <span className="icon la la-bell"></span>
             </button>
-            {/* End notification-icon */}
 
-            {/* <!-- Dashboard Option --> */}
             <div className="dropdown dashboard-option">
               <a
                 className="dropdown-toggle"
@@ -97,7 +116,7 @@ const AdminHeader = () => {
               </a>
 
               <ul className="dropdown-menu">
-                {AdminMenuData.map((item) => (
+                {DropDownData.map((item) => (
                   <li
                     className={`${
                       isActiveLink(item.routePath, usePathname())
@@ -111,6 +130,11 @@ const AdminHeader = () => {
                     </Link>
                   </li>
                 ))}
+                <li className="mb-1">
+                  <Link href="#" onClick={logout}>
+                    <i className="la la-sign-out" /> Logout
+                  </Link>
+                </li>
               </ul>
             </div>
             {/* End dropdown */}

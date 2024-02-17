@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
-import UserHome from "@/components/dashboard/index";
 import UserWrapper from "@/layout/UserWrapper";
+import UserDashboard from "@/components/dashboard/UserDashboard";
 
 export const metadata = {
   title: "User Dashboard || Extend - Job Board",
@@ -10,9 +10,9 @@ export const metadata = {
 const index = () => {
   return (
     <>
-      {/*<UserWrapper>*/}
-        <UserHome />
-      {/*</UserWrapper>*/}
+      <UserWrapper>
+        <UserDashboard />
+      </UserWrapper>
     </>
   );
 };
