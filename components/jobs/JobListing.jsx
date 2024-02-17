@@ -8,8 +8,6 @@ import FooterDefault from "../footer/common-footer";
 const JobListing = () => {
   return (
     <>
-      <span className="header-span" />
-
       <Breadcrumb title="Find Jobs" meta="Jobs" />
 
       <section className="ls-section">
