@@ -41,25 +41,4 @@ module.exports = [
     routePath: "/applied-jobs",
     active: "",
   },
-  {
-    id: 10,
-    name: "Change Password",
-    icon: "la-lock",
-    routePath: "/change-password",
-    active: "",
-  },
-  {
-    id: 11,
-    name: "Logout",
-    icon: "la-sign-out",
-    routePath: "/login",
-    active: "",
-  },
-  {
-    id: 12,
-    name: "Delete Profile",
-    icon: "la-trash",
-    routePath: "/",
-    active: "",
-  },
 ];

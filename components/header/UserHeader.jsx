@@ -3,16 +3,40 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import UserMenuData from "../../data/userMenuData";
 import UserHeaderContent from "./UserHeaderContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const UserHeader = () => {
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const [userData, setUserData] = useState({});
+
+  const DropDownData = [
+    {
+      id: 1,
+      name: "Dashboard",
+      icon: "la-home",
+      routePath: "/dashboard",
+      active: "active",
+    },
+    {
+      id: 2,
+      name: "My Profile",
+      icon: "la-user-tie",
+      routePath: "/my-profile",
+      active: "",
+    },
+    {
+      id: 10,
+      name: "Change Password",
+      icon: "la-lock",
+      routePath: "/change-password",
+      active: "",
+    },
+  ];
 
   const changeBackground = () => {
     if (window.scrollY >= 0) {
@@ -38,6 +62,16 @@ const UserHeader = () => {
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
   }, []);
+
+  const logout = () => {
+    const aa = toast.loading("Please Wait");
+
+    setTimeout(() => {
+      localStorage.clear();
+      router.push("/login");
+      toast.done(aa);
+    }, 1500);
+  };
 
   return (
     // <!-- Main Header-->
@@ -100,20 +134,25 @@ const UserHeader = () => {
               </a>
 
               <ul className="dropdown-menu">
-                {UserMenuData.map((item) => (
+                {DropDownData.map((item, key) => (
                   <li
                     className={`${
                       isActiveLink(item.routePath, usePathname())
                         ? "active"
                         : ""
                     } mb-1`}
-                    key={item.id}
+                    key={key}
                   >
                     <Link href={item.routePath}>
-                      <i className={`la ${item.icon}`}></i> {item.name}
+                      <i className={`la ${item.icon}`} /> {item.name}
                     </Link>
                   </li>
                 ))}
+                <li className="mb-1">
+                  <Link href="#" onClick={logout}>
+                    <i className="la la-sign-out" /> Logout
+                  </Link>
+                </li>
               </ul>
             </div>
             {/* End dropdown */}

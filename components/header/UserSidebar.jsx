@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
@@ -13,7 +13,6 @@ import { usePathname } from "next/navigation";
 const DashboardCandidatesSidebar = () => {
   const { menu } = useSelector((state) => state.toggle);
   const percentage = 30;
-
 
   const dispatch = useDispatch();
   // menu togggle handler
@@ -33,12 +32,12 @@ const DashboardCandidatesSidebar = () => {
 
       <div className="sidebar-inner">
         <ul className="navigation">
-          {userData.map((item) => (
+          {userData.map((item, key) => (
             <li
               className={`${
                 isActiveLink(item.routePath, usePathname()) ? "active" : ""
               } mb-1`}
-              key={item.id}
+              key={key}
               onClick={menuToggleHandler}
             >
               <Link href={item.routePath}>
