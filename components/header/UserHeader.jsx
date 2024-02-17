@@ -50,9 +50,6 @@ const UserHeader = () => {
     let token = localStorage.getItem("token");
     if (token) {
       let userDetails = JSON.parse(localStorage.getItem("userDetails"));
-      if (userDetails.isAdmin) {
-        router.push("/admin");
-      }
       setUserData({ ...userDetails });
     } else {
       router.push("/login");

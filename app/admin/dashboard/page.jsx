@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
-import AdminHome from "@/components/admin/dashboard";
 import AdminWrapper from "@/layout/AdminWrapper";
+import AdminDashboard from "@/components/admin/dashboard/AdminDashboard";
 
 export const metadata = {
   title: "Admin Dashboard",
@@ -9,9 +9,9 @@ export const metadata = {
 
 const index = () => {
   return (
-    <>
-        <AdminHome />
-    </>
+    <AdminWrapper>
+      <AdminDashboard />
+    </AdminWrapper>
   );
 };
 

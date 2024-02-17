@@ -1,5 +1,5 @@
-import dynamic from "next/dynamic"
-import AdminLogIn from "@/components/admin/Login";
+import dynamic from "next/dynamic";
+import AdminLogin from "@/components/admin/AdminLogin";
 export const metadata = {
   title: "Login || Extend-job - Job Board",
   description: "Extend-job - Job Board",
@@ -8,7 +8,7 @@ export const metadata = {
 const index = () => {
   return (
     <>
-      <AdminLogIn />
+      <AdminLogin />
     </>
   );
 };

@@ -10,7 +10,7 @@ const AdminWrapper = ({ children }) => {
     <div className="page-wrapper dashboard">
       <span className="header-span" />
       <AdminHeader />
-      {/* <MobileMenu /> */}
+      <MobileMenu />
       <AdminSidebar />
       {children}
       <CopyrightFooter />
