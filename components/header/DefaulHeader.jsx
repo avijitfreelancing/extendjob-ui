@@ -3,11 +3,35 @@
 import Link from "next/link";
 import AdminHeaderContent from "./AdminHeaderContent";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+
 const DefaulHeader = () => {
+  const router = useRouter();
+
+  const [isLogin, setIsLogin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    setIsLogin(token ? true : false);
+    token = localStorage.getItem("admin_token");
+    setIsAdmin(token ? true : false);
+  }, []);
+
+  const logout = () => {
+    const aa = toast.loading("Please Wait");
+
+    setTimeout(() => {
+      localStorage.clear();
+      router.push("/login");
+      toast.done(aa);
+    }, 1500);
+  };
+
   return (
-    <header
-      className="main-header header-style-two fixed-header animated slideInDown"
-    >
+    <header className="main-header header-style-two fixed-header animated slideInDown">
       <div className="auto-container">
         <div className="main-box">
           <div className="nav-outer">
@@ -28,30 +52,36 @@ const DefaulHeader = () => {
             {/* <!-- Main Menu End--> */}
           </div>
 
-          <div className="outer-box">
-            <div className="btn-box">
-              <Link
-                href="/login"
-                className="theme-btn btn-style-three call-modal"
-              >
-                Login
-              </Link>
-              <Link
-                href="/post-job"
-                className="theme-btn btn-style-one"
-              >
-                Job Post
-              </Link>
+          {!isAdmin && (
+            <div className="outer-box">
+              <div className="btn-box">
+                {!isLogin ? (
+                  <Link
+                    href="/login"
+                    className="theme-btn btn-style-three call-modal"
+                  >
+                    Login
+                  </Link>
+                ) : (
+                  <>
+                    <Link
+                      href="#"
+                      className="theme-btn btn-style-three call-modal"
+                      onClick={logout}
+                    >
+                      Logout
+                    </Link>
+                    <Link href="/post-job" className="theme-btn btn-style-one">
+                      Job Post
+                    </Link>
+                    <Link href="/dashboard" className="theme-btn btn-style-one">
+                      Candidates Dashboard
+                    </Link>
+                  </>
+                )}
+              </div>
             </div>
-            <div className="btn-box">
-              <Link
-                href="/dashboard"
-                className="theme-btn btn-style-one"
-              >
-                Candidates Dashboard
-              </Link>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </header>

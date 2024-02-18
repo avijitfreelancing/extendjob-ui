@@ -19,12 +19,9 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    let token = localStorage.getItem("token");
+    let token = localStorage.getItem("admin_token");
     if (token) {
-      let userDetails = JSON.parse(localStorage.getItem("userDetails"));
-      if (userDetails.isAdmin) {
-        router.push("/admin/dashboard");
-      }
+      router.push("/admin/dashboard");
     }
   }, []);
 
@@ -53,6 +50,7 @@ const AdminLogin = () => {
     }
     return isValid;
   };
+
   const onFormSubmit = (e) => {
     e.preventDefault();
     if (isValidForm(errors)) {
@@ -64,7 +62,7 @@ const AdminLogin = () => {
           if (res.data.success) {
             toast.success(res.data.message);
             let { token, userDetails } = res.data;
-            localStorage.setItem("token", token);
+            localStorage.setItem("admin_token", token);
             localStorage.setItem("userDetails", JSON.stringify(userDetails));
             router.push("/admin/dashboard");
           } else {
@@ -78,6 +76,7 @@ const AdminLogin = () => {
         });
     }
   };
+
   return (
     <LoadingOverlay active={loading} spinner text="Loading...">
       <div className="login-section">

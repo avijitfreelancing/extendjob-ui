@@ -26,10 +26,7 @@ const Login = () => {
   useEffect(() => {
     let token = localStorage.getItem("token");
     if (token) {
-      let userDetails = JSON.parse(localStorage.getItem("userDetails"));
-      if (!userDetails.isAdmin) {
-        router.push("/dashboard");
-      }
+      router.push("/dashboard");
     }
   }, []);
 

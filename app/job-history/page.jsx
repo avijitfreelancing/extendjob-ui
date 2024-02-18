@@ -1,16 +1,17 @@
+import JobHistory from "@/components/jobs/JobHistory";
+import UserWrapper from "@/layout/UserWrapper";
 import dynamic from "next/dynamic";
-import JobHistory from "@/components/job-history/index";
 
 export const metadata = {
-  title: "User Profile",
-  description: "User Profile",
+  title: "Job History",
+  description: "Job History",
 };
 
 const index = () => {
   return (
-    <>
-        <JobHistory />
-    </>
+    <UserWrapper>
+      <JobHistory />
+    </UserWrapper>
   );
 };
 

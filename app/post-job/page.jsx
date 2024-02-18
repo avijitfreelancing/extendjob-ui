@@ -1,16 +1,17 @@
 import dynamic from "next/dynamic";
-import PostJob from "@/components/post-job/index";
+import UserWrapper from "@/layout/UserWrapper";
+import JobPost from "@/components/jobs/JobPost";
 
 export const metadata = {
-  title: "User Job Post",
-  description: "User Job Post",
+  title: "Job Post",
+  description: "Job Post",
 };
 
 const index = () => {
   return (
-    <>
-        <PostJob />
-    </>
+    <UserWrapper>
+      <JobPost />
+    </UserWrapper>
   );
 };
 

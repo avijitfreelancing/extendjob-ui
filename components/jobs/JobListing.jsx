@@ -1,16 +1,14 @@
 "use client";
 
-import FooterDefault from "../footer/common-footer";
-import Breadcrumb from "../common/Breadcrumb";
+import dynamic from "next/dynamic";
 import FilterJobBox from "./FilterJobBox";
+import Breadcrumb from "../common/Breadcrumb";
+import FooterDefault from "../footer/common-footer";
 
-const index = () => {
+const JobListing = () => {
   return (
     <>
-      <span className="header-span" />
-
       <Breadcrumb title="Find Jobs" meta="Jobs" />
-      {/* <!--End Breadcrumb Start--> */}
 
       <section className="ls-section">
         <div className="auto-container">
@@ -25,23 +23,17 @@ const index = () => {
                 {/* <FilterSidebar /> */}
               </div>
             </div>
-            {/* <!-- End Filters Column --> */}
 
             <div className="content-column col-lg-12">
               <FilterJobBox />
             </div>
-            {/* <!-- End Content Column --> */}
           </div>
-          {/* End row */}
         </div>
-        {/* End container */}
       </section>
-      {/* <!--End Listing Page Section --> */}
 
       <FooterDefault footerStyle="alternate5" />
-      {/* <!-- End Main Footer --> */}
     </>
   );
 };
 
-export default index;
+export default dynamic(() => Promise.resolve(JobListing), { ssr: false });

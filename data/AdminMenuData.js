@@ -34,11 +34,4 @@ module.exports = [
     routePath: "/admin/change-password",
     active: "",
   },
-  {
-    id: 11,
-    name: "Logout",
-    icon: "la-sign-out",
-    routePath: "/login",
-    active: "",
-  },
 ];
