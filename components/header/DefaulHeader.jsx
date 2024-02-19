@@ -30,6 +30,16 @@ const DefaulHeader = () => {
     }, 1500);
   };
 
+  const adminlogout = () => {
+    const aa = toast.loading("Please Wait");
+
+    setTimeout(() => {
+      localStorage.clear();
+      router.push("/admin");
+      toast.done(aa);
+    }, 1500);
+  };
+
   return (
     <header className="main-header header-style-two fixed-header animated slideInDown">
       <div className="auto-container">
@@ -52,7 +62,26 @@ const DefaulHeader = () => {
             {/* <!-- Main Menu End--> */}
           </div>
 
-          {!isAdmin && (
+          {isAdmin ? (
+            <div className="outer-box">
+              <div className="btn-box">
+                <Link
+                  href="#"
+                  className="theme-btn btn-style-three call-modal"
+                  onClick={adminlogout}
+                >
+                  Logout
+                </Link>
+
+                <Link
+                  href="/admin/dashboard"
+                  className="theme-btn btn-style-one"
+                >
+                  Dashboard
+                </Link>
+              </div>
+            </div>
+          ) : (
             <div className="outer-box">
               <div className="btn-box">
                 {!isLogin ? (
