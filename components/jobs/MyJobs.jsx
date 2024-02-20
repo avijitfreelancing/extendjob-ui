@@ -12,7 +12,7 @@ import Image from "next/image.js";
 import config from "@/helper/config";
 import moment from "moment";
 
-const JobHistory = () => {
+const MyJobs = () => {
   const [loading, setLoading] = useState(false);
 
   const [myJobs, setMyJobs] = useState([]);
@@ -66,14 +66,13 @@ const JobHistory = () => {
     <LoadingOverlay active={loading} spinner text="Loading...">
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title="Job History !" />
-
+          <BreadCrumb title="My Jobs !" />
           <div className="row">
             <div className="col-lg-12">
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
-                    <h4>Job History</h4>
+                    <h4>My Jobs</h4>
 
                     <div className="chosen-outer">
                       <select className="chosen-single form-select">
@@ -185,4 +184,4 @@ const JobHistory = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(JobHistory), { ssr: false });
+export default dynamic(() => Promise.resolve(MyJobs), { ssr: false });

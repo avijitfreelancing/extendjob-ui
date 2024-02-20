@@ -39,9 +39,26 @@ const DefaulHeader = () => {
       toast.done(aa);
     }, 1500);
   };
+  const [navbar, setNavbar] = useState(false);
+
+  const changeBackground = () => {
+    if (window.scrollY >= 10) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeBackground);
+  }, []);
 
   return (
-    <header className="main-header header-style-two fixed-header animated slideInDown">
+    <header
+        className={`main-header  ${
+            navbar ? "fixed-header animated slideInDown" : ""
+        }`}
+    >
       <div className="auto-container">
         <div className="main-box">
           <div className="nav-outer">

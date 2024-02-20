@@ -1,16 +1,17 @@
 import dynamic from "next/dynamic";
 import JobDetails from "@/components/job-details/JobDetails";
+import Wrapper from "@/layout/Wrapper";
 
 export const metadata = {
-  title: "Job Dtails",
-  description: "Job Dtails",
+  title: "Job Details",
+  description: "Job Details",
 };
 
 const index = (props) => {
   return (
-    <>
-      <JobDetails {...props} />
-    </>
+      <Wrapper>
+        <JobDetails {...props} />
+      </Wrapper>
   );
 };
 

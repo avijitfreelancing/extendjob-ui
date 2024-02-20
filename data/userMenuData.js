@@ -15,13 +15,6 @@ module.exports = [
   },
   {
     id: 3,
-    name: "Job History",
-    icon: "la la-file-invoice",
-    routePath: "/job-history",
-    active: "",
-  },
-  {
-    id: 3,
     name: "Post A New Job",
     icon: "la la-plus",
     routePath: "/post-job",
@@ -29,9 +22,9 @@ module.exports = [
   },
   {
     id: 3,
-    name: "Finish Job",
-    icon: "la la-check",
-    routePath: "/finish-job",
+    name: "My Jobs",
+    icon: "la la-file",
+    routePath: "/my-jobs",
     active: "",
   },
   {
@@ -39,6 +32,13 @@ module.exports = [
     name: "Applied Jobs",
     icon: "la-briefcase",
     routePath: "/applied-jobs",
+    active: "",
+  },
+  {
+    id: 3,
+    name: "Finish Job",
+    icon: "la la-check",
+    routePath: "/finish-job",
     active: "",
   },
 ];
