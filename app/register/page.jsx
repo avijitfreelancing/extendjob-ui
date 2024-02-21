@@ -1,7 +1,5 @@
 "use client";
 import dynamic from "next/dynamic";
-import Header from "./Header";
-import MobileMenu from "@/components/header/MobileMenu";
 import Link from "next/link";
 import validation from "@/helper/validation";
 import { useEffect, useState } from "react";
@@ -147,10 +145,6 @@ const index = () => {
 
   return (
     <LoadingOverlay active={loading} spinner text="Loading...">
-      <Header />
-
-      <MobileMenu />
-
       <div className="login-section">
         <div
           className="image-layer"
