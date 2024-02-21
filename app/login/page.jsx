@@ -95,7 +95,8 @@ const Login = () => {
             let { token, userDetails } = res.data;
             localStorage.setItem("token", token);
             localStorage.setItem("userDetails", JSON.stringify(userDetails));
-            router.push("/dashboard");
+            // router.push("/dashboard");
+            router.reload();
           } else {
             toast.error(res.data.message);
           }
@@ -110,12 +111,6 @@ const Login = () => {
 
   return (
     <LoadingOverlay active={loading} spinner text="Loading...">
-      {/*<Header />*/}
-      {/* <!--End Main Header -->  */}
-
-      {/*<MobileMenu />*/}
-      {/* End MobileMenu */}
-
       <div className="login-section">
         <div
           className="image-layer"
