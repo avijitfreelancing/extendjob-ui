@@ -127,7 +127,7 @@ const JobCategory = () => {
 
       setLoading(true);
       axios
-        .post("/job/add-category", userData, config)
+        .post("/job/add-category", userData, adminConfig)
         .then((res) => {
           setLoading(false);
           if (res.data.success) {
@@ -149,7 +149,7 @@ const JobCategory = () => {
     setLoading(true);
 
     axios
-      .put("/job/active-inactive-category", { id }, config)
+      .put("/job/active-inactive-category", { id }, adminConfig)
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
@@ -179,7 +179,7 @@ const JobCategory = () => {
 
       setLoading(true);
       axios
-        .put("/job/update-category", userData, config)
+        .put("/job/update-category", userData, adminConfig)
         .then((res) => {
           setLoading(false);
           if (res.data.success) {

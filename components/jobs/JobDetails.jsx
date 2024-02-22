@@ -13,6 +13,16 @@ import config from "@/helper/config";
 export default function JobDetails({ params }) {
   const [loading, setLoading] = useState(false);
 
+  const DATE_FORMAT = "DD-MM-YYYY";
+  const TIME_FORMAT = "h:m:s A";
+  const DATE_TIME_FORMAT = "Do MMM, YYYY - h:m:s A";
+  const OLDER_FORMAT = "ddd, Do MMM YYYY - h:m:s A";
+  const DAY_FORMAT = "dddd";
+  const REFERENCE = moment();
+  const TODAY = REFERENCE.clone().startOf("day");
+  const YESTERDAY = REFERENCE.clone().subtract(1, "days").startOf("day");
+  const A_WEEK_OLD = REFERENCE.clone().subtract(7, "days").startOf("day");
+
   const [jobDetailsData, setJobDetailsData] = useState({});
   const [userDetails, setUserDetails] = useState({});
 
@@ -33,6 +43,24 @@ export default function JobDetails({ params }) {
         if (res.data.success) {
           let { job } = res.data;
 
+          let date = moment(job.createdAt, DATE_FORMAT);
+          let today = isToday(date);
+          let yesterday = isYesterday(date);
+          let week = isWithinAWeek(date);
+
+          let timeStamp;
+          if (today) {
+            timeStamp = moment(job.createdAt).fromNow();
+          } else if (yesterday) {
+            timeStamp = moment(job.createdAt).format(TIME_FORMAT);
+          } else if (!week) {
+            timeStamp = moment(job.createdAt).format(OLDER_FORMAT);
+          } else {
+            timeStamp = moment(job.createdAt).format(DATE_TIME_FORMAT);
+          }
+
+          job.timeStamp = timeStamp;
+
           setJobDetailsData(job);
         } else {
           toast.error(res.data.message);
@@ -44,6 +72,12 @@ export default function JobDetails({ params }) {
         toast.error("Something went wrong !!!");
       });
   };
+
+  const isToday = (momentDate) => momentDate.isSame(TODAY, "d");
+  const isYesterday = (momentDate) => momentDate.isSame(YESTERDAY, "d");
+  const isWithinAWeek = (momentDate) => momentDate.isAfter(A_WEEK_OLD);
+  const getDay = (momentDate) => momentDate.format(DAY_FORMAT);
+
   const company = jobs.find((item) => item.id == 1) || jobs[0];
 
   return (
@@ -291,7 +325,7 @@ export default function JobDetails({ params }) {
                         <li>
                           <i className="icon icon-calendar"></i>
                           <h5>Date Posted:</h5>
-                          <span>Posted 1 hours ago</span>
+                          <span>{jobDetailsData.timeStamp}</span>
                         </li>
                         {/* <li>
                           <i className="icon icon-expiry"></i>
