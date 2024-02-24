@@ -95,9 +95,9 @@ const Login = () => {
             let { token, userDetails } = res.data;
             localStorage.setItem("token", token);
             localStorage.setItem("userDetails", JSON.stringify(userDetails));
-            router.push("/dashboard");
+            // router.push("/dashboard");
             // router.reload();
-            // window.location.reload();
+            window.location.reload();
           } else {
             toast.error(res.data.message);
           }
