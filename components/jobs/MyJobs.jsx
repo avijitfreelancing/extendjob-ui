@@ -143,7 +143,7 @@ const MyJobs = () => {
                                     )}
                                   </td>
                                   <td
-                                    className="status"
+                                    className={jobs.active ? "status" : "text-danger"}
                                     onClick={() => {
                                       activeInactiveJob(jobs._id);
                                     }}
@@ -155,12 +155,12 @@ const MyJobs = () => {
                                       <ul className="option-list">
                                         <li>
                                           <button data-text="View Aplication">
-                                            <span className="la la-eye"></span>
+                                            <span className="la la-edit"></span>
                                           </button>
                                         </li>
                                         <li>
                                           <button data-text="Delete Aplication">
-                                            <span className="la la-trash"></span>
+                                            <span className="la la-trash text-danger"></span>
                                           </button>
                                         </li>
                                       </ul>
