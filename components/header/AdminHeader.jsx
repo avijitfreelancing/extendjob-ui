@@ -25,7 +25,7 @@ const AdminHeader = () => {
   useEffect(() => {
     let token = localStorage.getItem("admin_token");
     if (token) {
-      let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+      let userDetails = JSON.parse(localStorage.getItem("adminDetails"));
       setUserData({ ...userDetails });
     } else {
       router.push("/admin");

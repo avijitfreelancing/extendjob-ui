@@ -63,7 +63,7 @@ const AdminLogin = () => {
             toast.success(res.data.message);
             let { token, userDetails } = res.data;
             localStorage.setItem("admin_token", token);
-            localStorage.setItem("userDetails", JSON.stringify(userDetails));
+            localStorage.setItem("adminDetails", JSON.stringify(userDetails));
             router.push("/admin/dashboard");
           } else {
             toast.error(res.data.message);
