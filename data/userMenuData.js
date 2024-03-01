@@ -41,4 +41,32 @@ module.exports = [
     routePath: "/finish-job",
     active: "",
   },
+  {
+    id: 3,
+    name: "Deposit History",
+    icon: "la la-file",
+    routePath: "/deposit-history",
+    active: "",
+  },
+  {
+    id: 3,
+    name: "Deposit Now",
+    icon: "la la-money",
+    routePath: "/deposit-now",
+    active: "",
+  },
+  {
+    id: 3,
+    name: "Withdraw History",
+    icon: "la la-file",
+    routePath: "/withdraw-history",
+    active: "",
+  },
+  {
+    id: 3,
+    name: "Withdraw Now",
+    icon: "la la-money",
+    routePath: "/withdraw-now",
+    active: "",
+  },
 ];
