@@ -4,11 +4,11 @@ import Link from "next/link";
 import validation from "@/helper/validation";
 import { useEffect, useState } from "react";
 import axios from "@/helper/axios";
-import LoadingOverlay from "react-loading-overlay";
 import countries from "@/helper/countries";
 import _ from "lodash";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Loader from "@/helper/loader/Loader";
 
 // export const metadata = {
 //   title: "Register || Superio - Job Borad React NextJS Template",
@@ -144,150 +144,148 @@ const index = () => {
   };
 
   return (
-    <LoadingOverlay active={loading} spinner text="Loading...">
-      <div className="login-section">
-        <div
-          className="image-layer"
-          style={{ backgroundImage: "url(/images/background/12.jpg)" }}
-        />
-        <div className="outer-box">
-          <div className="login-form default-form">
-            <div className="form-inner">
-              <h3>Create a Free Extend-job Account</h3>
+    <div className="login-section">
+      {loading && <Loader />}
+      <div
+        className="image-layer"
+        style={{ backgroundImage: "url(/images/background/12.jpg)" }}
+      />
+      <div className="outer-box">
+        <div className="login-form default-form">
+          <div className="form-inner">
+            <h3>Create a Free Extend-job Account</h3>
 
-              <form onSubmit={onFormSubmit}>
-                <div className="row">
-                  <div className="form-group col-lg-6 col-md-12">
-                    <label>User Name</label>
-                    <span className="text-danger">*</span>
-                    <input
-                      type="text"
-                      name="username"
-                      placeholder="Enter username"
-                      validaterule={["required", "userName"]}
-                      validatemsg={["username is required"]}
-                      value={userData.username}
-                      onChange={handleOnChange}
-                      required
-                    />
-                    <p className="invalid_input">{errors.username}</p>
-                  </div>
-
-                  <div className="form-group col-lg-6 col-md-12">
-                    <label>Email Address</label>
-                    <span className="text-danger">*</span>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Enter email"
-                      validaterule={["required", "isEmail"]}
-                      validatemsg={[
-                        "Email address is required",
-                        "Enter a valid email address",
-                      ]}
-                      value={userData.email}
-                      onChange={handleOnChange}
-                      required
-                    />
-                    <p className="invalid_input">{errors.email}</p>
-                  </div>
-
-                  <div className="form-group col-lg-6 col-md-12">
-                    <label>Country</label>
-                    <span className="text-danger">*</span>
-                    <select
-                      className="chosen-single form-select"
-                      onChange={handleOnChange}
-                      name="selected_country"
-                      value={userData.selected_country}
-                      required
-                    >
-                      <option value="">Select country</option>
-                      {countries.map((data, key) => {
-                        return (
-                          <option value={key} key={key}>
-                            {data.name}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-
-                  <div className="form-group col-lg-6 col-md-12">
-                    <label>Mobile</label>
-                    <span className="text-danger">*</span>
-                    <input
-                      type="text"
-                      name="mobile"
-                      placeholder="Enter mobile"
-                      validaterule={["required", "isMobile"]}
-                      validatemsg={["Mobile is required"]}
-                      value={userData.mobile}
-                      onChange={handleOnChange}
-                      required
-                    />
-                    <p className="invalid_input">{errors.mobile}</p>
-                  </div>
-
-                  <div className="form-group col-lg-6 col-md-12">
-                    <label>Password</label>
-                    <span className="text-danger">*</span>
-                    <input
-                      id="password-field"
-                      type="password"
-                      name="password"
-                      placeholder="Password"
-                      validaterule={["required", "password"]}
-                      validatemsg={["Password is required"]}
-                      value={userData.password}
-                      onChange={handleOnChange}
-                      required
-                    />
-                    <p className="invalid_input">{errors.password}</p>
-                  </div>
-                  <div className="form-group col-lg-6 col-md-12">
-                    <label>Confirm Password</label>
-                    <span className="text-danger">*</span>
-                    <input
-                      id="cpassword-field"
-                      type="password"
-                      name="c_password"
-                      placeholder="Password"
-                      validaterule={["required"]}
-                      validatemsg={["Password is required"]}
-                      value={userData.c_password}
-                      onChange={handleOnChange}
-                      required
-                    />
-                    <p className="invalid_input">{errors.c_password}</p>
-                  </div>
-
-                  <div className="form-group">
-                    <button className="theme-btn btn-style-one" type="submit">
-                      Register
-                    </button>
-                  </div>
+            <form onSubmit={onFormSubmit}>
+              <div className="row">
+                <div className="form-group col-lg-6 col-md-12">
+                  <label>User Name</label>
+                  <span className="text-danger">*</span>
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter username"
+                    validaterule={["required", "userName"]}
+                    validatemsg={["username is required"]}
+                    value={userData.username}
+                    onChange={handleOnChange}
+                    required
+                  />
+                  <p className="invalid_input">{errors.username}</p>
                 </div>
-              </form>
 
-              <div className="bottom-box">
-                <div className="text">
-                  Already have an account?{" "}
-                  <Link href="/login" className="call-modal login">
-                    LogIn
-                  </Link>
+                <div className="form-group col-lg-6 col-md-12">
+                  <label>Email Address</label>
+                  <span className="text-danger">*</span>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                    validaterule={["required", "isEmail"]}
+                    validatemsg={[
+                      "Email address is required",
+                      "Enter a valid email address",
+                    ]}
+                    value={userData.email}
+                    onChange={handleOnChange}
+                    required
+                  />
+                  <p className="invalid_input">{errors.email}</p>
                 </div>
-                <div className="divider">
-                  <span>or</span>
+
+                <div className="form-group col-lg-6 col-md-12">
+                  <label>Country</label>
+                  <span className="text-danger">*</span>
+                  <select
+                    className="chosen-single form-select"
+                    onChange={handleOnChange}
+                    name="selected_country"
+                    value={userData.selected_country}
+                    required
+                  >
+                    <option value="">Select country</option>
+                    {countries.map((data, key) => {
+                      return (
+                        <option value={key} key={key}>
+                          {data.name}
+                        </option>
+                      );
+                    })}
+                  </select>
                 </div>
-                {/* <LoginWithSocial /> */}
+
+                <div className="form-group col-lg-6 col-md-12">
+                  <label>Mobile</label>
+                  <span className="text-danger">*</span>
+                  <input
+                    type="text"
+                    name="mobile"
+                    placeholder="Enter mobile"
+                    validaterule={["required", "isMobile"]}
+                    validatemsg={["Mobile is required"]}
+                    value={userData.mobile}
+                    onChange={handleOnChange}
+                    required
+                  />
+                  <p className="invalid_input">{errors.mobile}</p>
+                </div>
+
+                <div className="form-group col-lg-6 col-md-12">
+                  <label>Password</label>
+                  <span className="text-danger">*</span>
+                  <input
+                    id="password-field"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    validaterule={["required", "password"]}
+                    validatemsg={["Password is required"]}
+                    value={userData.password}
+                    onChange={handleOnChange}
+                    required
+                  />
+                  <p className="invalid_input">{errors.password}</p>
+                </div>
+                <div className="form-group col-lg-6 col-md-12">
+                  <label>Confirm Password</label>
+                  <span className="text-danger">*</span>
+                  <input
+                    id="cpassword-field"
+                    type="password"
+                    name="c_password"
+                    placeholder="Password"
+                    validaterule={["required"]}
+                    validatemsg={["Password is required"]}
+                    value={userData.c_password}
+                    onChange={handleOnChange}
+                    required
+                  />
+                  <p className="invalid_input">{errors.c_password}</p>
+                </div>
+
+                <div className="form-group">
+                  <button className="theme-btn btn-style-one" type="submit">
+                    Register
+                  </button>
+                </div>
               </div>
+            </form>
+
+            <div className="bottom-box">
+              <div className="text">
+                Already have an account?{" "}
+                <Link href="/login" className="call-modal login">
+                  LogIn
+                </Link>
+              </div>
+              <div className="divider">
+                <span>or</span>
+              </div>
+              {/* <LoginWithSocial /> */}
             </div>
           </div>
         </div>
       </div>
-      {/* <!-- End Info Section --> */}
-    </LoadingOverlay>
+    </div>
   );
 };
 
