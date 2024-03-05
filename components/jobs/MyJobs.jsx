@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import axios from "@/helper/axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
-import LoadingOverlay from "react-loading-overlay";
 import BreadCrumb from "../bread-crumb/BreadCrumb";
 import { BUCKET_DOMAIN, DATE_TIME_HELPER } from "@/helper/Helper";
 import Link from "next/link";

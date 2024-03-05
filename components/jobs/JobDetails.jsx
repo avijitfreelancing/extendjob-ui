@@ -3,12 +3,12 @@ import jobs from "@/data/job-featured";
 import Link from "next/link";
 import Image from "next/image.js";
 import axios from "@/helper/axios";
-import LoadingOverlay from "react-loading-overlay";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { BUCKET_DOMAIN, DATE_TIME_HELPER } from "@/helper/Helper";
 import moment from "moment/moment";
 import config from "@/helper/config";
+import Loader from "@/helper/loader/Loader";
 
 export default function JobDetails({ params }) {
   const [loading, setLoading] = useState(false);
@@ -37,7 +37,7 @@ export default function JobDetails({ params }) {
   const getJobDetails = () => {
     setLoading(true);
     axios
-      .get(`/job/job/${id}`, config)
+      .get(`/job/job/${id}`, config())
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
@@ -81,160 +81,160 @@ export default function JobDetails({ params }) {
   const company = jobs.find((item) => item.id == 1) || jobs[0];
 
   return (
-    <LoadingOverlay active={loading} spinner text="Loading...">
-      <section className="job-detail-section mt-56">
-        <div className="upper-box">
-          <div className="auto-container">
-            <div className="job-block-seven">
-              <div className="inner-box">
-                <div className="content">
-                  <span className="company-logo">
-                    <Image
-                      width={100}
-                      height={98}
-                      src={BUCKET_DOMAIN + jobDetailsData.banner}
-                      alt="logo"
-                    />
-                  </span>
-                  <h4>{jobDetailsData.title}</h4>
+    <section className="job-detail-section mt-56">
+      {loading && <Loader />}
+      <div className="upper-box">
+        <div className="auto-container">
+          <div className="job-block-seven">
+            <div className="inner-box">
+              <div className="content">
+                <span className="company-logo">
+                  <Image
+                    width={100}
+                    height={98}
+                    src={BUCKET_DOMAIN + jobDetailsData.banner}
+                    alt="logo"
+                  />
+                </span>
+                <h4>{jobDetailsData.title}</h4>
 
-                  <ul className="job-info">
-                    <li>
-                      <span className="icon flaticon-briefcase"></span>
-                      {company?.company}
+                <ul className="job-info">
+                  <li>
+                    <span className="icon flaticon-briefcase"></span>
+                    {company?.company}
+                  </li>
+
+                  <li>
+                    <span className="icon flaticon-map-locator"></span>
+                    {company?.location}
+                  </li>
+
+                  <li>
+                    <span className="icon flaticon-clock-3"></span>{" "}
+                    {company?.time}
+                  </li>
+
+                  <li>
+                    <span className="icon flaticon-money"></span> $
+                    {jobDetailsData.total_budget}
+                  </li>
+                </ul>
+
+                <ul className="job-other-info">
+                  {company?.jobType?.map((val, i) => (
+                    <li key={i} className={`${val.styleClass}`}>
+                      {val.type}
                     </li>
+                  ))}
+                </ul>
+              </div>
 
-                    <li>
-                      <span className="icon flaticon-map-locator"></span>
-                      {company?.location}
-                    </li>
-
-                    <li>
-                      <span className="icon flaticon-clock-3"></span>{" "}
-                      {company?.time}
-                    </li>
-
-                    <li>
-                      <span className="icon flaticon-money"></span> $
-                      {jobDetailsData.total_budget}
-                    </li>
-                  </ul>
-
-                  <ul className="job-other-info">
-                    {company?.jobType?.map((val, i) => (
-                      <li key={i} className={`${val.styleClass}`}>
-                        {val.type}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="btn-box">
-                  {userDetails._id !== jobDetailsData.user_id && (
-                    <>
-                      {localStorage.getItem("token") ? (
-                        <>
-                          <button
-                            className="theme-btn btn-style-one"
-                            data-bs-toggle="modal"
-                            data-bs-target="#applyJobModal"
-                          >
-                            Apply For Job
-                          </button>
-                          <button className="bookmark-btn">
-                            <i className="flaticon-bookmark" />
-                          </button>
-                        </>
-                      ) : (
-                        <Link className="theme-btn btn-style-one" href="/login">
-                          Login to apply
-                        </Link>
-                      )}
-                    </>
-                  )}
-                </div>
-
-                <div
-                  className="modal fade"
-                  id="applyJobModal"
-                  tabIndex="-1"
-                  aria-hidden="true"
-                >
-                  <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div className="apply-modal-content modal-content">
-                      <div className="text-center">
-                        <h3 className="title">Apply for this job</h3>
+              <div className="btn-box">
+                {userDetails._id !== jobDetailsData.user_id && (
+                  <>
+                    {localStorage.getItem("token") ? (
+                      <>
                         <button
-                          type="button"
-                          className="closed-modal"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        />
-                      </div>
-                      {/* End modal-header */}
+                          className="theme-btn btn-style-one"
+                          data-bs-toggle="modal"
+                          data-bs-target="#applyJobModal"
+                        >
+                          Apply For Job
+                        </button>
+                        <button className="bookmark-btn">
+                          <i className="flaticon-bookmark" />
+                        </button>
+                      </>
+                    ) : (
+                      <Link className="theme-btn btn-style-one" href="/login">
+                        Login to apply
+                      </Link>
+                    )}
+                  </>
+                )}
+              </div>
 
-                      <form className="default-form job-apply-form">
-                        <div className="row">
-                          <div className="col-lg-12 col-md-12 col-sm-12 form-group">
-                            <textarea
-                              className="darma"
-                              name="message"
-                              placeholder="Message"
-                              required
-                            ></textarea>
-                          </div>
-                          {/* End .col */}
+              <div
+                className="modal fade"
+                id="applyJobModal"
+                tabIndex="-1"
+                aria-hidden="true"
+              >
+                <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div className="apply-modal-content modal-content">
+                    <div className="text-center">
+                      <h3 className="title">Apply for this job</h3>
+                      <button
+                        type="button"
+                        className="closed-modal"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      />
+                    </div>
+                    {/* End modal-header */}
 
-                          <div className="col-lg-12 col-md-12 col-sm-12 form-group">
-                            <div className="input-group checkboxes square">
-                              <input
-                                type="checkbox"
-                                name="remember-me"
-                                id="rememberMe"
-                              />
-                              <label htmlFor="rememberMe" className="remember">
-                                <span className="custom-checkbox"></span> You
-                                accept our{" "}
-                                <span data-bs-dismiss="modal">
-                                  <Link href="/terms">
-                                    Terms and Conditions and Privacy Policy
-                                  </Link>
-                                </span>
-                              </label>
-                            </div>
-                          </div>
+                    <form className="default-form job-apply-form">
+                      <div className="row">
+                        <div className="col-lg-12 col-md-12 col-sm-12 form-group">
+                          <textarea
+                            className="darma"
+                            name="message"
+                            placeholder="Message"
+                            required
+                          ></textarea>
+                        </div>
+                        {/* End .col */}
 
-                          <div className="col-lg-12 col-md-12 col-sm-12 form-group">
-                            <button
-                              className="theme-btn btn-style-one w-100"
-                              type="submit"
-                              name="submit-form"
-                            >
-                              Apply Job
-                            </button>
+                        <div className="col-lg-12 col-md-12 col-sm-12 form-group">
+                          <div className="input-group checkboxes square">
+                            <input
+                              type="checkbox"
+                              name="remember-me"
+                              id="rememberMe"
+                            />
+                            <label htmlFor="rememberMe" className="remember">
+                              <span className="custom-checkbox"></span> You
+                              accept our{" "}
+                              <span data-bs-dismiss="modal">
+                                <Link href="/terms">
+                                  Terms and Conditions and Privacy Policy
+                                </Link>
+                              </span>
+                            </label>
                           </div>
                         </div>
-                      </form>
-                    </div>
+
+                        <div className="col-lg-12 col-md-12 col-sm-12 form-group">
+                          <button
+                            className="theme-btn btn-style-one w-100"
+                            type="submit"
+                            name="submit-form"
+                          >
+                            Apply Job
+                          </button>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="job-detail-outer">
-          <div className="auto-container">
-            <div className="row">
-              <div className="content-column col-lg-8 col-md-12 col-sm-12">
-                <div className="job-detail">
-                  <h4>Job Description</h4>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: jobDetailsData.description,
-                    }}
-                  />
-                  {/* <h4>Key Responsibilities</h4>
+      <div className="job-detail-outer">
+        <div className="auto-container">
+          <div className="row">
+            <div className="content-column col-lg-8 col-md-12 col-sm-12">
+              <div className="job-detail">
+                <h4>Job Description</h4>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: jobDetailsData.description,
+                  }}
+                />
+                {/* <h4>Key Responsibilities</h4>
                   <ul className="list-style-three">
                     <li>
                       Be involved in every step of the product design cycle from
@@ -295,89 +295,86 @@ export default function JobDetails({ params }) {
                       workflow
                     </li>
                   </ul> */}
-                </div>
+              </div>
 
-                {/* <div className="other-options">
+              {/* <div className="other-options">
                   <div className="social-share">
                     <h5>Share this job</h5>
                     
                   </div>
                 </div> */}
 
-                <div className="related-jobs">
-                  <div className="title-box">
-                    <h3>Related Jobs</h3>
-                    <div className="text">
-                      2020 jobs live - 293 added today.
-                    </div>
-                  </div>
-
-                  {/*<RelatedJobs />*/}
+              <div className="related-jobs">
+                <div className="title-box">
+                  <h3>Related Jobs</h3>
+                  <div className="text">2020 jobs live - 293 added today.</div>
                 </div>
-              </div>
 
-              <div className="sidebar-column col-lg-4 col-md-12 col-sm-12">
-                <aside className="sidebar">
-                  <div className="sidebar-widget">
-                    <h4 className="widget-title">Job Overview</h4>
-                    <div className="widget-content">
-                      <ul className="job-overview">
-                        <li>
-                          <i className="icon icon-calendar"></i>
-                          <h5>Date Posted:</h5>
-                          <span>{jobDetailsData.timeStamp}</span>
-                        </li>
-                        {/* <li>
+                {/*<RelatedJobs />*/}
+              </div>
+            </div>
+
+            <div className="sidebar-column col-lg-4 col-md-12 col-sm-12">
+              <aside className="sidebar">
+                <div className="sidebar-widget">
+                  <h4 className="widget-title">Job Overview</h4>
+                  <div className="widget-content">
+                    <ul className="job-overview">
+                      <li>
+                        <i className="icon icon-calendar"></i>
+                        <h5>Date Posted:</h5>
+                        <span>{jobDetailsData.timeStamp}</span>
+                      </li>
+                      {/* <li>
                           <i className="icon icon-expiry"></i>
                           <h5>Expiration date:</h5>
                           <span>April 06, 2021</span>
                         </li> */}
-                        {/* <li>
+                      {/* <li>
                           <i className="icon icon-location"></i>
                           <h5>Location:</h5>
                           <span>London, UK</span>
                         </li> */}
-                        <li>
-                          <i className="icon icon-user-2" />
-                          <h5>Job Title:</h5>
-                          <span>{jobDetailsData.category?.category}</span>
-                        </li>
-                        {/* <li>
+                      <li>
+                        <i className="icon icon-user-2" />
+                        <h5>Job Title:</h5>
+                        <span>{jobDetailsData.category?.category}</span>
+                      </li>
+                      {/* <li>
                           <i className="icon icon-clock"></i>
                           <h5>Hours:</h5>
                           <span>50h / week</span>
                         </li> */}
-                        <li>
-                          <i className="icon icon-rate"></i>
-                          <h5>Rate:</h5>
-                          <span>${jobDetailsData.worker_price}</span>
-                        </li>
-                        <li>
-                          <i className="icon icon-salary"></i>
-                          <h5>Salary:</h5>
-                          <span>${jobDetailsData.total_budget}</span>
-                        </li>
-                      </ul>
-                    </div>
+                      <li>
+                        <i className="icon icon-rate"></i>
+                        <h5>Rate:</h5>
+                        <span>${jobDetailsData.worker_price}</span>
+                      </li>
+                      <li>
+                        <i className="icon icon-salary"></i>
+                        <h5>Salary:</h5>
+                        <span>${jobDetailsData.total_budget}</span>
+                      </li>
+                    </ul>
+                  </div>
 
-                    <h4 className="widget-title mt-5">Job Location</h4>
-                    <div className="widget-content">
-                      <div className="map-outer">
-                        <div style={{ height: "300px", width: "100%" }}>
-                          {/*<MapJobFinder />*/}
-                        </div>
+                  <h4 className="widget-title mt-5">Job Location</h4>
+                  <div className="widget-content">
+                    <div className="map-outer">
+                      <div style={{ height: "300px", width: "100%" }}>
+                        {/*<MapJobFinder />*/}
                       </div>
                     </div>
-
-                    <h4 className="widget-title">Job Skills</h4>
-                    <div className="widget-content">{/*<JobSkills />*/}</div>
                   </div>
-                </aside>
-              </div>
+
+                  <h4 className="widget-title">Job Skills</h4>
+                  <div className="widget-content">{/*<JobSkills />*/}</div>
+                </div>
+              </aside>
             </div>
           </div>
         </div>
-      </section>
-    </LoadingOverlay>
+      </div>
+    </section>
   );
 }
