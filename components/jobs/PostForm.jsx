@@ -6,10 +6,10 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { toast } from "react-toastify";
 import _ from "lodash";
 import axios from "@/helper/axios";
-import LoadingOverlay from "react-loading-overlay";
 import validation from "@/helper/validation";
 import config from "@/helper/config";
 import { getFileExtension } from "@/helper/Helper";
+import Loader from "@/helper/loader/Loader";
 
 const PostForm = () => {
   const [formData, setFormData] = useState({
@@ -149,7 +149,7 @@ const PostForm = () => {
 
     setLoading(true);
     axios
-      .post("/job/upload-job-banner", data, config)
+      .post("/job/upload-job-banner", data, config())
       .then((res) => {
         if (res.data.success) {
           let { url } = res.data;
@@ -170,7 +170,7 @@ const PostForm = () => {
     setLoading(true);
     formData.banner = url;
     axios
-      .post("/job/add-job", formData, config)
+      .post("/job/add-job", formData, config())
       .then((res) => {
         setLoading(false);
 
@@ -202,246 +202,243 @@ const PostForm = () => {
   };
 
   return (
-    <LoadingOverlay active={loading} spinner text="Loading...">
-      <form className="default-form" onSubmit={handleOnSumit}>
-        <div className="row">
-          <div className="form-group col-lg-12 col-md-12">
-            <div className="widget-title">
-              <h4>Job Banner</h4>
-            </div>
-            <div className="widget-content">
-              <div className="uploading-outer">
-                <div className="uploadButton">
-                  <input
-                    className="uploadButton-input"
-                    type="file"
-                    name="banner"
-                    accept="image/png, image/jpg, image/jpeg"
-                    id="upload"
-                    onChange={handleImage}
-                  />
-                  <label
-                    className="uploadButton-button ripple-effect"
-                    htmlFor="upload"
-                  >
-                    Browse Logo
-                  </label>
-                  <span className="uploadButton-file-name" />
-                </div>
-                <div className="text">
-                  {image && (
-                    <img src={URL.createObjectURL(image)} alt="banner" />
-                  )}
-                </div>
-              </div>
-              {/* End logo and cover photo components */}
-            </div>
+    <form className="default-form" onSubmit={handleOnSumit}>
+      {loading && <Loader />}
+      <div className="row">
+        <div className="form-group col-lg-12 col-md-12">
+          <div className="widget-title">
+            <h4>Job Banner</h4>
           </div>
+          <div className="widget-content">
+            <div className="uploading-outer">
+              <div className="uploadButton">
+                <input
+                  className="uploadButton-input"
+                  type="file"
+                  name="banner"
+                  accept="image/png, image/jpg, image/jpeg"
+                  id="upload"
+                  onChange={handleImage}
+                />
+                <label
+                  className="uploadButton-button ripple-effect"
+                  htmlFor="upload"
+                >
+                  Browse Logo
+                </label>
+                <span className="uploadButton-file-name" />
+              </div>
+              <div className="text">
+                {image && <img src={URL.createObjectURL(image)} alt="banner" />}
+              </div>
+            </div>
+            {/* End logo and cover photo components */}
+          </div>
+        </div>
 
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Category </label>
+          <span className="text-danger">*</span>
+
+          <select
+            name="category"
+            required
+            validaterule={["required"]}
+            validatemsg={["category is required"]}
+            value={formData.category}
+            onChange={handleOnChange}
+          >
+            <option value="">Select Category</option>
+            {jobCategory.map((category, key) => {
+              return (
+                <option key={key} value={category._id}>
+                  {category.category}
+                </option>
+              );
+            })}
+          </select>
+          <p className="invalid_input">{errors.category}</p>
+        </div>
+
+        {subCategory.length > 0 && (
           <div className="form-group col-lg-6 col-md-12">
-            <label>Category </label>
+            <label>Subcategory </label>
             <span className="text-danger">*</span>
 
             <select
-              name="category"
+              name="sub_category"
               required
               validaterule={["required"]}
-              validatemsg={["category is required"]}
-              value={formData.category}
+              validatemsg={["sub category is required"]}
+              value={formData.sub_category}
               onChange={handleOnChange}
             >
               <option value="">Select Category</option>
-              {jobCategory.map((category, key) => {
+              {subCategory.map((sub_cat, key) => {
                 return (
-                  <option key={key} value={category._id}>
-                    {category.category}
+                  <option key={key} value={sub_cat}>
+                    {sub_cat}
                   </option>
                 );
               })}
             </select>
-            <p className="invalid_input">{errors.category}</p>
+            <p className="invalid_input">{errors.sub_category}</p>
           </div>
+        )}
 
-          {subCategory.length > 0 && (
-            <div className="form-group col-lg-6 col-md-12">
-              <label>Subcategory </label>
-              <span className="text-danger">*</span>
+        <div className="form-group col-lg-12 col-md-12">
+          <label>Job Title</label>
+          <span className="text-danger">*</span>
 
-              <select
-                name="sub_category"
-                required
-                validaterule={["required"]}
-                validatemsg={["sub category is required"]}
-                value={formData.sub_category}
-                onChange={handleOnChange}
-              >
-                <option value="">Select Category</option>
-                {subCategory.map((sub_cat, key) => {
-                  return (
-                    <option key={key} value={sub_cat}>
-                      {sub_cat}
-                    </option>
-                  );
-                })}
-              </select>
-              <p className="invalid_input">{errors.sub_category}</p>
-            </div>
-          )}
+          <input
+            type="text"
+            name="title"
+            placeholder="Title"
+            required
+            validaterule={["required", "isName"]}
+            validatemsg={["Title is required", "Enter a valid title"]}
+            value={formData.title}
+            onChange={handleOnChange}
+          />
+          <p className="invalid_input">{errors.title}</p>
+        </div>
 
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Quantity (Minimum 5 Jobs )</label>
+          <span className="text-danger">*</span>
+          <input
+            type="text"
+            name="quentity"
+            required
+            validaterule={["required", "isQuentity"]}
+            validatemsg={["Quantity is required"]}
+            value={formData.quentity || ""}
+            onChange={handleOnChange}
+          />
+          <p className="invalid_input">{errors.quentity}</p>
+        </div>
+
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Worker will earn ( Minimum Job Price = 0.02 ) USD</label>
+          <span className="text-danger">*</span>
+          <input
+            type="text"
+            name="worker_price"
+            required
+            validaterule={["required", "isPrice"]}
+            validatemsg={["Worker price is required"]}
+            value={formData.worker_price || ""}
+            onChange={handleOnChange}
+          />
+          <p className="invalid_input">{errors.worker_price}</p>
+        </div>
+
+        <div className="form-group col-lg-8 col-md-12">
+          <label>Job Prof </label>
+          <span className="text-danger">*</span>
+          <select
+            className="chosen-single form-select"
+            required
+            name="proof"
+            value={formData.proof}
+            onChange={handleOnChange}
+          >
+            <option value="optional">Optional</option>
+            <option value="required">Required</option>
+          </select>
+        </div>
+
+        <div className="form-group col-lg-4 col-md-12">
+          <label>Total Budget</label>
+          <input
+            type="text"
+            readOnly
+            name="total_budget"
+            placeholder="0.00"
+            value={formData.total_budget}
+          />
+        </div>
+
+        {formData.proof === "required" && (
           <div className="form-group col-lg-12 col-md-12">
-            <label>Job Title</label>
-            <span className="text-danger">*</span>
-
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              required
-              validaterule={["required", "isName"]}
-              validatemsg={["Title is required", "Enter a valid title"]}
-              value={formData.title}
-              onChange={handleOnChange}
-            />
-            <p className="invalid_input">{errors.title}</p>
-          </div>
-
-          <div className="form-group col-lg-6 col-md-12">
-            <label>Quantity (Minimum 5 Jobs )</label>
-            <span className="text-danger">*</span>
-            <input
-              type="text"
-              name="quentity"
-              required
-              validaterule={["required", "isQuentity"]}
-              validatemsg={["Quantity is required"]}
-              value={formData.quentity || ""}
-              onChange={handleOnChange}
-            />
-            <p className="invalid_input">{errors.quentity}</p>
-          </div>
-
-          <div className="form-group col-lg-6 col-md-12">
-            <label>Worker will earn ( Minimum Job Price = 0.02 ) USD</label>
-            <span className="text-danger">*</span>
-            <input
-              type="text"
-              name="worker_price"
-              required
-              validaterule={["required", "isPrice"]}
-              validatemsg={["Worker price is required"]}
-              value={formData.worker_price || ""}
-              onChange={handleOnChange}
-            />
-            <p className="invalid_input">{errors.worker_price}</p>
-          </div>
-
-          <div className="form-group col-lg-8 col-md-12">
-            <label>Job Prof </label>
-            <span className="text-danger">*</span>
-            <select
-              className="chosen-single form-select"
-              required
-              name="proof"
-              value={formData.proof}
-              onChange={handleOnChange}
-            >
-              <option value="optional">Optional</option>
-              <option value="required">Required</option>
-            </select>
-          </div>
-
-          <div className="form-group col-lg-4 col-md-12">
-            <label>Total Budget</label>
-            <input
-              type="text"
-              readOnly
-              name="total_budget"
-              placeholder="0.00"
-              value={formData.total_budget}
-            />
-          </div>
-
-          {formData.proof === "required" && (
-            <div className="form-group col-lg-12 col-md-12">
-              <div className="row" id="choiceOption">
-                <label> Select File Upload Option</label>
-                <div className="input-group">
-                  {/* <div className="form-group me-2 switchbox">
+            <div className="row" id="choiceOption">
+              <label> Select File Upload Option</label>
+              <div className="input-group">
+                {/* <div className="form-group me-2 switchbox">
                   <label className="switch">
                     <input type="checkbox" />
                     <span className="slider round"></span>
                     <span className="title">Select All</span>
                   </label>
                 </div> */}
-                  <div className="form-group me-2 switchbox">
-                    <label className="switch">
-                      <input type="checkbox" checked readOnly />
-                      <span className="slider round"></span>
-                      <span className="title">png</span>
-                    </label>
-                  </div>
-                  <div className="form-group me-2 switchbox">
-                    <label className="switch">
-                      <input type="checkbox" checked readOnly />
-                      <span className="slider round"></span>
-                      <span className="title">jpg</span>
-                    </label>
-                  </div>
-                  <div className="form-group me-2 switchbox">
-                    <label className="switch">
-                      <input type="checkbox" checked readOnly />
-                      <span className="slider round"></span>
-                      <span className="title">jpeg</span>
-                    </label>
-                  </div>
-                  <div className="form-group me-2 switchbox">
-                    <label className="switch">
-                      <input type="checkbox" checked readOnly />
-                      <span className="slider round"></span>
-                      <span className="title">webp</span>
-                    </label>
-                  </div>
-                  <div className="form-group me-2 switchbox">
-                    <label className="switch">
-                      <input type="checkbox" checked readOnly />
-                      <span className="slider round"></span>
-                      <span className="title">txt</span>
-                    </label>
-                  </div>
-                  <div className="form-group me-2 switchbox">
-                    <label className="switch">
-                      <input type="checkbox" checked readOnly />
-                      <span className="slider round"></span>
-                      <span className="title">csv</span>
-                    </label>
-                  </div>
+                <div className="form-group me-2 switchbox">
+                  <label className="switch">
+                    <input type="checkbox" checked readOnly />
+                    <span className="slider round"></span>
+                    <span className="title">png</span>
+                  </label>
+                </div>
+                <div className="form-group me-2 switchbox">
+                  <label className="switch">
+                    <input type="checkbox" checked readOnly />
+                    <span className="slider round"></span>
+                    <span className="title">jpg</span>
+                  </label>
+                </div>
+                <div className="form-group me-2 switchbox">
+                  <label className="switch">
+                    <input type="checkbox" checked readOnly />
+                    <span className="slider round"></span>
+                    <span className="title">jpeg</span>
+                  </label>
+                </div>
+                <div className="form-group me-2 switchbox">
+                  <label className="switch">
+                    <input type="checkbox" checked readOnly />
+                    <span className="slider round"></span>
+                    <span className="title">webp</span>
+                  </label>
+                </div>
+                <div className="form-group me-2 switchbox">
+                  <label className="switch">
+                    <input type="checkbox" checked readOnly />
+                    <span className="slider round"></span>
+                    <span className="title">txt</span>
+                  </label>
+                </div>
+                <div className="form-group me-2 switchbox">
+                  <label className="switch">
+                    <input type="checkbox" checked readOnly />
+                    <span className="slider round"></span>
+                    <span className="title">csv</span>
+                  </label>
                 </div>
               </div>
             </div>
-          )}
-
-          <div className="form-group col-lg-12 col-md-12">
-            <label>Job Description</label>
-            <span className="text-danger">*</span>
-            <CKEditor
-              required
-              editor={ClassicEditor}
-              onChange={(event, editor) => {
-                formData.description = editor.getData();
-                setFormData({ ...formData });
-              }}
-              data={formData.description}
-            />
           </div>
+        )}
 
-          <div className="form-group col-lg-12 col-md-12">
-            <button type="submit" className="theme-btn btn-style-one">
-              Submit
-            </button>
-          </div>
+        <div className="form-group col-lg-12 col-md-12">
+          <label>Job Description</label>
+          <span className="text-danger">*</span>
+          <CKEditor
+            required
+            editor={ClassicEditor}
+            onChange={(event, editor) => {
+              formData.description = editor.getData();
+              setFormData({ ...formData });
+            }}
+            data={formData.description}
+          />
         </div>
-      </form>
-    </LoadingOverlay>
+
+        <div className="form-group col-lg-12 col-md-12">
+          <button type="submit" className="theme-btn btn-style-one">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
   );
 };
 
