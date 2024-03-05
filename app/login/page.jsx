@@ -5,9 +5,9 @@ import axios from "@/helper/axios";
 import validation from "@/helper/validation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import LoadingOverlay from "react-loading-overlay";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Loader from "@/helper/loader/Loader";
 
 const validEmailRegex = RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
 const userNameRegex = RegExp(/^[a-zA-Z0-9_]{6,20}$/);
@@ -95,9 +95,9 @@ const Login = () => {
             let { token, userDetails } = res.data;
             localStorage.setItem("token", token);
             localStorage.setItem("userDetails", JSON.stringify(userDetails));
-            // router.push("/dashboard");
+            router.push("/dashboard");
             // router.reload();
-            window.location.reload();
+            // window.location.reload();
           } else {
             toast.error(res.data.message);
           }
@@ -111,93 +111,91 @@ const Login = () => {
   };
 
   return (
-    <LoadingOverlay active={loading} spinner text="Loading...">
-      <div className="login-section">
-        <div
-          className="image-layer"
-          style={{ backgroundImage: "url(/images/background/12.jpg)" }}
-        />
-        <div className="outer-box">
-          <div className="login-form default-form">
-            <div className="form-inner">
-              <h3>Login</h3>
+    <div className="login-section">
+      {loading && <Loader />}
+      <div
+        className="image-layer"
+        style={{ backgroundImage: "url(/images/background/12.jpg)" }}
+      />
+      <div className="outer-box">
+        <div className="login-form default-form">
+          <div className="form-inner">
+            <h3>Login</h3>
 
-              <form onSubmit={onFormSubmit}>
-                <div className="form-group">
-                  <label>Username or Email</label>
-                  <span className="text-danger">*</span>
-                  <input
-                    type="text"
-                    name="email"
-                    placeholder="Enter username or email"
-                    validaterule={["required"]}
-                    validatemsg={["username or email is required"]}
-                    value={userData.email}
-                    onChange={handleOnChange}
-                    required
-                  />
-                  <p className="invalid_input">{errors.email}</p>
-                </div>
+            <form onSubmit={onFormSubmit}>
+              <div className="form-group">
+                <label>Username or Email</label>
+                <span className="text-danger">*</span>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Enter username or email"
+                  validaterule={["required"]}
+                  validatemsg={["username or email is required"]}
+                  value={userData.email}
+                  onChange={handleOnChange}
+                  required
+                />
+                <p className="invalid_input">{errors.email}</p>
+              </div>
 
-                <div className="form-group">
-                  <label>Password</label>
-                  <span className="text-danger">*</span>
-                  <input
-                    id="password-field"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    validaterule={["required", "password"]}
-                    validatemsg={["Password is required"]}
-                    value={userData.password}
-                    onChange={handleOnChange}
-                    required
-                  />
-                  <p className="invalid_input">{errors.password}</p>
-                </div>
+              <div className="form-group">
+                <label>Password</label>
+                <span className="text-danger">*</span>
+                <input
+                  id="password-field"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  validaterule={["required", "password"]}
+                  validatemsg={["Password is required"]}
+                  value={userData.password}
+                  onChange={handleOnChange}
+                  required
+                />
+                <p className="invalid_input">{errors.password}</p>
+              </div>
 
-                <div className="form-group">
-                  <div className="field-outer">
-                    {/* <div className="input-group checkboxes square">
+              <div className="form-group">
+                <div className="field-outer">
+                  {/* <div className="input-group checkboxes square">
                       <input type="checkbox" name="remember-me" id="remember" />
                       <label htmlFor="remember" className="remember">
                         <span className="custom-checkbox"></span> Remember me
                       </label>
                     </div> */}
-                    <a href="#" className="pwd">
-                      Forgot password?
-                    </a>
-                  </div>
+                  <a href="#" className="pwd">
+                    Forgot password?
+                  </a>
                 </div>
-
-                <div className="form-group">
-                  <button
-                    className="theme-btn btn-style-one"
-                    type="submit"
-                    name="log-in"
-                  >
-                    Log In
-                  </button>
-                </div>
-              </form>
-
-              <div className="bottom-box">
-                <div className="text">
-                  Don&apos;t have an account?{" "}
-                  <Link href="/register">Signup</Link>
-                </div>
-
-                <div className="divider">
-                  <span>or</span>
-                </div>
-
-                <LoginWithSocial />
               </div>
+
+              <div className="form-group">
+                <button
+                  className="theme-btn btn-style-one"
+                  type="submit"
+                  name="log-in"
+                >
+                  Log In
+                </button>
+              </div>
+            </form>
+
+            <div className="bottom-box">
+              <div className="text">
+                Don&apos;t have an account? <Link href="/register">Signup</Link>
+              </div>
+
+              <div className="divider">
+                <span>or</span>
+              </div>
+
+              <LoginWithSocial />
             </div>
           </div>
         </div>
       </div>
-    </LoadingOverlay>
+    </div>
   );
 };
 
