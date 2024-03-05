@@ -1302,7 +1302,7 @@ module.exports = [
     logo: "/images/resource/company-logo/3-7.png",
     jobTitle: "Software Engineer (Android), Libraries",
     jobCat: "Automotive Jobs",
-    jobCatIcon: "flaticon-support-1",
+    jobCatIcon: "flaticon-support-history-1",
     company: "Spectrap",
     link: "https://www.sectrap.com",
     tag: "marketing",
