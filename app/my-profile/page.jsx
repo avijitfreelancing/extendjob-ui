@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
-import MyProfile from "@/components/my-profile/index";
+import UserWrapper from "@/layout/UserWrapper";
+import MyProfile from "@/components/my-profile/MyProfile";
 
 export const metadata = {
   title: "User Profile",
@@ -8,9 +9,9 @@ export const metadata = {
 
 const index = () => {
   return (
-    <>
-        <MyProfile />
-    </>
+    <UserWrapper>
+      <MyProfile />
+    </UserWrapper>
   );
 };
 

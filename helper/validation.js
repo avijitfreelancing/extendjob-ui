@@ -5,6 +5,7 @@ const integerNumber = RegExp(/^\d+$/);
 const floatingNumber = RegExp(/^\d*\.?\d+$/);
 const mobileNumber = RegExp(/^[0-9]{6,14}$/);
 const userNameRegex = RegExp(/^[a-zA-Z0-9_]{6,20}$/);
+const urlRegex = RegExp(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i);
 
 const empty_custom = (val) => {
   if (val === undefined || val === null || val === "") return false;
@@ -64,6 +65,14 @@ const validation = ({ value, rules, message }) => {
               msg = empty_custom(message[i])
                 ? message[i]
                 : "Enter a valid name";
+              error = error.concat(msg + ", ");
+            }
+            break;
+
+          // FOR URL
+          case "isUrl":
+            if (!urlRegex.test(value)) {
+              msg = empty_custom(message[i]) ? message[i] : "Enter a valid url";
               error = error.concat(msg + ", ");
             }
             break;
