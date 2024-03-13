@@ -12,7 +12,19 @@ import Loader from "../common/loader/Loader";
 
 export default function MyProfile() {
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    job_title: "",
+    mobile: "",
+    email: "",
+    website: "",
+    experiance: "",
+    education: "",
+    languages: "",
+    showInSearch: "",
+    description: "",
+    avatar: "",
+  });
   const [errors, setErrors] = useState({});
   const [profileImage, setProfileImage] = useState("");
 
@@ -228,7 +240,7 @@ export default function MyProfile() {
                           name="name"
                           placeholder="Jerome"
                           required
-                          value={formData.name || ""}
+                          value={formData.name}
                           validaterule={["required", "isName"]}
                           validatemsg={["Name is required"]}
                           onChange={handleOnChange}
@@ -243,7 +255,7 @@ export default function MyProfile() {
                           name="job_title"
                           placeholder="UI Designer"
                           required
-                          value={formData.job_title || ""}
+                          value={formData.job_title}
                           validaterule={["required"]}
                           validatemsg={["Job title is required"]}
                           onChange={handleOnChange}
@@ -279,7 +291,7 @@ export default function MyProfile() {
                           type="text"
                           name="website"
                           placeholder="www.jerome.com"
-                          value={formData.website || ""}
+                          value={formData.website}
                           validaterule={["notRequired", "isUrl"]}
                           validatemsg={["ennter valid website"]}
                           onChange={handleOnChange}
@@ -295,7 +307,7 @@ export default function MyProfile() {
                           className="chosen-single form-select"
                           required
                           onChange={handleOnChange}
-                          value={formData.experiance || ""}
+                          value={formData.experiance}
                         >
                           <option value="">Experiance</option>
                           <option value="beginers">&lt; 1 year</option>
@@ -312,7 +324,7 @@ export default function MyProfile() {
                           name="education"
                           placeholder="Certificate"
                           required
-                          value={formData.education || ""}
+                          value={formData.education}
                           validaterule={["required"]}
                           validatemsg={["Education is required"]}
                           onChange={handleOnChange}
@@ -327,7 +339,7 @@ export default function MyProfile() {
                           name="languages"
                           placeholder="English, Turkish"
                           required
-                          value={formData.languages || ""}
+                          value={formData.languages}
                           validaterule={["required"]}
                           validatemsg={["Language is required"]}
                           onChange={handleOnChange}
@@ -354,7 +366,7 @@ export default function MyProfile() {
                         <textarea
                           name="description"
                           required
-                          value={formData.description || ""}
+                          value={formData.description}
                           placeholder="description"
                           onChange={handleOnChange}
                         />

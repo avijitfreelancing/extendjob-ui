@@ -236,7 +236,6 @@ const PostForm = () => {
     <form className="default-form" onSubmit={handleOnSumit}>
       {loading && <Loader />}
 
-      {console.log(formData)}
       <div className="row">
         <div className="form-group col-lg-12 col-md-12">
           <div className="widget-title">
