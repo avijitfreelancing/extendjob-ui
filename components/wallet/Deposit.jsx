@@ -8,7 +8,7 @@ import validation from "@/helper/validation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const index = () => {
+export default function Deposit() {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     amount: "",
@@ -108,8 +108,8 @@ const index = () => {
                       </div>
 
                       {/* <div className="form-group col-lg-12 col-md-12">
-                        Limit
-                      </div> */}
+                          Limit
+                        </div> */}
 
                       <div className="form-group col-lg-12 col-md-12">
                         <button
@@ -129,6 +129,4 @@ const index = () => {
       </div>
     </section>
   );
-};
-
-export default index;
+}

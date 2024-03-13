@@ -8,6 +8,7 @@ import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { BUCKET_DOMAIN } from "@/helper/Helper";
 
 const UserHeader = () => {
   const router = useRouter();
@@ -114,7 +115,11 @@ const UserHeader = () => {
                 <Image
                   alt="avatar"
                   className="thumb"
-                  src="/images/resource/company-6.png"
+                  src={
+                    userData.avatar
+                      ? BUCKET_DOMAIN + userData.avatar
+                      : "/images/resource/company-6.png"
+                  }
                   width={50}
                   height={50}
                 />
