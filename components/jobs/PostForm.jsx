@@ -30,8 +30,11 @@ const PostForm = () => {
   const [jobCategory, setJobCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
 
+  const [walletBalance, setWalletBalance] = useState(0);
+
   useEffect(() => {
     getAllCategories();
+    getWalletBalance();
   }, []);
 
   const getAllCategories = () => {
@@ -44,6 +47,28 @@ const PostForm = () => {
           let { job_category } = res.data;
 
           setJobCategory(job_category);
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        toast.error("Something went wrong !!!");
+      });
+  };
+
+  const getWalletBalance = () => {
+    setLoading(true);
+    axios
+      .get("/wallet/wallet-balance", config())
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
+          let { wallet } = res.data;
+          setWalletBalance(wallet.balance);
+        } else {
+          toast.error(res.data.message);
         }
       })
       .catch((err) => {
@@ -129,7 +154,13 @@ const PostForm = () => {
 
   const handleOnSumit = (e) => {
     e.preventDefault();
+
     if (isValidForm(errors)) {
+      if (walletBalance === 0 || walletBalance < formData.total_budget) {
+        toast.error("No sufficient balance. Please add balance");
+        return;
+      }
+
       if (image === null) {
         toast.error("Please add job banner");
         return;
@@ -204,6 +235,8 @@ const PostForm = () => {
   return (
     <form className="default-form" onSubmit={handleOnSumit}>
       {loading && <Loader />}
+
+      {console.log(formData)}
       <div className="row">
         <div className="form-group col-lg-12 col-md-12">
           <div className="widget-title">
