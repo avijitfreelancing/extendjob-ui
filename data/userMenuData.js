@@ -50,9 +50,9 @@ module.exports = [
   },
   {
     id: 3,
-    name: "Deposit Now",
+    name: "Deposit",
     icon: "la la-money",
-    routePath: "/deposit-now",
+    routePath: "/deposit",
     active: "",
   },
   {

@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import UserWrapper from "@/layout/UserWrapper";
-import DepositNow from "@/components/deposit/DepositNow";
+import Deposit from "@/components/wallet/Deposit";
 
 export const metadata = {
   title: "Deposit Method",
@@ -10,7 +10,7 @@ export const metadata = {
 const index = () => {
   return (
     <UserWrapper>
-      <DepositNow />
+      <Deposit />
     </UserWrapper>
   );
 };
