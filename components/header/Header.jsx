@@ -5,10 +5,16 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import HeaderNavContent from "../header/HeaderNavContent";
 import Image from "next/image";
+import {usePathname, useRouter} from "next/navigation";
+import {toast} from "react-toastify";
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
+  const currentPath = usePathname();
+  const router = useRouter();
 
+  const [isLogin, setIsLogin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
@@ -16,15 +22,39 @@ const Header = () => {
       setNavbar(false);
     }
   };
+  const headerStyle = currentPath === "/" ? "header-style-two alternate" : "header-style-three"
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
+    let token = localStorage.getItem("token");
+    setIsLogin(token ? true : false);
+    token = localStorage.getItem("admin_token");
+    setIsAdmin(token ? true : false);
   }, []);
+  const logout = () => {
+    const aa = toast.loading("Please Wait");
+
+    setTimeout(() => {
+      localStorage.clear();
+      router.push("/login");
+      toast.done(aa);
+    }, 1500);
+  };
+
+  const adminlogout = () => {
+    const aa = toast.loading("Please Wait");
+
+    setTimeout(() => {
+      localStorage.clear();
+      router.push("/admin");
+      toast.done(aa);
+    }, 1500);
+  };
 
   return (
       // <!-- Main Header-->
       <header
-          className={`main-header header-style-two alternate  ${
+          className={`main-header ${headerStyle}  ${
               navbar ? "fixed-header animated slideInDown" : ""
           }`}
       >
@@ -52,24 +82,55 @@ const Header = () => {
             </div>
             {/* End .nav-outer */}
 
-            <div className="outer-box">
-              <div className="d-flex align-items-center btn-box2">
-                <a
-                    href="#"
-                    className="theme-btn btn-style-six call-modal"
-                    data-bs-toggle="modal"
-                    data-bs-target="#loginPopupModal"
-                >
-                  Login / Register
-                </a>
-                <Link
-                    href="/employers-dashboard/post-jobs"
-                    className="theme-btn btn-style-five"
-                >
-                  Job Post
-                </Link>
-              </div>
-            </div>
+            {isAdmin ? (
+                <div className="outer-box">
+                  <div className="btn-box">
+                    <Link
+                        href="#"
+                        className="theme-btn btn-style-three call-modal"
+                        onClick={adminlogout}
+                    >
+                      Logout
+                    </Link>
+
+                    <Link
+                        href="/admin/dashboard"
+                        className="theme-btn btn-style-one"
+                    >
+                      Dashboard
+                    </Link>
+                  </div>
+                </div>
+            ) : (
+                <div className="outer-box">
+                  <div className="btn-box">
+                    {!isLogin ? (
+                        <Link
+                            href="/login"
+                            className="theme-btn btn-style-three call-modal"
+                        >
+                          Login
+                        </Link>
+                    ) : (
+                        <>
+                          <Link
+                              href="#"
+                              className="theme-btn btn-style-three call-modal"
+                              onClick={logout}
+                          >
+                            Logout
+                          </Link>
+                          <Link href="/post-job" className="theme-btn btn-style-one">
+                            Job Post
+                          </Link>
+                          <Link href="/dashboard" className="theme-btn btn-style-one">
+                            Candidates Dashboard
+                          </Link>
+                        </>
+                    )}
+                  </div>
+                </div>
+            )}
           </div>
         </div>
       </header>

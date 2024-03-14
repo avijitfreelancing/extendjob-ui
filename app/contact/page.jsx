@@ -1,17 +1,15 @@
 import dynamic from "next/dynamic";
-import JobListing from "@/components/jobs/JobListing";
+import Contact from "@/components/contact";
 import Layout from "@/app/layout"
-
 export const metadata = {
-  title: "Jobs",
-  description: "Extend Job Board",
-};
-
+  title: 'Contact',
+  description: 'extend-Job Board',
+}
 const index = () => {
   return (
-    <Layout>
-      <JobListing />
-    </Layout>
+      <Layout>
+        <Contact />
+      </Layout>
   );
 };
 
