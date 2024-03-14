@@ -48,18 +48,18 @@ const UserHeader = () => {
   };
 
   useEffect(() => {
-    let token = localStorage.getItem("token");
-    if (token) {
-      let userDetails = JSON.parse(localStorage.getItem("userDetails"));
-      setUserData({ ...userDetails });
-    } else {
-      router.push("/login");
-    }
-  }, []);
-
-  useEffect(() => {
     window.addEventListener("scroll", changeBackground);
   }, []);
+
+  // useEffect(() => {
+  //   let token = localStorage.getItem("token");
+  //   if (token) {
+  //     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  //     setUserData({ ...userDetails });
+  //   } else {
+  //     router.push("/login");
+  //   }
+  // }, []);
 
   const logout = () => {
     const aa = toast.loading("Please Wait");
@@ -73,7 +73,10 @@ const UserHeader = () => {
 
   return (
     <header
-      className={`main-header header-shaddow  ${navbar ? "fixed-header " : ""}`}
+        className={`main-header header-style-two alternate  ${
+            navbar ? "fixed-header animated slideInDown" : ""
+        }`}
+      // className={`main-header header-shaddow  ${navbar ? "fixed-header " : ""}`}
     >
       <div className="container-fluid">
         <div className="main-box">
