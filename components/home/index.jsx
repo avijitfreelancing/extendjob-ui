@@ -58,7 +58,6 @@ const index = () => {
         </div>
       </section>
       {/* <!-- End Clients Section--> */}
-      {/*<LoginPopup />*/}
       {/* End Login.jsx Popup Modal */}
     </>
   );
