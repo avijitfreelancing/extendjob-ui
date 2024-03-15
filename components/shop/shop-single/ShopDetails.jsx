@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import shopItems from "@/data/shopItems";
 import Breadcrumb from "@/components/shop/Breadcrumb";
-import LoginPopup from "@/components/common/form/login/LoginPopup";
 
 import MobileMenu from "@/components/header/MobileMenu";
 import FooterDefault from "@/components/footer/common-footer";
@@ -45,9 +44,6 @@ const ShopSingleDyanmic = ({ id }) => {
       <span className="header-span"></span>
 
       {/* <!-- Header Span --> */}
-
-      <LoginPopup />
-      {/* End Login Popup Modal */}
 
       <ShopHeader />
       {/* <!--End Main Header --> */}

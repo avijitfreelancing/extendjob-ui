@@ -1,4 +1,3 @@
-import LoginPopup from "../../common/form/login/LoginPopup";
 import FooterDefault from "../../footer/common-footer";
 import DefaulHeader from "../../header/DefaulHeader";
 import MobileMenu from "../../header/MobileMenu";
@@ -11,8 +10,7 @@ const index = () => {
       {/* <!-- Header Span --> */}
       <span className="header-span"></span>
 
-      <LoginPopup />
-      {/* End Login Popup Modal */}
+      {/* End Login.jsx Popup Modal */}
 
       <DefaulHeader />
       {/* <!--End Main Header --> */}

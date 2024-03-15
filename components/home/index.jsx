@@ -1,5 +1,5 @@
 import Partner from "../common/partner/Partner";
-import Hero4 from "../hero/hero-4";
+import Hero from "../hero/index";
 import JobCategorie1 from "../job-categories/JobCategorie1";
 import RegBanner2 from "../block/RegBanner2";
 import JobFeatured10 from "../job-featured/JobFeatured10";
@@ -7,7 +7,7 @@ import JobFeatured10 from "../job-featured/JobFeatured10";
 const index = () => {
   return (
     <>
-      <Hero4 />
+      <Hero />
       {/* End Hero Section */}
       <section className="registeration-banners">
         <div className="auto-container">
@@ -58,8 +58,7 @@ const index = () => {
         </div>
       </section>
       {/* <!-- End Clients Section--> */}
-      {/*<LoginPopup />*/}
-      {/* End Login Popup Modal */}
+      {/* End Login.jsx Popup Modal */}
     </>
   );
 };

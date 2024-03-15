@@ -1,11 +1,46 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import HeaderNavContent from "./HeaderNavContent";
+import AdminHeaderContent from "./AdminHeaderContent";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+
 const DefaulHeader = () => {
+  const router = useRouter();
+
+  const [isLogin, setIsLogin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    setIsLogin(token ? true : false);
+    token = localStorage.getItem("admin_token");
+    setIsAdmin(token ? true : false);
+  }, []);
+
+  const logout = () => {
+    const aa = toast.loading("Please Wait");
+
+    setTimeout(() => {
+      localStorage.clear();
+      router.push("/login");
+      toast.done(aa);
+    }, 1500);
+  };
+
+  const adminlogout = () => {
+    const aa = toast.loading("Please Wait");
+
+    setTimeout(() => {
+      localStorage.clear();
+      router.push("/admin");
+      toast.done(aa);
+    }, 1500);
+  };
   const [navbar, setNavbar] = useState(false);
+
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
@@ -13,23 +48,19 @@ const DefaulHeader = () => {
       setNavbar(false);
     }
   };
-  // Check if the current page is the home page
-  // const isHomePage = window.location.pathname === "/";
-  const isHomePage = true;
+
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
   }, []);
+
   return (
-    // <!-- Main Header-->
     <header
-      className={`main-header ${isHomePage ? "header-style-two" : ""}  ${
-        navbar ? "fixed-header animated slideInDown" : ""
-      }`}
+        className={`main-header  ${
+            navbar ? "fixed-header animated slideInDown" : ""
+        }`}
     >
-      {/* <!-- Main box --> */}
       <div className="auto-container">
         <div className="main-box">
-          {/* <!--Nav Outer --> */}
           <div className="nav-outer">
             <div className="logo-box">
               <div className="logo">
@@ -43,32 +74,60 @@ const DefaulHeader = () => {
                 </Link>
               </div>
             </div>
-            {/* End .logo-box */}
 
-            <HeaderNavContent />
+            <AdminHeaderContent />
             {/* <!-- Main Menu End--> */}
           </div>
-          {/* End .nav-outer */}
 
-          <div className="outer-box">
-            {/* <!-- Login/Register --> */}
-            <div className="btn-box">
-              <a
-                href="#"
-                className="theme-btn btn-style-three call-modal"
-                data-bs-toggle="modal"
-                data-bs-target="#loginPopupModal"
-              >
-                Login / Register
-              </a>
-              <Link
-                href="/employers-dashboard/post-jobs"
-                className="theme-btn btn-style-one"
-              >
-                Job Post
-              </Link>
+          {isAdmin ? (
+            <div className="outer-box">
+              <div className="btn-box">
+                <Link
+                  href="#"
+                  className="theme-btn btn-style-three call-modal"
+                  onClick={adminlogout}
+                >
+                  Logout
+                </Link>
+
+                <Link
+                  href="/admin/dashboard"
+                  className="theme-btn btn-style-one"
+                >
+                  Dashboard
+                </Link>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="outer-box">
+              <div className="btn-box">
+                {!isLogin ? (
+                  <Link
+                    href="/login"
+                    className="theme-btn btn-style-three call-modal"
+                  >
+                    Login
+                  </Link>
+                ) : (
+                  <>
+                    <Link
+                      href="#"
+                      className="theme-btn btn-style-three call-modal"
+                      onClick={logout}
+                    >
+                      Logout
+                    </Link>
+                    <Link href="/post-job" className="theme-btn btn-style-one">
+                      Job Post
+                    </Link>
+                    <Link href="/dashboard" className="theme-btn btn-style-one">
+                      Candidates Dashboard
+                    </Link>
+                  </>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>

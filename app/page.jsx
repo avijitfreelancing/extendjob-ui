@@ -1,15 +1,19 @@
-import Wrapper from "@/layout/Wrapper";
+import React from "react";
+
 import Home from "@/components/home";
+import Layout from "@/app/layout"
 
 export const metadata = {
   title: "Home",
-  description: "Extend Job Board",
+  description: "Extend-job-home",
 };
 
-export default function page() {
+const index = () => {
   return (
-    <Wrapper>
-      <Home />
-    </Wrapper>
+      <Layout>
+        <Home />
+      </Layout>
   );
-}
+};
+
+export default index;

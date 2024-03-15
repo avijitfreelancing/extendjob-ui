@@ -326,7 +326,7 @@ module.exports = [
         routePath: "/shop/order-completed",
       },
       {
-        name: "Login",
+        name: "Login.jsx",
         routePath: "/login",
       },
       {

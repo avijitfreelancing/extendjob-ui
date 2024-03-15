@@ -346,7 +346,7 @@ export const shopItems = [
         routePath: "/shop/order-completed",
       },
       {
-        name: "Login",
+        name: "Login.jsx",
         routePath: "/login",
       },
       {

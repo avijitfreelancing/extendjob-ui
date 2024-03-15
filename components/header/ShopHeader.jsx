@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import HeaderNavContent from "./HeaderNavContent";
+import AdminHeaderContent from "./AdminHeaderContent";
 import { useDispatch, useSelector } from "react-redux";
 import { reloadCart } from "../../features/shop/shopSlice";
 import Image from "next/image";
@@ -55,13 +55,13 @@ const ShopHeader = () => {
           </div>
           {/* End .logo-box */}
 
-          <HeaderNavContent />
+          <AdminHeaderContent />
           {/* <!-- Main Menu End--> */}
         </div>
         {/* End .nav-outer */}
 
         <div className="outer-box">
-          {/* <!-- Login/Register --> */}
+          {/* <!-- Login.jsx/Register --> */}
           <Link href="/shop/cart">
             <button className="menu-btn me-3">
               <span className="count">{cart?.length}</span>
