@@ -47,7 +47,7 @@ const ShopSingleDyanmic = ({ id }) => {
       {/* <!-- Header Span --> */}
 
       <LoginPopup />
-      {/* End Login Popup Modal */}
+      {/* End Login.jsx Popup Modal */}
 
       <ShopHeader />
       {/* <!--End Main Header --> */}
