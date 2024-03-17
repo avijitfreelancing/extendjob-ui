@@ -47,19 +47,6 @@ const index = () => {
           <JobFeatured10 />
         </div>
       </section>
-      {/* End Job Featured Section */}
-      {/* <!-- End Testimonial Section --> */}
-      <section className="clients-section">
-        <div className="sponsors-outer" data-aos="fade">
-          {/* <!--Sponsors Carousel--> */}
-          <ul className="sponsors-carousel">
-            <Partner />
-          </ul>
-        </div>
-      </section>
-      {/* <!-- End Clients Section--> */}
-      {/*<LoginPopup />*/}
-      {/* End Login.jsx Popup Modal */}
     </>
   );
 };
