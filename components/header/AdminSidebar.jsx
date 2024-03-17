@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import AdminMenuData from "../../data/adminMenuData";
+import AdminMenuData from "../../data/AdminMenuData";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 
 import { useDispatch, useSelector } from "react-redux";
