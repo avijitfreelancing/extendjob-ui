@@ -1,7 +1,6 @@
 'use client'
 
 import Link from "next/link";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import candidatesuData from "@/data/candidateMenuData";
 import { isActiveLink } from "@/utils/linkActiveChecker";
@@ -14,7 +13,6 @@ import Image from "next/image";
 const CandidatesSidebar = () => {
   const { menu } = useSelector((state) => state.toggle);
   const percentage = 30;
-
 
   const dispatch = useDispatch();
   // menu togggle handler
