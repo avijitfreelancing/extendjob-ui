@@ -53,7 +53,7 @@ const RegBanner2 = () => {
                 <li>Capitalize on low hanging fruit to identify</li>
                 <li>But I must explain to you how all this</li>
               </ul>
-              <Link href="/post-job" className="theme-btn btn-style-one">
+              <Link href={item.link} className="theme-btn btn-style-one">
                 {item.linkTitle}
               </Link>
             </div>
