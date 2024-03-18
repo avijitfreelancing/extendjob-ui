@@ -15,6 +15,7 @@ const JobCategory = () => {
     sub_category: [],
     sub_cat_text: "",
     id: "",
+    icon: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -31,7 +32,7 @@ const JobCategory = () => {
     setLoading(true);
 
     axios
-      .get("/job/all-categories", adminConfig)
+      .get("/job/all-categories", adminConfig())
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
@@ -99,6 +100,7 @@ const JobCategory = () => {
       sub_category: [],
       sub_cat_text: "",
       id: "",
+      icon: "",
     });
     setErrors({});
     setSubCatPos(-1);
@@ -127,7 +129,7 @@ const JobCategory = () => {
 
       setLoading(true);
       axios
-        .post("/job/add-category", userData, adminConfig)
+        .post("/job/add-category", userData, adminConfig())
         .then((res) => {
           setLoading(false);
           if (res.data.success) {
@@ -149,7 +151,7 @@ const JobCategory = () => {
     setLoading(true);
 
     axios
-      .put("/job/active-inactive-category", { id }, adminConfig)
+      .put("/job/active-inactive-category", { id }, adminConfig())
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
@@ -179,7 +181,7 @@ const JobCategory = () => {
 
       setLoading(true);
       axios
-        .put("/job/update-category", userData, adminConfig)
+        .put("/job/update-category", userData, adminConfig())
         .then((res) => {
           setLoading(false);
           if (res.data.success) {
@@ -270,6 +272,23 @@ const JobCategory = () => {
                                     {errors.category}
                                   </p>
                                 </div>
+
+                                <div className="form-group">
+                                  <label>Icon</label>
+                                  <select
+                                    name="icon"
+                                    required
+                                    validaterule={["required"]}
+                                    validatemsg={["Icon is required"]}
+                                    value={userData.icon}
+                                    onChange={handleOnChange}
+                                  >
+                                    <option value="">Select icon</option>
+                                    <option value="iii">hhjj</option>
+                                  </select>
+                                  <p className="invalid_input">{errors.icon}</p>
+                                </div>
+
                                 {userData.sub_category.length > 0 && (
                                   <div className="form-group col-lg-12 col-md-12">
                                     <label>Sub Categories List </label>
@@ -296,13 +315,13 @@ const JobCategory = () => {
                                                           });
                                                         }}
                                                         className="la la-edit mr-30"
-                                                      ></span>
+                                                      />
                                                       <span
                                                         onClick={() => {
                                                           delteSubcat(key);
                                                         }}
                                                         className="la la-trash text-danger"
-                                                      ></span>
+                                                      />
                                                     </button>
                                                   </div>
                                                 </div>
