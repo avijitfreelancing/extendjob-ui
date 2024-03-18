@@ -3,6 +3,8 @@
 import dynamic from "next/dynamic";
 import FilterJobBox from "./FilterJobBox";
 import Breadcrumb from "../common/Breadcrumb";
+import Header from "@/components/header/Header";
+import MobileMenu from "@/components/header/MobileMenu";
 
 const JobListing = () => {
   return (

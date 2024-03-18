@@ -1,17 +1,17 @@
 import dynamic from "next/dynamic";
-import UserWrapper from "@/layout/UserWrapper";
+import CandidateWrapper from "@/app/CandidateWrapper"
 import UserDashboard from "@/components/dashboard/UserDashboard";
 
 export const metadata = {
-  title: "User Dashboard || Extend - Job Board",
-  description: "User Dashboard || Extend - Job Board",
+  title: "Candidate Dashboard || Extend - Job Board",
+  description: "Candidate Dashboard || Extend - Job Board",
 };
 
 const index = () => {
   return (
-    <UserWrapper>
+    <CandidateWrapper>
       <UserDashboard />
-    </UserWrapper>
+    </CandidateWrapper>
   );
 };
 

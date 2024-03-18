@@ -5,12 +5,9 @@ import "../styles/index.scss";
 import { useEffect } from "react";
 import ScrollToTop from "../components/common/ScrollTop";
 import { Provider } from "react-redux";
-import { store } from "../store/store";
+import { store } from "@/store/store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import Footer from "@/layout/Footer";
-import MobileMenu from "@/components/header/MobileMenu";
-import Header from "@/components/header/Header";
 
 if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");
@@ -47,10 +44,7 @@ export default function RootLayout({ children }) {
       <body>
       <Provider store={store}>
         <div className="page-wrapper">
-          <Header />
-          <MobileMenu />
           {children}
-
           {/* Toastify */}
           <ToastContainer
               position="top-right"
@@ -66,7 +60,6 @@ export default function RootLayout({ children }) {
           />
           {/* <!-- Scroll To Top --> */}
           <ScrollToTop />
-          <Footer />
         </div>
       </Provider>
       </body>

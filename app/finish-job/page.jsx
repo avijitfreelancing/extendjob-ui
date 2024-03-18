@@ -1,16 +1,17 @@
 import dynamic from "next/dynamic";
 import FinishJob from "@/components/finish-job/index";
+import CandidateWrapper from "@/app/CandidateWrapper"
 
 export const metadata = {
-  title: "User Profile",
-  description: "User Profile",
+  title: "Finish Jobs",
+  description: "Finish Jobs",
 };
 
 const index = () => {
   return (
-    <>
+      <CandidateWrapper>
         <FinishJob />
-    </>
+      </CandidateWrapper>
   );
 };
 

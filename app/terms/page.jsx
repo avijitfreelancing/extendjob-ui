@@ -1,15 +1,15 @@
 import dynamic from "next/dynamic";
 import Terms from "@/components/terms";
-import Layout from "@/app/layout"
+import Wrapper from "@/app/Wrapper"
 export const metadata = {
   title: 'Terms',
   description: 'Extend-Job Board',
 }
 const index = () => {
   return (
-      <Layout>
+      <Wrapper>
         <Terms />
-      </Layout>
+      </Wrapper>
   );
 };
 export default dynamic(() => Promise.resolve(index), { ssr: false });

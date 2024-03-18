@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import JobDetails from "@/components/jobs/JobDetails";
-import Wrapper from "@/layout/Wrapper";
+import Wrapper from "@/app/Wrapper";
 
 export const metadata = {
   title: "Job Details",

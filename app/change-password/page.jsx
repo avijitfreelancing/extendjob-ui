@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import UserWrapper from "@/layout/UserWrapper";
+import CandidateWrapper from "@/app/CandidateWrapper";
 import ChangePassword from "@/components/change-password/index";
 
 export const metadata = {
@@ -9,9 +9,9 @@ export const metadata = {
 
 const index = () => {
     return (
-        <UserWrapper>
+        <CandidateWrapper>
             <ChangePassword />
-        </UserWrapper>
+        </CandidateWrapper>
     );
 };
 

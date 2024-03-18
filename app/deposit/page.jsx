@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import UserWrapper from "@/layout/UserWrapper";
+import CandidateWrapper from "@/app/CandidateWrapper";
 import Deposit from "@/components/wallet/Deposit";
 
 export const metadata = {
@@ -9,9 +9,9 @@ export const metadata = {
 
 const index = () => {
   return (
-    <UserWrapper>
+    <CandidateWrapper>
       <Deposit />
-    </UserWrapper>
+    </CandidateWrapper>
   );
 };
 

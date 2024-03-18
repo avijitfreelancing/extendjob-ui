@@ -3,6 +3,8 @@ import Hero from "../hero/index";
 import JobCategorie1 from "../job-categories/JobCategorie1";
 import RegBanner2 from "../block/RegBanner2";
 import JobFeatured10 from "../job-featured/JobFeatured10";
+import Header from "@/components/header/Header";
+import MobileMenu from "@/components/header/MobileMenu";
 
 const index = () => {
   return (

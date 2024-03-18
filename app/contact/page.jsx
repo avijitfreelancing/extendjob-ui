@@ -1,15 +1,15 @@
 import dynamic from "next/dynamic";
 import Contact from "@/components/contact";
-import Layout from "@/app/layout"
+import Wrapper from "@/app/Wrapper"
 export const metadata = {
   title: 'Contact',
   description: 'extend-Job Board',
 }
 const index = () => {
   return (
-      <Layout>
+      <Wrapper>
         <Contact />
-      </Layout>
+      </Wrapper>
   );
 };
 
