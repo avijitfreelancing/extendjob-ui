@@ -3,9 +3,9 @@ import dynamic from "next/dynamic";
 import axios from "@/helper/axios";
 import validation from "@/helper/validation";
 import { useEffect, useState } from "react";
-import LoadingOverlay from "react-loading-overlay";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Loader from "@/helper/loader/Loader";
 
 const AdminLogin = () => {
   const router = useRouter();
@@ -78,68 +78,68 @@ const AdminLogin = () => {
   };
 
   return (
-    <LoadingOverlay active={loading} spinner text="Loading...">
-      <div className="login-section">
-        <div
-          className="image-layer"
-          style={{ backgroundImage: "url(/images/background/12.jpg)" }}
-        />
-        <div className="outer-box">
-          <div className="login-form default-form">
-            <div className="form-inner">
-              <h3>Login</h3>
+    <div className="login-section">
+      {loading && <Loader />}
 
-              <form onSubmit={onFormSubmit}>
-                <div className="form-group">
-                  <label>Email</label>
-                  <span className="text-danger">*</span>
-                  <input
-                    type="text"
-                    name="email"
-                    placeholder="Enter email"
-                    validaterule={["required", "isEmail"]}
-                    validatemsg={[
-                      "Email address is required",
-                      "Enter a valid email address",
-                    ]}
-                    value={userData.email}
-                    onChange={handleOnChange}
-                    required
-                  />
-                  <p className="invalid_input">{errors.email}</p>
-                </div>
+      <div
+        className="image-layer"
+        style={{ backgroundImage: "url(/images/background/12.jpg)" }}
+      />
+      <div className="outer-box">
+        <div className="login-form default-form">
+          <div className="form-inner">
+            <h3>Login</h3>
 
-                <div className="form-group">
-                  <label>Password</label>
-                  <span className="text-danger">*</span>
-                  <input
-                    id="password-field"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    validaterule={["required", "password"]}
-                    validatemsg={["Password is required"]}
-                    value={userData.password}
-                    onChange={handleOnChange}
-                    required
-                  />
-                  <p className="invalid_input">{errors.password}</p>
-                </div>
-                <div className="form-group">
-                  <button
-                    className="theme-btn btn-style-one"
-                    type="submit"
-                    name="log-in"
-                  >
-                    Log In
-                  </button>
-                </div>
-              </form>
-            </div>
+            <form onSubmit={onFormSubmit}>
+              <div className="form-group">
+                <label>Email</label>
+                <span className="text-danger">*</span>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Enter email"
+                  validaterule={["required", "isEmail"]}
+                  validatemsg={[
+                    "Email address is required",
+                    "Enter a valid email address",
+                  ]}
+                  value={userData.email}
+                  onChange={handleOnChange}
+                  required
+                />
+                <p className="invalid_input">{errors.email}</p>
+              </div>
+
+              <div className="form-group">
+                <label>Password</label>
+                <span className="text-danger">*</span>
+                <input
+                  id="password-field"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  validaterule={["required", "password"]}
+                  validatemsg={["Password is required"]}
+                  value={userData.password}
+                  onChange={handleOnChange}
+                  required
+                />
+                <p className="invalid_input">{errors.password}</p>
+              </div>
+              <div className="form-group">
+                <button
+                  className="theme-btn btn-style-one"
+                  type="submit"
+                  name="log-in"
+                >
+                  Log In
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </LoadingOverlay>
+    </div>
   );
 };
 

@@ -3,8 +3,7 @@ export const getFileExtension = (file) => {
   return file.name.match(regex)[0].toLowerCase();
 };
 
-export const BUCKET_DOMAIN =
-  "https://equipment-rental-system.s3.amazonaws.com/";
+export const BUCKET_DOMAIN = "https://extendjob.s3.amazonaws.com/";
 
 export const DATE_TIME_HELPER = {
   DATE_FORMAT: "MM-DD-YYYY",
