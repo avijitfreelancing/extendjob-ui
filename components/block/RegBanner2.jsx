@@ -12,7 +12,8 @@ const RegBanner2 = () => {
       bannerClass: "banner-style-one",
       width: "300",
       height: "600",
-      linkTitle:"Post a Job",
+      linkTitle: "Post a Job",
+      link: "/post-job",
     },
     {
       id: 2,
@@ -23,7 +24,8 @@ const RegBanner2 = () => {
       bannerClass: "banner-style-two",
       width: "350",
       height: "600",
-      linkTitle:"Find a Job",
+      linkTitle: "Find a Job",
+      link: "/jobs",
     },
   ];
   return (
@@ -51,10 +53,7 @@ const RegBanner2 = () => {
                 <li>Capitalize on low hanging fruit to identify</li>
                 <li>But I must explain to you how all this</li>
               </ul>
-              <Link
-                  href="/employers-dashboard/post-jobs"
-                  className="theme-btn btn-style-one"
-              >
+              <Link href="/post-job" className="theme-btn btn-style-one">
                 {item.linkTitle}
               </Link>
             </div>

@@ -7,7 +7,6 @@ const index = () => {
   return (
     <>
       <Hero />
-      {/* End Hero Section */}
       <section className="registeration-banners">
         <div className="auto-container">
           <div className="row" data-aos="fade-up">
@@ -15,7 +14,6 @@ const index = () => {
           </div>
         </div>
       </section>
-      {/* <!-- End Registeration Banners --> */}
       <section className="job-categories ui-job-categories">
         <div className="auto-container">
           <div className="sec-title text-center">
@@ -28,12 +26,11 @@ const index = () => {
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
           >
-            {/* <!-- Category Block --> */}
             <JobCategorie1 />
           </div>
         </div>
       </section>
-      {/* End Job Categorie Section */}
+
       <section className="layout-pt-60 layout-pb-120">
         <div className="auto-container">
           <div className="sec-title text-center mb-0">
@@ -42,7 +39,7 @@ const index = () => {
               Know your worth and find the job that qualify your life
             </div>
           </div>
-          {/* End sec-title */}
+
           <JobFeatured10 />
         </div>
       </section>
