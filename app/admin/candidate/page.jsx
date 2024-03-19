@@ -1,16 +1,16 @@
 import dynamic from "next/dynamic";
 import AdminWrapper from "@/app/AdminWrapper";
-import JobCategory from "@/components/admin/jobs/JobCategory";
+import Candidate from "@/components/admin/candidate/index";
 
 export const metadata = {
-  title: "Job Category",
-  description: "Job Category",
+  title: "candidate",
+  description: "candidate",
 };
 
 const index = () => {
   return (
     <AdminWrapper>
-      <JobCategory />
+      <Candidate />
     </AdminWrapper>
   );
 };
