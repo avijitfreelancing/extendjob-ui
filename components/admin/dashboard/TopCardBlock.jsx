@@ -39,7 +39,7 @@ const TopCardBlock = () => {
         >
           <div className={`ui-item ${item.uiClass}`}>
             <div className="left">
-              <i className={`icon la ${item.icon}`}></i>
+              <i className={`icon ${item.icon}`}></i>
             </div>
             <div className="right">
               <h4>{item.countNumber}</h4>

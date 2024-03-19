@@ -29,9 +29,16 @@ module.exports = [
   },
   {
     id: 5,
-    name: "All Applicants",
-    icon: "la-file-invoice",
-    routePath: "/all-applicants",
+    name: "All Transaction",
+    icon: "la-money",
+    routePath: "/transaction",
+    active: "",
+  },
+  {
+    id: 6,
+    name: "Wallet",
+    icon: "la-wallet",
+    routePath: "/wallet",
     active: "",
   },
   {

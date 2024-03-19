@@ -35,24 +35,26 @@ const CandidatesSidebar = () => {
           <span className="flaticon-close"></span>
         </div>
       </div>
-
-      <div className="sidebar-inner">
-        <div className="skills-percentage">
-          <div
-            className={"dashboard-option"}
-            style={{ width: 50, height: 70, margin: "auto" }}
-          >
-            <Image
-              alt="avatar"
-              className="thumb"
-              src="/images/resource/candidate-1.png"
-              width={500}
-              height={500}
-            />
+      <div className="auto-container mt-3">
+        <div className="candidate-block-six">
+          <div className="inner-box">
+            <figure className="image">
+              <Image
+                  width={100}
+                  height={100}
+                  src="/images/resource/candidate-1.png"
+                  alt="avatar"
+              />
+            </figure>
+            <h4 className="name">{userDetails.name || userDetails.username}</h4>
+            <span className="designation">
+              <span className="icon flaticon-money"></span>
+              $0.00
+            </span>
           </div>
-          <h4>{userDetails.name || userDetails.username}</h4>
-          <h4>Balance: 0.00</h4>
         </div>
+      </div>
+      <div className="sidebar-inner">
         <ul className="navigation">
           {candidatesuData.map((item) => (
             <li
