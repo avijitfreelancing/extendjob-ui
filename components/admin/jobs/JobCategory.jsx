@@ -598,7 +598,12 @@ const JobCategory = () => {
                               <td>
                                 <div className="job-block">
                                   <div className="inner-box">
-                                    <h4>{item.category}</h4>
+                                    <h4>
+                                      <span
+                                        className={`icon ${item.icon} m-2`}
+                                      />
+                                      {item.category}
+                                    </h4>
                                   </div>
                                 </div>
                               </td>
