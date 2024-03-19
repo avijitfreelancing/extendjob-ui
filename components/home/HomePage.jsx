@@ -1,8 +1,6 @@
 "use client";
-
 import Link from "next/link";
 import Hero from "../hero/index";
-import JobCategorie1 from "../job-categories/JobCategorie1";
 import JobFeatured10 from "../job-featured/JobFeatured10";
 import Image from "next/image";
 import { useEffect, useState } from "react";
