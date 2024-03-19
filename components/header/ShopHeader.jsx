@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import AdminHeaderContent from "./AdminHeaderContent";
 import { useDispatch, useSelector } from "react-redux";
 import { reloadCart } from "../../features/shop/shopSlice";
 import Image from "next/image";
@@ -55,7 +54,6 @@ const ShopHeader = () => {
           </div>
           {/* End .logo-box */}
 
-          <AdminHeaderContent />
           {/* <!-- Main Menu End--> */}
         </div>
         {/* End .nav-outer */}
