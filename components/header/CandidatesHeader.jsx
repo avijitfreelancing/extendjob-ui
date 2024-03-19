@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import UserHeaderContent from "./UserHeaderContent";
-import { isActiveLink } from "../../utils/linkActiveChecker";
+import CandidateNavContent from "./CandidateNavContent";
+import { isActiveLink } from "@/utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -54,6 +54,15 @@ const UserHeader = () => {
   useEffect(() => {
     let token = localStorage.getItem("token");
     if (token) {
+      const isProfileComplete = localStorage.getItem("isProfileComplete");
+
+      if (isProfileComplete === "false") {
+        // GO TO PROFILE PAGE
+        toast.warning("Please complete your profile first");
+        router.push("/my-profile");
+        return;
+      }
+
       let userDetails = JSON.parse(localStorage.getItem("userDetails"));
       setUserData({ ...userDetails });
     } else {
@@ -73,10 +82,7 @@ const UserHeader = () => {
 
   return (
     <header
-      className={`main-header header-style-two alternate  ${
-        navbar ? "fixed-header animated slideInDown" : ""
-      }`}
-      // className={`main-header header-shaddow  ${navbar ? "fixed-header " : ""}`}
+      className={`main-header header-shaddow  ${navbar ? "fixed-header " : ""}`}
     >
       <div className="container-fluid">
         <div className="main-box">
@@ -86,7 +92,7 @@ const UserHeader = () => {
                 <Link href="/">
                   <Image
                     alt="brand"
-                    src="/images/logo-2.png"
+                    src="/images/extend_job.png"
                     width={154}
                     height={50}
                     priority
@@ -95,7 +101,7 @@ const UserHeader = () => {
               </div>
             </div>
 
-            <UserHeaderContent />
+            <CandidateNavContent />
           </div>
 
           <div className="outer-box">

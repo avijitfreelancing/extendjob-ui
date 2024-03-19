@@ -5,7 +5,7 @@ import CopyrightFooter from "@/layout/CopyrightFooter";
 import AdminSidebar from "@/components/header/AdminSidebar";
 import AdminHeader from "@/components/header/AdminHeader";
 
-const AdminWrapper = ({ children }) => {
+export default function RootLayout({ children }) {
   return (
     <div className="page-wrapper dashboard">
       <span className="header-span" />
@@ -17,5 +17,3 @@ const AdminWrapper = ({ children }) => {
     </div>
   );
 };
-
-export default AdminWrapper;

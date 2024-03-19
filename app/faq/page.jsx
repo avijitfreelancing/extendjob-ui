@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Faq from "@/components/faq";
-import Layout from "@/app/layout";
+import Wrapper from "@/app/Wrapper";
 
 export const metadata = {
   title: 'Faq',
@@ -8,9 +8,9 @@ export const metadata = {
 }
 const index = () => {
   return (
-      <Layout>
+      <Wrapper>
         <Faq />
-      </Layout>
+      </Wrapper>
   );
 };
 

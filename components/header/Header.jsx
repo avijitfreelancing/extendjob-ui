@@ -54,7 +54,7 @@ const Header = () => {
   return (
       // <!-- Main Header-->
       <header
-          className={`main-header ${headerStyle}  ${
+          className={`main-header -type-17 ${
               navbar ? "fixed-header animated slideInDown" : ""
           }`}
       >
@@ -69,14 +69,13 @@ const Header = () => {
                     <Image
                         width={154}
                         height={50}
-                        src="/images/logo-2.svg"
+                        src="/images/extend_job.png"
                         alt="brand"
                     />
                   </Link>
                 </div>
               </div>
               {/* End .logo-box */}
-
               <HeaderNavContent />
               {/* <!-- Main Menu End--> */}
             </div>

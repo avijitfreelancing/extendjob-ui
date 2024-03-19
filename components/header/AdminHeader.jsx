@@ -3,8 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import AdminHeaderContent from "./AdminHeaderContent";
-import { isActiveLink } from "../../utils/linkActiveChecker";
+import { isActiveLink } from "@/utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -85,7 +84,13 @@ const AdminHeader = () => {
               </div>
             </div>
 
-            <AdminHeaderContent />
+            <Link
+                href="/"
+                className="theme-btn btn-style-one"
+                target={"_blank"}
+            >
+              Visit website
+            </Link>
           </div>
 
           <div className="outer-box">

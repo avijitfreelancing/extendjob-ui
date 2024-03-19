@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import UserWrapper from "@/layout/UserWrapper";
+import UserWrapper from "@/app/CandidateWrapper";
 import JobPost from "@/components/jobs/JobPost";
 
 export const metadata = {

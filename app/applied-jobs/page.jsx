@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import ApplyJob from "@/components/applied-jobs/index";
+import CandidateWrapper from "@/app/CandidateWrapper";
 
 export const metadata = {
   title: "Apply Job",
@@ -8,9 +9,9 @@ export const metadata = {
 
 const index = () => {
   return (
-    <>
-        <ApplyJob />
-    </>
+      <CandidateWrapper>
+          <ApplyJob />
+      </CandidateWrapper>
   );
 };
 

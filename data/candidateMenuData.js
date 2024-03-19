@@ -84,11 +84,4 @@ module.exports = [
     routePath: "/change-password",
     active: "",
   },
-  {
-    id: 14,
-    name: "Sign Out",
-    icon: "la la-sign-out",
-    routePath: "/password-change",
-    active: "",
-  },
 ];

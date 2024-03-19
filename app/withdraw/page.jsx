@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import UserWrapper from "@/layout/UserWrapper";
+import UserWrapper from "@/app/CandidateWrapper";
 import Withdraw from "@/components/withdraw/Withdraw";
 
 export const metadata = {

@@ -20,7 +20,9 @@ const UserDashboard = () => {
     <div>
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title={`Hello, ${userData.username || "User"}!!`} />
+          <BreadCrumb
+            title={`Hello, ${userData.name || userData.username}!!`}
+          />
 
           <div className="row">
             <TopCardBlock />

@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import JobListing from "@/components/jobs/JobListing";
-import Layout from "@/app/layout"
+import Wrapper from "@/app/Wrapper"
 
 export const metadata = {
   title: "Jobs",
@@ -9,9 +9,9 @@ export const metadata = {
 
 const index = () => {
   return (
-    <Layout>
+    <Wrapper>
       <JobListing />
-    </Layout>
+    </Wrapper>
   );
 };
 

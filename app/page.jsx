@@ -1,7 +1,6 @@
 import React from "react";
-
-import Home from "@/components/home";
-import Layout from "@/app/layout"
+import Wrapper from "@/app/Wrapper";
+import HomePage from "@/components/home/HomePage";
 
 export const metadata = {
   title: "Home",
@@ -10,9 +9,9 @@ export const metadata = {
 
 const index = () => {
   return (
-      <Layout>
-        <Home />
-      </Layout>
+    <Wrapper>
+      <HomePage />
+    </Wrapper>
   );
 };
 

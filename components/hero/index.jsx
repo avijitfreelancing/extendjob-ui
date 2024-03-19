@@ -1,42 +1,62 @@
 import SearchForm from "@/components/hero/SearchForm";
 import PopularSearch from "@/components/hero/PopularSearch";
-import Counter from "@/components/hero/Counter";
+import Image from "next/image";
 
 const index = () => {
   return (
     <section
-      className="banner-section-nine"
-      style={{ backgroundImage: "url(/images/background/2.png)" }}
+      className="banner-section-three -type-17"
+      style={{ backgroundImage: "url(/images/index-17/header/bg.png)" }}
     >
       <div className="auto-container">
-        <div className="cotnent-box">
-          <div className="title-box" data-aso-delay="500" data-aos="fade-up">
-            <h3>The Easiest Way to Get Your New Job</h3>
+        <div className="row align-items-center">
+          <div className="content-column col-lg-7 col-md-12 col-sm-12">
+            <div className="inner-column">
+              <div
+                className="title-box"
+                data-wow-delay="500"
+                data-aos="fade-up"
+              >
+                <h3>
+                  Join us & Explore
+                  <br /> Thousands of Jobs
+                </h3>
+                <div className="text">
+                  Find Jobs, Employment & Career Opportunities
+                </div>
+              </div>
+
+              <div
+                className="job-search-form"
+                data-aos="fade-up"
+                data-aos-delay="500"
+              >
+                <SearchForm />
+              </div>
+
+              <PopularSearch />
+            </div>
           </div>
 
-          {/* <!-- Job Search Form --> */}
-          <div
-            className="job-search-form"
-            data-aos-delay="700"
-            data-aos="fade-up"
-          >
-            <SearchForm btnStyle="btn-style-two" />
+          <div className="image-column col-lg-5 col-md-12">
+            <div className="image-box">
+              <figure
+                className="main-image"
+                data-aos="fade-left"
+                data-aos-delay="1500"
+              >
+                <Image
+                  width={572}
+                  height={560}
+                  src="/images/index-17/header/1.png"
+                  alt="heor image"
+                />
+              </figure>
+            </div>
           </div>
         </div>
-        {/* <!-- Job Search Form --> */}
-
-        {/* <!-- Popular Search --> */}
-        <PopularSearch />
-        {/* <!-- End Popular Search --> */}
-        <div className="fun-fact-section">
-          <div className="row">
-            <Counter />
-          </div>
-        </div>
-        {/* <!-- Fun Fact Section --> */}
       </div>
     </section>
   );
 };
-
 export default index;

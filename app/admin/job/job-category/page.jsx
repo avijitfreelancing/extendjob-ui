@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import AdminWrapper from "@/layout/AdminWrapper";
+import AdminWrapper from "@/app/AdminWrapper";
 import JobCategory from "@/components/admin/jobs/JobCategory";
 
 export const metadata = {

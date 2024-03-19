@@ -45,7 +45,7 @@ const MyJobs = () => {
     setLoading(true);
 
     axios
-      .put("/job/active-inactive-job", { id }, config)
+      .put("/job/active-inactive-job", { id }, config())
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
@@ -120,7 +120,7 @@ const MyJobs = () => {
                                           >
                                             {jobs.title +
                                               ", " +
-                                              jobs.category.category}
+                                              jobs.category?.category}
                                           </Link>
                                         </h4>
                                         <ul className="job-info">

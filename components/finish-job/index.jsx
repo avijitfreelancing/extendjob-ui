@@ -1,10 +1,6 @@
 "use client"
 import BreadCrumb from "@/components/bread-crumb/BreadCrumb";
 import MenuToggler from "@/components/dashboard/MenuToggler";
-import UserHeader from "@/components/header/UserHeader";
-import MobileMenu from "@/components/header/MobileMenu";
-import UserSidebar from "@/components/header/UserSidebar";
-import CopyrightFooter from "@/layout/CopyrightFooter";
 import Jobs from "@/data/job-featured.js";
 import Link from "next/link";
 import Image from "next/image.js";
@@ -12,12 +8,7 @@ import Image from "next/image.js";
 const Index = () => {
 
   return (
-      <div className="page-wrapper dashboard">
-        <span className="header-span"></span>
-        {/* <!-- Dashboard --> */}
-        <UserHeader />
-        <MobileMenu />
-        <UserSidebar />
+      < >
           <section className="user-dashboard">
               <div className="dashboard-outer">
                   <BreadCrumb title="Finish Job !" />
@@ -130,10 +121,7 @@ const Index = () => {
               </div>
               {/* End dashboard-outer */}
           </section>
-        <CopyrightFooter />
-        {/* <!-- End Copyright --> */}
-      </div>
-    // End page-wrapper
+      </>
   );
 };
 
