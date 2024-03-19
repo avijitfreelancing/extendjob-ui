@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import AdminWrapper from "@/layout/AdminWrapper";
+import AdminWrapper from "@/app/AdminWrapper";
 import AdminDashboard from "@/components/admin/dashboard/AdminDashboard";
 
 export const metadata = {
