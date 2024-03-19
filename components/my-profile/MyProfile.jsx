@@ -160,6 +160,7 @@ export default function MyProfile() {
         setLoading(false);
         if (res.data.success) {
           toast.success(res.data.message);
+          localStorage.setItem("isProfileComplete", true);
           getProfiledetails();
         } else {
           toast.error(res.data.message);
