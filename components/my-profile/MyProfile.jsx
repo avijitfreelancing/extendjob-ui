@@ -9,6 +9,7 @@ import _ from "lodash";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Loader from "../common/loader/Loader";
+import Image from "next/image";
 
 export default function MyProfile() {
   const [loading, setLoading] = useState(false);
@@ -42,7 +43,7 @@ export default function MyProfile() {
 
         if (res.data.success) {
           let { userDetails } = res.data;
-
+          localStorage.setItem("userDetails", JSON.stringify(userDetails));
           for (const [key, value] of Object.entries(userDetails)) {
             formData[key] = value;
             setFormData({ ...formData });
@@ -210,25 +211,27 @@ export default function MyProfile() {
                       Suitable files are .jpg & .png
                     </div>
 
-                    {profileImage ? (
-                      <img
-                        width={100}
-                        height={100}
-                        src={URL.createObjectURL(profileImage)}
-                        alt="Profile photo"
-                        className="ms-5"
-                      />
-                    ) : (
-                      <img
-                        src={
-                          formData.avatar ? BUCKET_DOMAIN + formData.avatar : ""
-                        }
-                        width={100}
-                        height={100}
-                        alt="Avatar"
-                        className="ms-5"
-                      />
-                    )}
+                    <figure className="image ms-5">
+                      {profileImage ? (
+                        <Image
+                          width={100}
+                          height={100}
+                          src={URL.createObjectURL(profileImage)}
+                          alt="Profile photo"
+                        />
+                      ) : (
+                        <Image
+                          src={
+                            formData.avatar
+                              ? BUCKET_DOMAIN + formData.avatar
+                              : "/images/resource/candidate-1.png"
+                          }
+                          width={100}
+                          height={100}
+                          alt="Avatar"
+                        />
+                      )}
+                    </figure>
                   </div>
 
                   <form onSubmit={handleOnSubmit} className="default-form">
