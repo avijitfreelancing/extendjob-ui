@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import AdminWrapper from "@/app/AdminWrapper";
-import Candidate from "@/components/admin/candidate/index";
+import Candidate from "@/components/admin/candidate/Candidate";
 
 export const metadata = {
   title: "candidate",

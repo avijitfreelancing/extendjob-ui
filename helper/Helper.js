@@ -11,6 +11,12 @@ export const DATE_TIME_HELPER = {
   JOB_DATE_FORMAT: "MMM D, YYYY",
 };
 
+export const JOB_STATUS = {
+  0: "Rejected",
+  1: "Pending",
+  2: "Approved",
+};
+
 export const deleteObjectFields = (data, keys = []) => {
   return new Promise((resolve, reject) => {
     keys.push("_id", "createdAt", "updatedAt", "__v");

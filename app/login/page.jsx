@@ -92,10 +92,17 @@ const Login = () => {
               password: "",
             });
 
-            let { token, userDetails } = res.data;
+            let { token, userDetails, isProfileComplete, wallet } = res.data;
             localStorage.setItem("token", token);
             localStorage.setItem("userDetails", JSON.stringify(userDetails));
-            router.push("/dashboard");
+            localStorage.setItem("isProfileComplete", isProfileComplete);
+
+            if (!isProfileComplete) {
+              router.push("/my-profile");
+            } else {
+              router.push("/dashboard");
+            }
+
             // router.reload();
             // window.location.reload();
           } else {
