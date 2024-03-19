@@ -8,7 +8,8 @@ import _ from "lodash";
 import { toast } from "react-toastify";
 import adminConfig from "@/helper/adminConfig";
 import Loader from "@/helper/loader/Loader";
-import Select from 'react-select';
+import Select from "react-select";
+import JobCategoryIcon from "@/helper/JobCategoryIcon";
 
 const JobCategory = () => {
   const [userData, setUserData] = useState({
@@ -24,30 +25,21 @@ const JobCategory = () => {
   const [subCatPos, setSubCatPos] = useState(-1);
 
   const [allCategories, setAllCategories] = useState([]);
-  const [selectedIcon, setSelectedIcon] = useState('');
-  const options = [
-    { value: 'flaticon-money-1', label: ' Finance', iconClass: 'icon flaticon-money-1' },
-    { value: 'flaticon-promotion', label: ' Marketing', iconClass: 'icon flaticon-promotion' },
-    { value: 'flaticon-vector', label: ' Design', iconClass: 'icon flaticon-vector' },
-    { value: 'flaticon-web-programming', label: ' Development', iconClass: 'icon flaticon-web-programming' },
-    { value: 'flaticon-headhunting', label: ' Project Management', iconClass: 'icon flaticon-headhunting' },
-    { value: 'flaticon-rocket-ship', label: ' Human Resource', iconClass: 'icon flaticon-rocket-ship' },
-    { value: 'flaticon-support-1', label: ' Customer Service', iconClass: 'icon flaticon-support-1' },
-    { value: 'flaticon-first-aid-kit-1', label: ' Health and Care', iconClass: 'icon flaticon-first-aid-kit-1' },
-  ];
+  const [selectedIcon, setSelectedIcon] = useState(null);
 
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
-      padding: '5px',
-      display: 'flex',
-      alignItems: 'center',
+      padding: "5px",
+      display: "flex",
+      alignItems: "center",
     }),
     singleValue: (provided, state) => ({
       ...provided,
-      marginLeft: '10px', // Adjust spacing as needed
+      marginLeft: "10px", // Adjust spacing as needed
     }),
   };
+
   useEffect(() => {
     getAllCategory();
   }, []);
@@ -128,6 +120,7 @@ const JobCategory = () => {
     });
     setErrors({});
     setSubCatPos(-1);
+    setSelectedIcon(null);
   };
 
   const isValidForm = (errors) => {
@@ -143,6 +136,11 @@ const JobCategory = () => {
   const onFormSubmit = (e) => {
     e.preventDefault();
     if (isValidForm(errors)) {
+      if (!userData.icon) {
+        toast.error("Please select icon");
+        return;
+      }
+
       let { sub_category, sub_cat_text } = userData;
       if (sub_cat_text) {
         sub_category.push(sub_cat_text);
@@ -159,6 +157,7 @@ const JobCategory = () => {
           if (res.data.success) {
             toast.success(res.data.message);
             clearUserData();
+            getAllCategory();
           } else {
             toast.error(res.data.message);
           }
@@ -299,38 +298,28 @@ const JobCategory = () => {
                                 <div className="form-group">
                                   <label>Icon</label>
                                   <Select
-                                      options={options}
-                                      value={options.find(option => option.value === selectedIcon)}
-                                      onChange={(selectedOption) => setSelectedIcon(selectedOption.value)}
-                                      styles={customStyles}
-                                      placeholder="Select icon"
-                                      isClearable
-                                      isSearchable
-                                      validaterule={["required"]}
-                                      validatemsg={["Icon is required"]}
-                                      getOptionLabel={(option) => (
-                                          <div>
-                                            <span className={`icon ${option.iconClass}`} />
-                                            <span>{option.label}</span>
-                                          </div>
-                                      )}
+                                    options={JobCategoryIcon}
+                                    value={selectedIcon}
+                                    onChange={(selectedOption) => {
+                                      setSelectedIcon(selectedOption);
+                                      userData.icon = selectedOption.iconClass;
+
+                                      setUserData({ ...userData });
+                                    }}
+                                    styles={customStyles}
+                                    placeholder="Select icon"
+                                    isClearable
+                                    isSearchable
+                                    getOptionLabel={(option) => (
+                                      <div>
+                                        <span
+                                          className={`icon ${option.iconClass}`}
+                                        />
+                                        <span>{option.label}</span>
+                                      </div>
+                                    )}
                                   />
                                 </div>
-                                {/*<div className="form-group">*/}
-                                {/*  <label>Icon</label>*/}
-                                {/*  <select*/}
-                                {/*    name="icon"*/}
-                                {/*    required*/}
-                                {/*    validaterule={["required"]}*/}
-                                {/*    validatemsg={["Icon is required"]}*/}
-                                {/*    value={userData.icon}*/}
-                                {/*    onChange={handleOnChange}*/}
-                                {/*  >*/}
-                                {/*    <option value="">Select icon</option>*/}
-                                {/*    <option  value="iii"><div className={"icon flaticon-money-1"}></div></option>*/}
-                                {/*  </select>*/}
-                                {/*  <p className="invalid_input">{errors.icon}</p>*/}
-                                {/*</div>*/}
 
                                 {userData.sub_category.length > 0 && (
                                   <div className="form-group col-lg-12 col-md-12">
@@ -609,7 +598,12 @@ const JobCategory = () => {
                               <td>
                                 <div className="job-block">
                                   <div className="inner-box">
-                                    <h4>{item.category}</h4>
+                                    <h4>
+                                      <span
+                                        className={`icon ${item.icon} m-2`}
+                                      />
+                                      {item.category}
+                                    </h4>
                                   </div>
                                 </div>
                               </td>
