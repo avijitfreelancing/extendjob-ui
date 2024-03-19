@@ -89,7 +89,7 @@ const AdminHeader = () => {
                 className="theme-btn btn-style-one"
                 target={"_blank"}
             >
-              Visit website
+              Home<span className="icon la la-arrow-circle-o-right"></span>
             </Link>
           </div>
 

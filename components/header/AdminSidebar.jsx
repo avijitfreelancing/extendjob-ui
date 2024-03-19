@@ -7,15 +7,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { menuToggle } from "@/features/toggle/toggleSlice";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import {useState} from "react";
 
 const AdminSidebar = () => {
-  const { menu } = useSelector((state) => state.toggle);
+    const { menu } = useSelector((state) => state.toggle);
+    const dispatch = useDispatch();
+    const [activeMenu, setActiveMenu] = useState(null);
 
-  const dispatch = useDispatch();
-  // menu togggle handler
-  const menuToggleHandler = () => {
-    dispatch(menuToggle());
-  };
+    const menuToggleHandler = () => {
+        dispatch(menuToggle());
+    };
+
+    const handleMenuClick = (id) => {
+        if (activeMenu === id) {
+            setActiveMenu(null);
+        } else {
+            setActiveMenu(id);
+        }
+    };
 
   return (
     <div className={`user-sidebar ${menu ? "sidebar_open" : ""}`}>
@@ -45,19 +54,45 @@ const AdminSidebar = () => {
         </div>
       <div className="sidebar-inner">
         <ul className="navigation">
-          {AdminMenuData.map((item) => (
-            <li
-              className={`${
-                isActiveLink(item.routePath, usePathname()) ? "active" : ""
-              } mb-1`}
-              key={item.id}
-              onClick={menuToggleHandler}
-            >
-              <Link href={item.routePath}>
+            {AdminMenuData.map((item) => (
+                <li
+                    key={item.id}
+                    className={`${
+                        isActiveLink(item.routePath, usePathname())
+                            ? "active"
+                            : ""
+                    } mb-1`}
+                    onClick={() => handleMenuClick(item.id)}
+                >
+              <span className="menu-item">
                 <i className={`la ${item.icon}`}></i> {item.name}
-              </Link>
-            </li>
-          ))}
+              </span>
+                    {item.subMenus && activeMenu === item.id && (
+                        <ul className="sub-menu">
+                            {item.subMenus.map((subItem) => (
+                                <li key={subItem.id}>
+                                    <Link href={subItem.routePath}>
+                                        <span>{subItem.name}</span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </li>
+            ))}
+          {/*{AdminMenuData.map((item) => (*/}
+          {/*  <li*/}
+          {/*    className={`${*/}
+          {/*      isActiveLink(item.routePath, usePathname()) ? "active" : ""*/}
+          {/*    } mb-1`}*/}
+          {/*    key={item.id}*/}
+          {/*    onClick={menuToggleHandler}*/}
+          {/*  >*/}
+          {/*    <Link href={item.routePath}>*/}
+          {/*      <i className={`la ${item.icon}`}></i> {item.name}*/}
+          {/*    </Link>*/}
+          {/*  </li>*/}
+          {/*))}*/}
         </ul>
       </div>
     </div>
