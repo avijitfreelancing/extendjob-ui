@@ -4,7 +4,6 @@ import Link from "next/link";
 import "react-circular-progressbar/dist/styles.css";
 import candidatesuData from "@/data/candidateMenuData";
 import { isActiveLink } from "@/utils/linkActiveChecker";
-
 import { useDispatch, useSelector } from "react-redux";
 import { menuToggle } from "@/features/toggle/toggleSlice";
 import { usePathname } from "next/navigation";
