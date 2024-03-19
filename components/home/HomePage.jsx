@@ -3,7 +3,7 @@ import JobCategorie1 from "../job-categories/JobCategorie1";
 import RegBanner2 from "../block/RegBanner2";
 import JobFeatured10 from "../job-featured/JobFeatured10";
 
-const index = () => {
+export default function HomePage() {
   return (
     <>
       <Hero />
@@ -45,6 +45,4 @@ const index = () => {
       </section>
     </>
   );
-};
-
-export default index;
+}
