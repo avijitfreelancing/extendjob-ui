@@ -1,5 +1,4 @@
 import FooterDefault from "../../footer/common-footer";
-import DefaulHeader from "../../header/DefaulHeader";
 import MobileMenu from "../../header/MobileMenu";
 import Breadcrumb from "../Breadcrumb";
 import CompleteOrder from "./components";
@@ -12,7 +11,6 @@ const index = () => {
 
       {/* End Login.jsx Popup Modal */}
 
-      <DefaulHeader />
       {/* <!--End Main Header --> */}
 
       <MobileMenu />
