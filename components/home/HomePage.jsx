@@ -7,14 +7,17 @@ import { toast } from "react-toastify";
 import axios from "@/helper/axios";
 import Loader from "@/helper/loader/Loader";
 import Hero from "../hero/Hero";
+import { BUCKET_DOMAIN } from "@/helper/Helper";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   const [popularCategory, setPopularCategory] = useState([]);
+  const [recentJobs, setRecentJobs] = useState([]);
 
   useEffect(() => {
     getAllJobCategory();
+    getTop6Jobs();
   }, []);
 
   const getAllJobCategory = () => {
@@ -26,6 +29,26 @@ export default function HomePage() {
         if (res.data.success) {
           let { job_category } = res.data;
           setPopularCategory(job_category);
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        toast.error("Something went wrong !!!");
+      });
+  };
+
+  const getTop6Jobs = () => {
+    setLoading(true);
+    axios
+      .get(`/job/jobs?page=1&per_page=6&sort=-1&search=`)
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
+          let { jobs } = res.data;
+          setRecentJobs(jobs);
         } else {
           toast.error(res.data.message);
         }
@@ -157,7 +180,52 @@ export default function HomePage() {
             </div>
           </div>
 
-          <JobFeatured10 />
+          <div className="default-tabs pt-50 tabs-box">
+            <div className="tab-buttons-wrap">
+              <ul className="tab-buttons -pills-condensed">
+                <li className="tab-btn active-btn">Recent</li>
+              </ul>
+            </div>
+
+            <div className="row pt-50" data-aos="fade-up">
+              {recentJobs.map((item, key) => {
+                return (
+                  <div
+                    className="job-block col-lg-6 col-md-12 col-sm-12"
+                    key={key}
+                  >
+                    <div className="inner-box">
+                      <div className="content">
+                        <span className="company-logo">
+                          <Image
+                            width={50}
+                            height={49}
+                            src={BUCKET_DOMAIN + item.banner}
+                            alt="item brand"
+                          />
+                        </span>
+                        <h4>
+                          <Link href={`/job-details/${item._id}`}>
+                            {item.title}
+                          </Link>
+                        </h4>
+                        <ul className="job-info">
+                          <li>
+                            <span className="icon flaticon-money" />
+                            {item.total_budget}
+                          </li>
+                        </ul>
+
+                        <button className="bookmark-btn">
+                          <span className="flaticon-bookmark" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
     </>
