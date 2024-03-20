@@ -1,8 +1,18 @@
-import SearchForm from "@/components/hero/SearchForm";
+"use client";
+import { useRouter } from "next/navigation";
 import PopularSearch from "@/components/hero/PopularSearch";
 import Image from "next/image";
+import { useState } from "react";
 
-const index = () => {
+export default function Hero() {
+  const router = useRouter();
+
+  const [query, setQuery] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <section
       className="banner-section-three -type-17"
@@ -31,7 +41,31 @@ const index = () => {
                 data-aos="fade-up"
                 data-aos-delay="500"
               >
-                <SearchForm />
+                <form onClick={handleSubmit}>
+                  <div className="row justify-content-center justify-content-md-between">
+                    <div className="form-group col-lg-9">
+                      <span className="icon flaticon-search-1" />
+                      <input
+                        type="text"
+                        name="field_name"
+                        placeholder="Job title, keywords, or company"
+                        onChange={(e) => {
+                          setQuery(e.target.value);
+                        }}
+                      />
+                    </div>
+
+                    <div className="form-group col-auto">
+                      <button
+                        type="submit"
+                        className="theme-btn btn-style-two"
+                        onClick={() => router.push(`/jobs?query=${query}`)}
+                      >
+                        Find Jobs
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
 
               <PopularSearch />
@@ -58,5 +92,4 @@ const index = () => {
       </div>
     </section>
   );
-};
-export default index;
+}
