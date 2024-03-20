@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
-import Hero from "../hero/index";
 import JobFeatured10 from "../job-featured/JobFeatured10";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "@/helper/axios";
 import Loader from "@/helper/loader/Loader";
+import Hero from "../hero/Hero";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);

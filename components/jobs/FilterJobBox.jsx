@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { BUCKET_DOMAIN } from "@/helper/Helper";
 import Loader from "@/helper/loader/Loader";
+import qs from "query-string";
 
 const FilterJobBox = () => {
   const [loading, setLoading] = useState(false);
@@ -21,8 +22,14 @@ const FilterJobBox = () => {
   const optionPerpage = [1, 10, 25, 50];
 
   useEffect(() => {
+    const queryParam = qs.parse(window.location.search);
+
+    setSearch(queryParam["query"] || "");
+  }, []);
+
+  useEffect(() => {
     getAllJobs();
-  }, [currentPage, perPage, sort]);
+  }, [currentPage, perPage, sort, search]);
 
   const getAllJobs = () => {
     setLoading(true);

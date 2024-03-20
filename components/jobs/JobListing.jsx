@@ -3,14 +3,12 @@
 import dynamic from "next/dynamic";
 import FilterJobBox from "./FilterJobBox";
 import Breadcrumb from "../common/Breadcrumb";
-import Header from "@/components/header/Header";
-import MobileMenu from "@/components/header/MobileMenu";
 
 const JobListing = () => {
   return (
     <>
-        <span className="header-span"></span>
-         <Breadcrumb title="Find Jobs" meta="Jobs" />
+      <span className="header-span" />
+      <Breadcrumb title="Find Jobs" meta="Jobs" />
       <section className="ls-section">
         <div className="auto-container">
           <div className="row">
