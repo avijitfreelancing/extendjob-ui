@@ -1,20 +1,19 @@
 "use client";
 
 import {
-
   Sidebar,
   Menu,
   MenuItem,
   SubMenu,
 } from "react-pro-sidebar";
-
-import mobileMenuData from "../../../data/mobileMenuData";
+import React from 'react';
+import mobileMenuData from "@/data/mobileMenuData";
 import SidebarFooter from "./SidebarFooter";
 import SidebarHeader from "./SidebarHeader";
 import {
   isActiveLink,
   isActiveParentChaild,
-} from "../../../utils/linkActiveChecker";
+} from "@/utils/linkActiveChecker";
 import { usePathname, useRouter } from "next/navigation";
 
 
@@ -35,31 +34,43 @@ const Index = () => {
         <Sidebar>
           <Menu>
             {mobileMenuData.map((item) => (
-              <SubMenu
-                className={
-                  isActiveParentChaild(item.items, usePathname())
-                    ? "menu-active"
-                    : ""
-                }
-                label={item.label}
-                key={item.id}
-              >
-                {item.items.map((menuItem, i) => (
-                  <MenuItem
-
-                  onClick={()=>router.push(menuItem.routePath)}
-                    className={
-                      isActiveLink(menuItem.routePath, usePathname())
-                        ? "menu-active-link"
-                        : ""
-                    }
-                    key={i}
-                    // routerLink={<Link href={menuItem.routePath} />}
-                  >
-                    {menuItem.name}
-                  </MenuItem>
-                ))}
-              </SubMenu>
+                <React.Fragment key={item.id}>
+                  {item.items ? (
+                      <SubMenu
+                          className={
+                            isActiveParentChaild(item.items, usePathname())
+                                ? "menu-active"
+                                : ""
+                          }
+                          label={item.label}
+                      >
+                        {item.items.map((menuItem, i) => (
+                            <MenuItem
+                                key={i}
+                                onClick={() => router.push(menuItem.routePath)}
+                                className={
+                                  isActiveLink(menuItem.routePath, usePathname())
+                                      ? "menu-active-link"
+                                      : ""
+                                }
+                            >
+                              {menuItem.name}
+                            </MenuItem>
+                        ))}
+                      </SubMenu>
+                  ) : (
+                      <MenuItem
+                          onClick={() => router.push(item.routePath)}
+                          className={
+                            isActiveLink(item.routePath, usePathname())
+                                ? "menu-active-link"
+                                : ""
+                          }
+                      >
+                        {item.label}
+                      </MenuItem>
+                  )}
+                </React.Fragment>
             ))}
           </Menu>
         </Sidebar>

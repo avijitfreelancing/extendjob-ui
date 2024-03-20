@@ -12,18 +12,6 @@ module.exports = [
     icon: "la-users",
     routePath: "/candidate",
     active: "",
-    subMenus: [
-      {
-        id: 21,
-        name: "User List",
-        routePath: "/candidate/user-list",
-      },
-      {
-        id: 22,
-        name: "Add User",
-        routePath: "/candidate/add-user",
-      },
-    ],
   },
   {
     id: 3,
