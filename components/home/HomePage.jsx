@@ -8,6 +8,7 @@ import axios from "@/helper/axios";
 import Loader from "@/helper/loader/Loader";
 import Hero from "../hero/Hero";
 import { BUCKET_DOMAIN } from "@/helper/Helper";
+import moment from "moment";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
@@ -159,7 +160,9 @@ export default function HomePage() {
                     <div className="content">
                       <span className={`icon ${item.icon}`}></span>
                       <h4>
-                        <Link href="#">{item.category}</Link>
+                        <Link href={`/jobs?query=${item.category}`}>
+                          {item.category}
+                        </Link>
                       </h4>
                       {/* <p>({item.jobNumber} open positions)</p> */}
                     </div>
@@ -189,6 +192,12 @@ export default function HomePage() {
 
             <div className="row pt-50" data-aos="fade-up">
               {recentJobs.map((item, key) => {
+                const formattedDate = moment(item.createdAt).isSame(
+                  moment(),
+                  "day"
+                )
+                  ? moment(item.createdAt).fromNow()
+                  : moment(item.createdAt).format("MMMM Do YYYY");
                 return (
                   <div
                     className="job-block col-lg-6 col-md-12 col-sm-12"
@@ -210,6 +219,14 @@ export default function HomePage() {
                           </Link>
                         </h4>
                         <ul className="job-info">
+                          <li>
+                            <span className="icon flaticon-map-locator"></span>
+                            {item.userDetails?.country_code}
+                          </li>
+                          <li>
+                            <span className="icon flaticon-clock-3"></span>{" "}
+                            {formattedDate}
+                          </li>
                           <li>
                             <span className="icon flaticon-money" />
                             {item.total_budget}
