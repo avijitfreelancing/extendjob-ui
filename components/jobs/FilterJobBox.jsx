@@ -24,8 +24,6 @@ const FilterJobBox = () => {
   useEffect(() => {
     const queryParam = qs.parse(window.location.search);
 
-    console.log("queryParam", queryParam);
-
     setSearch(queryParam["query"] || "");
   }, []);
 
