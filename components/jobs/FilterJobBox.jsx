@@ -24,6 +24,8 @@ const FilterJobBox = () => {
   useEffect(() => {
     const queryParam = qs.parse(window.location.search);
 
+    console.log("queryParam", queryParam);
+
     setSearch(queryParam["query"] || "");
   }, []);
 
@@ -41,7 +43,7 @@ const FilterJobBox = () => {
         setLoading(false);
         if (res.data.success) {
           let { jobs, total } = res.data;
-          setAllJobs(jobs);
+          setAllJobs([...jobs]);
           setTotal(total);
         } else {
           toast.error(res.data.message);
