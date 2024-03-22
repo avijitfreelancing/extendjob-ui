@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import AdminMenuData from "@/data/AdminMenuData";
-import {UserLists} from "@/data/testAdminMenuData";
+import {UserLists} from "@/data/AdminMenuData";
 import {
     isActiveParent,
     isActiveLink,
