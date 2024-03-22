@@ -5,12 +5,13 @@ import axios from "@/helper/axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import BreadCrumb from "../bread-crumb/BreadCrumb";
-import { BUCKET_DOMAIN, DATE_TIME_HELPER } from "@/helper/Helper";
+import { BUCKET_DOMAIN, DATE_TIME_HELPER, JOB_STATUS } from "@/helper/Helper";
 import Link from "next/link";
 import Image from "next/image.js";
 import config from "@/helper/config";
 import moment from "moment";
 import Loader from "@/helper/loader/Loader";
+import "./jobs.css";
 
 const MyJobs = () => {
   const [loading, setLoading] = useState(false);
@@ -45,7 +46,7 @@ const MyJobs = () => {
     setLoading(true);
 
     axios
-      .put("/job/active-inactive-job", { id }, config)
+      .put("/job/active-inactive-job", { id }, config())
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
@@ -93,6 +94,7 @@ const MyJobs = () => {
                           <tr>
                             <th>Job Title</th>
                             <th>Date Post</th>
+                            <th>Admin Status</th>
                             <th>Status</th>
                             <th>Action</th>
                           </tr>
@@ -120,7 +122,7 @@ const MyJobs = () => {
                                           >
                                             {jobs.title +
                                               ", " +
-                                              jobs.category.category}
+                                              jobs.category?.category}
                                           </Link>
                                         </h4>
                                         <ul className="job-info">
@@ -141,6 +143,9 @@ const MyJobs = () => {
                                   {moment(jobs.createdAt).format(
                                     DATE_TIME_HELPER.JOB_DATE_FORMAT
                                   )}
+                                </td>
+                                <td className={JOB_STATUS[jobs.status]}>
+                                  {JOB_STATUS[jobs.status]}
                                 </td>
                                 <td
                                   className={

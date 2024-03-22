@@ -37,8 +37,7 @@ export default function RootLayout({ children }) {
             content="extend-job"
         />
         <meta name="ibthemes" content="ATFN" />
-
-        <link rel="icon" href="./extent_job_icon.png" />
+        <link rel="icon" href="extent_job_icon.ico" />
       </head>
 
       <body>
@@ -48,7 +47,7 @@ export default function RootLayout({ children }) {
           {/* Toastify */}
           <ToastContainer
               position="top-right"
-              autoClose={500}
+              autoClose={5000}
               hideProgressBar={false}
               newestOnTop={false}
               closeOnClick

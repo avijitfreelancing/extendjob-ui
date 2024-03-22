@@ -16,14 +16,13 @@ const MobileMenu = () => {
                   <Image
                     width={154}
                     height={50}
-                    src="/images/logo.svg"
+                    src="/images/extend_job.png"
                     alt="brand"
                   />
                 </Link>
               </div>
             </div>
             {/* End .logo-box */}
-
             <MobileSidebar />
             {/* <!-- Main Menu End--> */}
           </div>
