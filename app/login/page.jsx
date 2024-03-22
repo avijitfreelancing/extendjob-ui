@@ -143,7 +143,7 @@ const Login = () => {
                   onChange={handleOnChange}
                   required
                 />
-                <p className="invalid_input">{errors.email}</p>
+                <p className="invalid_input text-danger">{errors.email}</p>
               </div>
 
               <div className="form-group">
@@ -160,7 +160,7 @@ const Login = () => {
                   onChange={handleOnChange}
                   required
                 />
-                <p className="invalid_input">{errors.password}</p>
+                <p className="invalid_input text-danger">{errors.password}</p>
               </div>
 
               <div className="form-group">

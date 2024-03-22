@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import AdminMenuData from "@/data/AdminMenuData";
+import {UserLists} from "@/data/testAdminMenuData";
 import {
     isActiveParent,
     isActiveLink,
@@ -11,7 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { menuToggle } from "@/features/toggle/toggleSlice";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import {useState} from "react";
+import React, {useState} from "react";
+import {Menu, MenuItem, Sidebar, SubMenu} from "react-pro-sidebar";
 
 const AdminSidebar = () => {
     const { menu } = useSelector((state) => state.toggle);
@@ -39,7 +41,7 @@ const AdminSidebar = () => {
         </div>
       </div>
       {/* End sidebar close icon */}
-        <div className="auto-container mt-3">
+        <div className="auto-container mt-5">
             <div className="candidate-block-six">
                 <div className="inner-box">
                     <figure className="image">
@@ -51,53 +53,60 @@ const AdminSidebar = () => {
                         />
                     </figure>
                     <h4 className="name">name</h4>
-                    <span className="designation"><span className="icon flaticon-money"></span> $
-                                0.00</span>
+                    <span className="designation">
+                        <span className="icon flaticon-money"></span>
+                        $0.00
+                    </span>
                 </div>
             </div>
         </div>
       <div className="sidebar-inner">
-        <ul className="navigation">
-            {/*{AdminMenuData.map((item) => (*/}
-            {/*    <li*/}
-            {/*        className={`${*/}
-            {/*            isActiveLink(item.routePath, usePathname())*/}
-            {/*                ? "active"*/}
-            {/*                : ""*/}
-            {/*        } mb-1 dropdown`}*/}
-            {/*        key={item.id}*/}
-            {/*        onClick={() => handleMenuClick(item.id)}*/}
-            {/*    >*/}
-            {/*  <span className="menu-item">*/}
-            {/*    <i className={`la ${item.icon}`}></i> {item.name}*/}
-            {/*  </span>*/}
-            {/*        {item.subMenus && activeMenu === item.id && (*/}
-            {/*            <ul className="sub-menu">*/}
-            {/*                {item.subMenus.map((subItem) => (*/}
-            {/*                    <li key={subItem.id}>*/}
-            {/*                        <Link href={subItem.routePath}>*/}
-            {/*                            <span>{subItem.name}</span>*/}
-            {/*                        </Link>*/}
-            {/*                    </li>*/}
-            {/*                ))}*/}
-            {/*            </ul>*/}
-            {/*        )}*/}
-            {/*    </li>*/}
-            {/*))}*/}
-          {AdminMenuData.map((item) => (
-            <li
-              className={`${
-                isActiveLink(item.routePath, usePathname()) ? "active" : ""
-              } mb-1`}
-              key={item.id}
-              onClick={menuToggleHandler}
-            >
-              <Link href={item.routePath}>
-                <i className={`la ${item.icon}`}></i> {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          <Sidebar>
+              <Menu>
+                  {UserLists.map((item) => (
+                      <React.Fragment key={item.id}>
+                          {item.items ? (
+                              <SubMenu
+                                  className={
+                                      isActiveParentChaild(item.items, usePathname())
+                                          ? "menu-active-link"
+                                          : ""
+                                  }
+                                  label={item.name}
+                              >
+                                  {item.items.map((menuItem, i) => (
+                                      <MenuItem
+                                          key={i}
+                                          onClick={() => router.push(menuItem.routePath)}
+                                          className={
+                                              isActiveLink(menuItem.routePath, usePathname())
+                                                  ? "menu-active-link"
+                                                  : ""
+                                          }
+                                      >
+                                          <Link href={menuItem.routePath}>
+                                              <i className={`la ${menuItem.icon}`}></i> {menuItem.name}
+                                          </Link>
+                                      </MenuItem>
+                                  ))}
+                              </SubMenu>
+                          ) : (
+                              <MenuItem
+                                  onClick={menuToggleHandler}
+                                  className={`${
+                                      isActiveLink(item.routePath, usePathname()) ? "menu-active-link" : ""
+                                  } mb-1`}
+                                  key={item.id}
+                              >
+                                  <Link href={item.routePath}>
+                                      <i className={`la ${item.icon}`}></i> {item.name}
+                                  </Link>
+                              </MenuItem>
+                          )}
+                      </React.Fragment>
+                  ))}
+              </Menu>
+          </Sidebar>
       </div>
     </div>
   );
