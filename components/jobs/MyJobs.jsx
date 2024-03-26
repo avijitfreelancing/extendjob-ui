@@ -11,7 +11,6 @@ import Image from "next/image.js";
 import config from "@/helper/config";
 import moment from "moment";
 import Loader from "@/helper/loader/Loader";
-import "./jobs.css";
 
 const MyJobs = () => {
   const [loading, setLoading] = useState(false);
