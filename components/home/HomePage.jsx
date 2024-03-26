@@ -220,11 +220,11 @@ export default function HomePage() {
                         </h4>
                         <ul className="job-info">
                           <li>
-                            <span className="icon flaticon-map-locator"></span>
+                            <span className="icon flaticon-map-locator" />
                             {item.userDetails?.country_code}
                           </li>
                           <li>
-                            <span className="icon flaticon-clock-3"></span>{" "}
+                            <span className="icon flaticon-clock-3" />
                             {formattedDate}
                           </li>
                           <li>
