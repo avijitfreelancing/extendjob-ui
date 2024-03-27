@@ -10,9 +10,13 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Loader from "../common/loader/Loader";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfileDetails } from "@/reducers/UserSlice";
 
 export default function MyProfile() {
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     job_title: "",
@@ -28,36 +32,26 @@ export default function MyProfile() {
   });
   const [errors, setErrors] = useState({});
   const [profileImage, setProfileImage] = useState("");
+  const { profileDetails } = useSelector((state) => state.user);
 
   useEffect(() => {
-    getProfiledetails();
-  }, []);
+    dispatch(getProfileDetails());
+  }, [dispatch]);
 
-  const getProfiledetails = () => {
-    setLoading(true);
+  useEffect(() => {
+    setLoading(false);
 
-    axios
-      .get("/auth/profil-details", config())
-      .then((res) => {
-        setLoading(false);
-
-        if (res.data.success) {
-          let { userDetails } = res.data;
-          localStorage.setItem("userDetails", JSON.stringify(userDetails));
-          for (const [key, value] of Object.entries(userDetails)) {
-            formData[key] = value;
-            setFormData({ ...formData });
-          }
-        } else {
-          toast.error(res.data.message);
-        }
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.error(err);
-        toast.error("Something Went Wrong!!!");
-      });
-  };
+    if (profileDetails.success) {
+      let { userDetails } = profileDetails;
+      localStorage.setItem("userDetails", JSON.stringify(userDetails));
+      for (const [key, value] of Object.entries(userDetails)) {
+        formData[key] = value;
+        setFormData({ ...formData });
+      }
+    } else {
+      toast.error(profileDetails.message);
+    }
+  }, [profileDetails]);
 
   const handleOnChange = (e) => {
     let { name, value } = e.target;
@@ -161,7 +155,8 @@ export default function MyProfile() {
         if (res.data.success) {
           toast.success(res.data.message);
           localStorage.setItem("isProfileComplete", true);
-          getProfiledetails();
+          // getProfiledetails();
+          dispatch(getProfileDetails());
         } else {
           toast.error(res.data.message);
         }

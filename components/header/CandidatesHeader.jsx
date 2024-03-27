@@ -9,8 +9,11 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { BUCKET_DOMAIN } from "@/helper/Helper";
+import { useSelector } from "react-redux";
 
 const UserHeader = () => {
+  const { profileDetails } = useSelector((state) => state.user);
+
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const [userData, setUserData] = useState({});
@@ -79,6 +82,13 @@ const UserHeader = () => {
       toast.done(aa);
     }, 1500);
   };
+
+  useEffect(() => {
+    if (profileDetails.success) {
+      let { userDetails } = profileDetails;
+      setUserData(userDetails);
+    }
+  }, [profileDetails]);
 
   return (
     <header

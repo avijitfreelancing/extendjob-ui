@@ -8,6 +8,7 @@ import candidateSlice from "../features/candidate/candidateSlice";
 import candidateFilterSlice from "../features/filter/candidateFilterSlice";
 import shopSlice from "../features/shop/shopSlice";
 import WalletSlice from "@/reducers/WalletSlice";
+import UserSlice from "@/reducers/UserSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
     candidateFilter: candidateFilterSlice,
     shop: shopSlice,
     wallet: WalletSlice,
+    user: UserSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });

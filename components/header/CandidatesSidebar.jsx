@@ -17,6 +17,8 @@ const CandidatesSidebar = () => {
   const dispatch = useDispatch();
   const { menu } = useSelector((state) => state.toggle);
   const { walletDetails } = useSelector((state) => state.wallet);
+  const { profileDetails } = useSelector((state) => state.user);
+
   const [userDetails, setUserDetails] = useState({});
   const [walletBalance, setWalletBalance] = useState(0);
 
@@ -44,6 +46,13 @@ const CandidatesSidebar = () => {
     const { balance } = walletDetails.wallet;
     setWalletBalance(balance);
   }, [walletDetails]);
+
+  useEffect(() => {
+    if (profileDetails.success) {
+      let { userDetails } = profileDetails;
+      setUserDetails(userDetails);
+    }
+  }, [profileDetails]);
 
   return (
     <div className={`user-sidebar ${menu ? "sidebar_open" : ""}`}>
