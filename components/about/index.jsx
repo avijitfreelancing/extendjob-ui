@@ -4,6 +4,7 @@ import IntroDescriptions from "./IntroDescriptions";
 import Testimonial2 from "@/components/testimonial/Testimonial2";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import Image from "next/image";
+import Funfact from "../fun-fact-counter/Funfact";
 import Link from "next/link";
 
 const index = () => {
@@ -18,6 +19,12 @@ const index = () => {
       <section className="about-section-three">
         <div className="auto-container">
           <ImgBox />
+          <div className="fun-fact-section">
+          <div className="row">
+            <Funfact />
+          </div>
+        </div>
+        {/* <!-- Fun Fact Section --> */}
           <IntroDescriptions />
         </div>
       </section>
@@ -72,7 +79,7 @@ const index = () => {
           <div className="sec-title text-center">
             <h2>Testimonials From Our Customers</h2>
             <div className="text">
-              Lorem ipsum dolor sit amet elit, sed do eiusmod tempor
+            Outstanding service! Highly recommend [ExtendJob]
             </div>
           </div>
           {/* <!-- Sec Title --> */}

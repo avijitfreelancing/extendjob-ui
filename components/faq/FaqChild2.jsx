@@ -11,7 +11,7 @@ const FaqChild = () => {
               data-bs-target="#collapseOne"
               aria-expanded="true"
             >
-              How do I make a payment on extendjob?
+              What does it mean to "extend" my job or career?
             </button>
           </h2>
           <div
@@ -23,16 +23,9 @@ const FaqChild = () => {
             <div className="accordion-body ">
               <div className="content">
                 <p>
-                  To make a payment on extendjob, log in to your account and
-                  navigate to the payment or billing section. Follow the prompts
-                  to enter your payment information and complete the
-                  transaction.
-                </p>
-                <p>
-                  extendjob accepts various payment methods, including
-                  credit/debit cards, PayPal, bank transfers, and other secure
-                  payment options. The available payment methods may vary
-                  depending on your location
+                  Explanation: Define the concept of extending one's job or
+                  career, emphasizing continuous growth, skill development, and
+                  advancement opportunities.
                 </p>
               </div>
             </div>
@@ -48,7 +41,7 @@ const FaqChild = () => {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              How do I get a refund?
+              Is networking important for extending my job?
             </button>
           </h2>
           <div
@@ -60,10 +53,9 @@ const FaqChild = () => {
             <div className="accordion-body">
               <div className="content">
                 <p>
-                  Refund policies may vary depending on the type of transaction
-                  and the specific terms of service. If you believe you are
-                  eligible for a refund, please contact extendjob support to
-                  initiate the refund process.
+                  Explain the significance of networking in discovering new
+                  opportunities, building professional relationships, and
+                  staying updated on industry trends.
                 </p>
               </div>
             </div>
@@ -79,7 +71,7 @@ const FaqChild = () => {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              What payment methods are accepted on extendjob?
+              How do I balance extending my job with my current workload?
             </button>
           </h2>
           <div
@@ -91,10 +83,9 @@ const FaqChild = () => {
             <div className="accordion-body">
               <div className="content">
                 <p>
-                  extendjob accepts various payment methods, including
-                  credit/debit cards, PayPal, bank transfers, and other secure
-                  payment options. The available payment methods may vary
-                  depending on your location.
+                  Provide strategies for managing time effectively, setting
+                  priorities, and communicating with supervisors about taking on
+                  additional responsibilities.
                 </p>
               </div>
             </div>
@@ -110,7 +101,8 @@ const FaqChild = () => {
               aria-expanded="false"
               aria-controls="collapseFour"
             >
-              Is my payment information secure on extendjob?
+              Where can I find additional resources for extending my job or
+              career?
             </button>
           </h2>
           <div
@@ -122,9 +114,9 @@ const FaqChild = () => {
             <div className="accordion-body">
               <div className="content">
                 <p>
-                  Yes, we take the security of your payment information
-                  seriously. We use industry-standard encryption and security
-                  measures to protect your sensitive data.
+                  Provide links to relevant websites, books, podcasts, and
+                  online communities focused on career development, skill
+                  enhancement, and job advancement.
                 </p>
               </div>
             </div>

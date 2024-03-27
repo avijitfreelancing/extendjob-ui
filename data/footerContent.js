@@ -33,11 +33,13 @@ module.exports = [
   },
   {
     id: 4,
-    title: "Helpful Resources",
+    title: "Privacy & Policy",
     menuList: [
-      { name: "Site Map", route: "/" },
-      { name: "Terms of Use", route: "/terms" },
-      { name: "Privacy Center", route: "/" },
+      { name: "Privacy Policy", route: "/payment-policy" },
+      { name: "Refund Policy", route: "/refund-policy" },
+      { name: "Working Policy", route: "/working-policy" },
+      { name: "Terms of Service", route: "/Terms-service" },
     ],
   },
+ 
 ];

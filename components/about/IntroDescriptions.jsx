@@ -1,24 +1,28 @@
 const IntroDescriptions = () => {
   return (
     <div className="text-box">
-      <h4>About Superio</h4>
+      <h4>About Extendjob</h4>
       <p>
-        Far much that one rank beheld bluebird after outside ignobly allegedly
-        more when oh arrogantly vehement irresistibly fussy penguin insect
-        additionally wow absolutely crud meretriciously hastily dalmatian a
-        glowered inset one echidna cassowary some parrot and much as goodness
-        some froze the sullen much connected bat wonderfully on instantaneously
-        eel valiantly petted this along across highhandedly much.
+        ExtendJob is a prominent microworker company that serves as a platform
+        connecting businesses with skilled individuals capable of completing a
+        wide array of tasks remotely. Here's an overview of ExtendJob.ExtendJob
+        hosts a diverse range of micro tasks, spanning from data entry and
+        transcription to content moderation and graphic design. This variety
+        allows clients to find assistance for virtually any project or task they
+        need to outsource.
       </p>
       <p>
-        Repeatedly dreamed alas opossum but dramatically despite expeditiously
-        that jeepers loosely yikes that as or eel underneath kept and slept
-        compactly far purred sure abidingly up above fitting to strident wiped
-        set waywardly far the and pangolin horse approving paid chuckled
-        cassowary oh above a much opposite far much hypnotically more therefore
-        wasp less that hey apart well like while superbly orca and far hence
-        one.Far much that one rank beheld bluebird after outside ignobly
-        allegedly more when oh arrogantly vehement irresistibly fussy.
+        One of ExtendJob's key features is its flexibility for micro workers.
+        Individuals can choose the tasks they want to complete and work
+        according to their own schedules, making it an ideal option for
+        students, freelancers, and those seeking supplementary income.And It
+        ensures fair compensation for micro workers based on the tasks
+        completed. Payment rates are competitive and commensurate with the
+        complexity and time required for each task.To maintain high-quality
+        standards, ExtendJob implements robust quality assurance measures. This
+        includes providing clear task instructions, monitoring task completion
+        for accuracy, and gathering feedback from clients to continuously
+        improve performance.
       </p>
     </div>
   );

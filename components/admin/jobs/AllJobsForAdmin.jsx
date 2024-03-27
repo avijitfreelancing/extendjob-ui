@@ -14,7 +14,7 @@ export default function AllJobsForAdmin() {
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
   const [sort, setSort] = useState(-1);
   const [search, setSearch] = useState("");
 
@@ -77,8 +77,7 @@ export default function AllJobsForAdmin() {
                       <thead>
                         <tr>
                           <th>Title</th>
-                          <th>Applications</th>
-                          <th>Created & Expired</th>
+                          <th>Date Post</th>
                           <th>Status</th>
                           <th>Action</th>
                         </tr>
@@ -109,27 +108,25 @@ export default function AllJobsForAdmin() {
                                       </h4>
                                       <ul className="job-info">
                                         <li>
-                                          <span className="icon flaticon-briefcase"></span>
-                                          Segment
+                                          <span className="icon flaticon-map-locator" />
+                                          {item.userDetails?.country_code}
                                         </li>
                                         <li>
-                                          <span className="icon flaticon-map-locator"></span>
-                                          London, UK
+                                          <span className="icon flaticon-money" />
+                                          {item.total_budget}
                                         </li>
                                       </ul>
                                     </div>
                                   </div>
                                 </div>
                               </td>
-                              <td className="applied">
-                                <a href="#">3+ Applied</a>
-                              </td>
+
                               <td>
-                                {moment(jobs.createdAt).format(
+                                {moment(item.createdAt).format(
                                   DATE_TIME_HELPER.JOB_DATE_FORMAT
                                 )}
                               </td>
-                              <td className="status">
+                              <td className={JOB_STATUS[item.status]}>
                                 {JOB_STATUS[item.status]}
                               </td>
                               <td>
