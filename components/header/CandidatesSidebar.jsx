@@ -10,11 +10,15 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BUCKET_DOMAIN } from "@/helper/Helper";
+import { getWalletBalance } from "@/reducers/WalletSlice";
+import { toast } from "react-toastify";
 
 const CandidatesSidebar = () => {
-  const { menu } = useSelector((state) => state.toggle);
-  const [userDetails, setUserDetails] = useState({});
   const dispatch = useDispatch();
+  const { menu } = useSelector((state) => state.toggle);
+  const { walletDetails } = useSelector((state) => state.wallet);
+  const [userDetails, setUserDetails] = useState({});
+  const [walletBalance, setWalletBalance] = useState(0);
 
   const menuToggleHandler = () => {
     dispatch(menuToggle());
@@ -27,6 +31,19 @@ const CandidatesSidebar = () => {
       setUserDetails(JSON.parse(userDetails));
     }
   }, []);
+
+  useEffect(() => {
+    dispatch(getWalletBalance());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!walletDetails.success) {
+      toast.error(walletDetails.message);
+      return;
+    }
+    const { balance } = walletDetails.wallet;
+    setWalletBalance(balance);
+  }, [walletDetails]);
 
   return (
     <div className={`user-sidebar ${menu ? "sidebar_open" : ""}`}>
@@ -52,8 +69,7 @@ const CandidatesSidebar = () => {
             </figure>
             <h4 className="name">{userDetails.name || userDetails.username}</h4>
             <span className="designation">
-              <span className="icon flaticon-money"></span>
-              $0.00
+              <span className="icon flaticon-money" />${walletBalance}
             </span>
           </div>
         </div>
