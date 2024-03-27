@@ -1,5 +1,7 @@
 import Breadcrumb from "@/components/common/Breadcrumb";
 import FaqChild from "./FaqChild";
+import FaqChild2 from "./FaqChild2";
+
 
 const index = () => {
   return (
@@ -26,7 +28,7 @@ const index = () => {
           <h3>Suggestions</h3>
           {/* <!--Accordian Box--> */}
           <ul className="accordion-box mb-0">
-            <FaqChild />
+            <FaqChild2 />
           </ul>
         </div>
       </section>

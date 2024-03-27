@@ -41,7 +41,7 @@ const FilterJobBox = () => {
         setLoading(false);
         if (res.data.success) {
           let { jobs, total } = res.data;
-          setAllJobs(jobs);
+          setAllJobs([...jobs]);
           setTotal(total);
         } else {
           toast.error(res.data.message);

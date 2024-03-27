@@ -170,7 +170,7 @@ const index = () => {
                     onChange={handleOnChange}
                     required
                   />
-                  <p className="invalid_input">{errors.username}</p>
+                  <p className="invalid_input text-danger">{errors.username}</p>
                 </div>
 
                 <div className="form-group col-lg-6 col-md-12">
@@ -189,7 +189,7 @@ const index = () => {
                     onChange={handleOnChange}
                     required
                   />
-                  <p className="invalid_input">{errors.email}</p>
+                  <p className="invalid_input text-danger">{errors.email}</p>
                 </div>
 
                 <div className="form-group col-lg-6 col-md-12">
@@ -226,7 +226,7 @@ const index = () => {
                     onChange={handleOnChange}
                     required
                   />
-                  <p className="invalid_input">{errors.mobile}</p>
+                  <p className="invalid_input text-danger">{errors.mobile}</p>
                 </div>
 
                 <div className="form-group col-lg-6 col-md-12">
@@ -243,7 +243,7 @@ const index = () => {
                     onChange={handleOnChange}
                     required
                   />
-                  <p className="invalid_input">{errors.password}</p>
+                  <p className="invalid_input text-danger">{errors.password}</p>
                 </div>
                 <div className="form-group col-lg-6 col-md-12">
                   <label>Confirm Password</label>
@@ -259,7 +259,7 @@ const index = () => {
                     onChange={handleOnChange}
                     required
                   />
-                  <p className="invalid_input">{errors.c_password}</p>
+                  <p className="invalid_input text-danger">{errors.c_password}</p>
                 </div>
 
                 <div className="form-group">

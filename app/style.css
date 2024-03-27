@@ -1,0 +1,9 @@
+.Rejected {
+  color: red !important;
+}
+.Pending {
+  color: #bbb6b6 !important;
+}
+.Approved {
+  color: green !important;
+}

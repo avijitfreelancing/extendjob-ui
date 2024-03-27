@@ -79,9 +79,12 @@ export default function JobDetails({ params }) {
   const getDay = (momentDate) => momentDate.format(DAY_FORMAT);
 
   const company = jobs.find((item) => item.id == 1) || jobs[0];
+  const mt_90 = {
+    marginTop: '90px' // Adjust '90px' according to your desired margin value
+  };
 
   return (
-    <section className="job-detail-section mt-56">
+    <section className="job-detail-section" style={mt_90}>
       {loading && <Loader />}
       <div className="upper-box">
         <div className="auto-container">

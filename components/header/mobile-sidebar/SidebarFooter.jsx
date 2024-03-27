@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const SidebarFooter = () => {
   const socialContent = [
     { id: 1, icon: "fa-facebook-f", link: "https://www.facebook.com/" },
@@ -8,9 +10,9 @@ const SidebarFooter = () => {
 
   return (
     <div className="mm-add-listing mm-listitem pro-footer">
-      <a href="/post-job" className="theme-btn btn-style-one mm-listitem__text">
+      <Link href="/post-job" className="theme-btn btn-style-one mm-listitem__text">
         Job Post
-      </a>
+      </Link>
       {/* job post btn */}
 
       <div className="mm-listitem__text">
