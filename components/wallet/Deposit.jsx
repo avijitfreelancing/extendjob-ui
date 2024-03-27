@@ -55,7 +55,7 @@ export default function Deposit() {
           setFormData({
             amount: "",
           });
-          window.open(approvalUrl, "_blank");
+          window.location.replace(approvalUrl);
         })
         .catch((err) => {
           setLoading(false);
