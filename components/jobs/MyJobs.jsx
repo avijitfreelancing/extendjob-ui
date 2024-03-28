@@ -160,13 +160,16 @@ const MyJobs = () => {
                                   <div className="option-box">
                                     <ul className="option-list">
                                       <li>
-                                        <button data-text="View Aplication">
-                                          <span className="la la-edit"></span>
-                                        </button>
+                                        <Link
+                                          href={`/edit-job/${jobs._id}`}
+                                          data-text="Edit"
+                                        >
+                                          <span className="la la-edit" />
+                                        </Link>
                                       </li>
                                       <li>
-                                        <button data-text="Delete Aplication">
-                                          <span className="la la-trash text-danger"></span>
+                                        <button data-text="Delete">
+                                          <span className="la la-trash text-danger" />
                                         </button>
                                       </li>
                                     </ul>
