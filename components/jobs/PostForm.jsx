@@ -10,8 +10,13 @@ import validation from "@/helper/validation";
 import config from "@/helper/config";
 import { getFileExtension } from "@/helper/Helper";
 import Loader from "@/helper/loader/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { getWalletBalance } from "@/reducers/WalletSlice";
 
 const PostForm = () => {
+  const dispatch = useDispatch();
+  const { walletDetails } = useSelector((state) => state.wallet);
+
   const [formData, setFormData] = useState({
     banner: "",
     category: "",
@@ -34,8 +39,16 @@ const PostForm = () => {
 
   useEffect(() => {
     getAllCategories();
-    getWalletBalance();
   }, []);
+
+  useEffect(() => {
+    if (!walletDetails.success) {
+      toast.error(walletDetails.message);
+      return;
+    }
+    const { balance } = walletDetails.wallet;
+    setWalletBalance(balance);
+  }, [walletDetails]);
 
   const getAllCategories = () => {
     setLoading(true);
@@ -47,26 +60,6 @@ const PostForm = () => {
           let { job_category } = res.data;
 
           setJobCategory(job_category);
-        } else {
-          toast.error(res.data.message);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-        toast.error("Something went wrong !!!");
-      });
-  };
-
-  const getWalletBalance = () => {
-    setLoading(true);
-    axios
-      .get("/wallet/wallet-balance", config())
-      .then((res) => {
-        setLoading(false);
-        if (res.data.success) {
-          let { wallet } = res.data;
-          setWalletBalance(wallet.balance);
         } else {
           toast.error(res.data.message);
         }
@@ -221,6 +214,7 @@ const PostForm = () => {
           });
           setSubCategory([]);
           setImage(null);
+          dispatch(getWalletBalance());
         } else {
           toast.error(res.data.message);
         }
