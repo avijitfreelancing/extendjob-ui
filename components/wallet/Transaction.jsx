@@ -63,7 +63,6 @@ export default function Transaction() {
                           <th>Date</th>
                           <th>Amount</th>
                           <th>Type</th>
-                          <th>Status</th>
                         </tr>
                       </thead>
 
@@ -71,17 +70,15 @@ export default function Transaction() {
                         {allTransaction.map((item, key) => {
                           return (
                             <tr key={key}>
-                              <td className="trans-id">#{item.paymentId}</td>
-                              <td className="package">
-                                <a href="#">Super CV Pack</a>
-                              </td>
+                              <td className="trans-id">#{item._id}</td>
+                              <td className="expiry">{item.message}</td>
                               {/* <td className="expiry">Jan 11, 2021</td> */}
                               <td className="expiry">
                                 {moment(item.createdAt).format(
-                                  DATE_TIME_HELPER.DATE_TIME_FORMAT
+                                  DATE_TIME_HELPER.JOB_DATE_FORMAT
                                 )}
                               </td>
-                              <td className="total-jobs">{item.amount}</td>
+                              <td className="total-jobs">${item.amount}</td>
                               <td
                                 className={
                                   item.payment_type === 1 ? "credit" : "debit"
@@ -89,7 +86,6 @@ export default function Transaction() {
                               >
                                 {item.payment_type === 1 ? "Cr" : "De"}
                               </td>
-                              <td className="status">Active</td>
                             </tr>
                           );
                         })}
