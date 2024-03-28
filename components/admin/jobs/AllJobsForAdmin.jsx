@@ -17,7 +17,7 @@ export default function AllJobsForAdmin() {
   const [perPage, setPerPage] = useState(10);
   const [sort, setSort] = useState(-1);
   const [search, setSearch] = useState("");
-
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to track dropdown open/close
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
@@ -46,6 +46,10 @@ export default function AllJobsForAdmin() {
         setLoading(false);
         toast.error("Something went wrong !!!");
       });
+  };
+  // Function to toggle dropdown
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -138,8 +142,13 @@ export default function AllJobsForAdmin() {
                                       </button>
                                     </li>
                                     <li>
+                                      <button data-text="Approve Aplication">
+                                        <span className="la la-check"></span>
+                                      </button>
+                                    </li>
+                                    <li>
                                       <button data-text="Reject Aplication">
-                                        <span className="la la-pencil"></span>
+                                        <span className="la la-times-circle"></span>
                                       </button>
                                     </li>
                                     <li>
