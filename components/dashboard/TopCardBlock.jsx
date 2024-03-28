@@ -9,7 +9,7 @@ const TopCardBlock = () => {
     },
     {
       id: 2,
-      icon: "la-file-invoice",
+      icon: "flaticon-file",
       countNumber: "9382",
       metaName: "Job Alerts",
       uiClass: "ui-red",

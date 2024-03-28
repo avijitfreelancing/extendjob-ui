@@ -17,7 +17,7 @@ export default function AllJobsForAdmin() {
   const [perPage, setPerPage] = useState(10);
   const [sort, setSort] = useState(-1);
   const [search, setSearch] = useState("");
-
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to track dropdown open/close
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
@@ -46,6 +46,10 @@ export default function AllJobsForAdmin() {
         setLoading(false);
         toast.error("Something went wrong !!!");
       });
+  };
+  // Function to toggle dropdown
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -133,18 +137,13 @@ export default function AllJobsForAdmin() {
                                 <div className="option-box">
                                   <ul className="option-list">
                                     <li>
-                                      <button data-text="View Aplication">
-                                        <span className="la la-eye"></span>
+                                      <button data-text="Approve Jobs">
+                                        <span className="la la-check"></span>
                                       </button>
                                     </li>
                                     <li>
-                                      <button data-text="Reject Aplication">
-                                        <span className="la la-pencil"></span>
-                                      </button>
-                                    </li>
-                                    <li>
-                                      <button data-text="Delete Aplication">
-                                        <span className="la la-trash"></span>
+                                      <button data-text="Reject Jobs">
+                                        <span className="la la-times-circle text-danger"></span>
                                       </button>
                                     </li>
                                   </ul>
