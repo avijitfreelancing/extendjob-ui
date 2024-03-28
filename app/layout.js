@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
         <Provider store={store}>
           <div className="page-wrapper">
             {children}
-            {/* Toastify */}
+
             <ToastContainer
               position="top-right"
               autoClose={5000}
@@ -55,7 +55,7 @@ export default function RootLayout({ children }) {
               pauseOnHover
               theme="colored"
             />
-            {/* <!-- Scroll To Top --> */}
+
             <ScrollToTop />
           </div>
         </Provider>
