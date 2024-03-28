@@ -72,7 +72,6 @@ export default function Transaction() {
                             <tr key={key}>
                               <td className="trans-id">#{item._id}</td>
                               <td className="expiry">{item.message}</td>
-                              {/* <td className="expiry">Jan 11, 2021</td> */}
                               <td className="expiry">
                                 {moment(item.createdAt).format(
                                   DATE_TIME_HELPER.JOB_DATE_FORMAT
