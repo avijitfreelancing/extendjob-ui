@@ -137,23 +137,13 @@ export default function AllJobsForAdmin() {
                                 <div className="option-box">
                                   <ul className="option-list">
                                     <li>
-                                      <button data-text="View Aplication">
-                                        <span className="la la-eye"></span>
-                                      </button>
-                                    </li>
-                                    <li>
-                                      <button data-text="Approve Aplication">
+                                      <button data-text="Approve Jobs">
                                         <span className="la la-check"></span>
                                       </button>
                                     </li>
                                     <li>
-                                      <button data-text="Reject Aplication">
-                                        <span className="la la-times-circle"></span>
-                                      </button>
-                                    </li>
-                                    <li>
-                                      <button data-text="Delete Aplication">
-                                        <span className="la la-trash"></span>
+                                      <button data-text="Reject Jobs">
+                                        <span className="la la-times-circle text-danger"></span>
                                       </button>
                                     </li>
                                   </ul>

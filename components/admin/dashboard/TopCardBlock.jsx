@@ -16,14 +16,14 @@ const TopCardBlock = () => {
     },
     {
       id: 3,
-      icon: "flaticon-comment",
+      icon: "la-comment-o",
       countNumber: "74",
       metaName: "Messages",
       uiClass: "ui-yellow",
     },
     {
       id: 4,
-      icon: "flaticon-list",
+      icon: "la-bookmark-o",
       countNumber: "32",
       metaName: "Shortlist",
       uiClass: "ui-green",
@@ -39,7 +39,7 @@ const TopCardBlock = () => {
         >
           <div className={`ui-item ${item.uiClass}`}>
             <div className="left">
-              <i className={`icon ${item.icon}`}></i>
+              <i className={`icon la ${item.icon}`}></i>
             </div>
             <div className="right">
               <h4>{item.countNumber}</h4>
