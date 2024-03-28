@@ -17,7 +17,6 @@ export default function AllJobsForAdmin() {
   const [perPage, setPerPage] = useState(10);
   const [sort, setSort] = useState(-1);
   const [search, setSearch] = useState("");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to track dropdown open/close
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
@@ -47,9 +46,45 @@ export default function AllJobsForAdmin() {
         toast.error("Something went wrong !!!");
       });
   };
-  // Function to toggle dropdown
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+
+  const approvedJob = (job_id) => {
+    setLoading(true);
+    axios
+      .put("/job/job-approved", { job_id }, adminConfig())
+      .then((res) => {
+        if (res.data.success) {
+          toast.success(res.data.message);
+          getAllJobs();
+        } else {
+          setLoading(false);
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        toast.error("Something went wrong !!!");
+      });
+  };
+
+  const rejectedJob = (job_id) => {
+    setLoading(true);
+    axios
+      .put("/job/job-rejected", { job_id }, adminConfig())
+      .then((res) => {
+        if (res.data.success) {
+          toast.success(res.data.message);
+          getAllJobs();
+        } else {
+          setLoading(false);
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        toast.error("Something went wrong !!!");
+      });
   };
 
   return (
@@ -134,20 +169,32 @@ export default function AllJobsForAdmin() {
                                 {JOB_STATUS[item.status]}
                               </td>
                               <td>
-                                <div className="option-box">
-                                  <ul className="option-list">
-                                    <li>
-                                      <button data-text="Approve Jobs">
-                                        <span className="la la-check"></span>
-                                      </button>
-                                    </li>
-                                    <li>
-                                      <button data-text="Reject Jobs">
-                                        <span className="la la-times-circle text-danger"></span>
-                                      </button>
-                                    </li>
-                                  </ul>
-                                </div>
+                                {item.status === 1 && (
+                                  <div className="option-box">
+                                    <ul className="option-list">
+                                      <li>
+                                        <button
+                                          data-text="Approved"
+                                          onClick={() => {
+                                            approvedJob(item._id);
+                                          }}
+                                        >
+                                          <span className="la la-check" />
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button
+                                          data-text="Reject"
+                                          onClick={() => {
+                                            rejectedJob(item._id);
+                                          }}
+                                        >
+                                          <span className="la la-times-circle text-danger" />
+                                        </button>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                )}
                               </td>
                             </tr>
                           );
