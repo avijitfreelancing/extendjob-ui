@@ -12,6 +12,10 @@ export const pageItems = [
     routePath: "/terms",
   },
   {
+    name: "Refund-policy",
+    routePath: "/refund-policy",
+  },
+  {
     name: "Contact",
     routePath: "/contact",
   },

@@ -302,10 +302,7 @@ export const blogItems = [
 ];
 
 export const pageItems = [
-  {
-    name: "About",
-    routePath: "/about",
-  },
+ 
   {
     name: "FAQ's",
     routePath: "/faq",

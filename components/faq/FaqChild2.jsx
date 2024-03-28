@@ -11,7 +11,7 @@ const FaqChild = () => {
               data-bs-target="#collapseOne"
               aria-expanded="true"
             >
-              What does it mean to "extend" my job or career?
+            Children's Online Privacy Protection Act Compliance
             </button>
           </h2>
           <div
@@ -23,9 +23,11 @@ const FaqChild = () => {
             <div className="accordion-body ">
               <div className="content">
                 <p>
-                  Explanation: Define the concept of extending one's job or
-                  career, emphasizing continuous growth, skill development, and
-                  advancement opportunities.
+                We are consistent with the prerequisites of COPPA (Children's
+                Online Privacy Protection Act), we don't gather any data from
+                anybody under 13 years old. Our site, items, and
+                administrations are completely coordinated to individuals who
+                are in any event 13 years of age or more established.
                 </p>
               </div>
             </div>
@@ -41,7 +43,7 @@ const FaqChild = () => {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              Is networking important for extending my job?
+            Changes to our Privacy Policy
             </button>
           </h2>
           <div
@@ -53,9 +55,8 @@ const FaqChild = () => {
             <div className="accordion-body">
               <div className="content">
                 <p>
-                  Explain the significance of networking in discovering new
-                  opportunities, building professional relationships, and
-                  staying updated on industry trends.
+                If we decide to change our privacy policy, we will post those
+                changes on this page.
                 </p>
               </div>
             </div>
@@ -71,7 +72,7 @@ const FaqChild = () => {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              How do I balance extending my job with my current workload?
+            How long we retain your information?
             </button>
           </h2>
           <div
@@ -83,9 +84,10 @@ const FaqChild = () => {
             <div className="accordion-body">
               <div className="content">
                 <p>
-                  Provide strategies for managing time effectively, setting
-                  priorities, and communicating with supervisors about taking on
-                  additional responsibilities.
+                At the point when you register for our site, we cycle and keep
+                your information we have about you however long you don't
+                erase the record or withdraw yourself (subject to laws and
+                guidelines).
                 </p>
               </div>
             </div>
@@ -101,8 +103,7 @@ const FaqChild = () => {
               aria-expanded="false"
               aria-controls="collapseFour"
             >
-              Where can I find additional resources for extending my job or
-              career?
+            What we don’t do with your data?
             </button>
           </h2>
           <div
@@ -114,9 +115,9 @@ const FaqChild = () => {
             <div className="accordion-body">
               <div className="content">
                 <p>
-                  Provide links to relevant websites, books, podcasts, and
-                  online communities focused on career development, skill
-                  enhancement, and job advancement.
+                We don't and will never share, unveil, sell, or in any case
+                give your information to different organizations for the
+                promoting of their items or administrations.
                 </p>
               </div>
             </div>

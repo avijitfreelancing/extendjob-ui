@@ -81,7 +81,7 @@ const Footer = () => {
             <div className="copyright-text">
               © {new Date().getFullYear()} Extendjob by{" "}
               <a
-                href="https://devtechmsaters.com"
+                href="https://devtechmasters.com/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

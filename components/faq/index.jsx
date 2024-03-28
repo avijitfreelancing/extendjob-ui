@@ -2,7 +2,6 @@ import Breadcrumb from "@/components/common/Breadcrumb";
 import FaqChild from "./FaqChild";
 import FaqChild2 from "./FaqChild2";
 
-
 const index = () => {
   return (
     <>
@@ -19,13 +18,13 @@ const index = () => {
             <div className="text">Home / Faq</div>
           </div>
 
-          <h3>Payments</h3>
+          <h3>Privacy Policy</h3>
           {/* <!--Accordian Box--> */}
           <ul className="accordion-box">
             <FaqChild />
           </ul>
-
-          <h3>Suggestions</h3>
+          
+           {/*  <h3>Suggestions</h3> */}
           {/* <!--Accordian Box--> */}
           <ul className="accordion-box mb-0">
             <FaqChild2 />

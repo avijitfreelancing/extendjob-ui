@@ -11,7 +11,7 @@ const FaqChild = () => {
               data-bs-target="#collapseOne"
               aria-expanded="true"
             >
-              How do I make a payment on extendjob?
+              What information do we collect?
             </button>
           </h2>
           <div
@@ -23,16 +23,12 @@ const FaqChild = () => {
             <div className="accordion-body ">
               <div className="content">
                 <p>
-                  To make a payment on extendjob, log in to your account and
-                  navigate to the payment or billing section. Follow the prompts
-                  to enter your payment information and complete the
-                  transaction.
-                </p>
-                <p>
-                  extendjob accepts various payment methods, including
-                  credit/debit cards, PayPal, bank transfers, and other secure
-                  payment options. The available payment methods may vary
-                  depending on your location
+                  We gather data from you when you register on our site, submit
+                  a request, buy any services, react to an overview, or round
+                  out a structure. At the point when requesting any assistance
+                  or enrolling on our site, as suitable, you might be approached
+                  to enter your: name, email address, or telephone number. You
+                  may, nonetheless, visit our site anonymously.
                 </p>
               </div>
             </div>
@@ -48,7 +44,7 @@ const FaqChild = () => {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              How do I get a refund?
+              How do we protect your information?
             </button>
           </h2>
           <div
@@ -60,10 +56,10 @@ const FaqChild = () => {
             <div className="accordion-body">
               <div className="content">
                 <p>
-                  Refund policies may vary depending on the type of transaction
-                  and the specific terms of service. If you believe you are
-                  eligible for a refund, please contact extendjob support to
-                  initiate the refund process.
+                  All provided delicate/credit data is sent through Stripe.
+                  After an exchange, your private data (credit cards, social
+                  security numbers, financials, and so on) won't be put away on
+                  our workers.
                 </p>
               </div>
             </div>
@@ -79,7 +75,7 @@ const FaqChild = () => {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              What payment methods are accepted on extendjob?
+              Do we disclose any information to outside parties?
             </button>
           </h2>
           <div
@@ -91,40 +87,14 @@ const FaqChild = () => {
             <div className="accordion-body">
               <div className="content">
                 <p>
-                  extendjob accepts various payment methods, including
-                  credit/debit cards, PayPal, bank transfers, and other secure
-                  payment options. The available payment methods may vary
-                  depending on your location.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="accordion-item accordion block active-block">
-          <h2 className="accordion-header" id="headingTwo">
-            <button
-              className="accordion-button acc-btn collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseFour"
-              aria-expanded="false"
-              aria-controls="collapseFour"
-            >
-              Is my payment information secure on extendjob?
-            </button>
-          </h2>
-          <div
-            id="collapseFour"
-            className="accordion-collapse collapse"
-            aria-labelledby="headingTwo"
-            data-bs-parent="#accordionExample"
-          >
-            <div className="accordion-body">
-              <div className="content">
-                <p>
-                  Yes, we take the security of your payment information
-                  seriously. We use industry-standard encryption and security
-                  measures to protect your sensitive data.
+                  We don't sell, exchange, or in any case move to outside
+                  gatherings by and by recognizable data. This does exclude
+                  confided in outsiders who help us in working our site, leading
+                  our business, or adjusting you, since those gatherings consent
+                  to keep this data private. We may likewise deliver your data
+                  when we accept discharge is suitable to follow the law,
+                  implement our site strategies, or ensure our own or others'
+                  rights, property, or wellbeing.
                 </p>
               </div>
             </div>

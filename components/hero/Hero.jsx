@@ -68,7 +68,7 @@ export default function Hero() {
                 </form>
               </div>
 
-              <PopularSearch />
+              {/*<PopularSearch />*/}
             </div>
           </div>
 

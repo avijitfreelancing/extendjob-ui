@@ -8,10 +8,10 @@ const Address = () => {
       title: "Address",
       text: (
         <>
-          329 Queensberry Street, North
-          <br /> Melbourne VIC 3051, Australia.
+          19652, King Abdul Aziz Road Al Muzahmiya,
+          <br /> Riyadh, KSA.
         </>
-      ),
+      )
     },
     {
       id: 2,
@@ -20,10 +20,10 @@ const Address = () => {
       text: (
         <>
           <a href="tel:+4733378901" className="phone">
-            123 456 7890
+          +966557413295
           </a>
         </>
-      ),
+      )
     },
     {
       id: 3,
@@ -32,10 +32,10 @@ const Address = () => {
       text: (
         <>
           {" "}
-          <a href="#">contact.london@example.com</a>
+          <a href="#">contact.support@extendjob.com</a>
         </>
-      ),
-    },
+      )
+    }
   ];
   return (
     <>
