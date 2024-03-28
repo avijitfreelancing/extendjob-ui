@@ -7,10 +7,10 @@ export const metadata = {
   description: "Edit Job",
 };
 
-const index = () => {
+const index = (props) => {
   return (
     <UserWrapper>
-      <EditJob />
+      <EditJob {...props} />
     </UserWrapper>
   );
 };

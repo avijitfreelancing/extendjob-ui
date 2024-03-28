@@ -1,13 +1,16 @@
 "use client";
 
-import { getFileExtension } from "@/helper/Helper";
+import { BUCKET_DOMAIN, getFileExtension } from "@/helper/Helper";
+import axios from "@/helper/axios";
+import config from "@/helper/config";
 import Loader from "@/helper/loader/Loader";
+import validation from "@/helper/validation";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-export default function EditJob() {
+export default function EditJob({ params }) {
   const dispatch = useDispatch();
   const { walletDetails } = useSelector((state) => state.wallet);
 
@@ -31,6 +34,8 @@ export default function EditJob() {
 
   const [walletBalance, setWalletBalance] = useState(0);
 
+  const id = params.id;
+
   useEffect(() => {
     if (!walletDetails.success) {
       toast.error(walletDetails.message);
@@ -39,6 +44,61 @@ export default function EditJob() {
     const { balance } = walletDetails.wallet;
     setWalletBalance(balance);
   }, [walletDetails]);
+
+  useEffect(() => {
+    getJobDetails();
+    getAllCategories();
+  }, [id]);
+
+  const getJobDetails = () => {
+    setLoading(true);
+    axios
+      .get(`/job/job/${id}`, config())
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
+          let { job } = res.data;
+
+          for (const [key, value] of Object.entries(job)) {
+            if (key === "category") {
+              formData.category = value._id;
+              setSubCategory(value.sub_category);
+            } else {
+              formData[key] = value;
+            }
+            setFormData({ ...formData });
+          }
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        toast.error("Something went wrong !!!");
+      });
+  };
+
+  const getAllCategories = () => {
+    setLoading(true);
+    axios
+      .get("/job/categories")
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
+          let { job_category } = res.data;
+
+          setJobCategory(job_category);
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        toast.error("Something went wrong !!!");
+      });
+  };
 
   const handleImage = (e) => {
     e.persist();
@@ -60,6 +120,48 @@ export default function EditJob() {
         toast.error("The file format is not supported");
       }
     }
+  };
+
+  const handleOnChange = (e) => {
+    let { name, value } = e.target;
+
+    formData[name] = value;
+
+    if (name === "category") {
+      let { sub_category } = _.find(jobCategory, (o) => {
+        return o._id === value;
+      });
+      setSubCategory(sub_category);
+      formData.sub_category = "";
+    }
+    if (name === "quentity") {
+      let { worker_price } = formData;
+      if (worker_price) {
+        worker_price = Number(worker_price);
+        let val = Number(value);
+        formData.total_budget = val * worker_price;
+      }
+    }
+    if (name === "worker_price") {
+      let { quentity } = formData;
+      if (quentity) {
+        quentity = Number(quentity);
+        let val = Number(value);
+        formData.total_budget = val * quentity;
+      }
+    }
+
+    setFormData({ ...formData });
+
+    const valid_obj = {
+      value,
+      rules: e.target.getAttribute("validaterule"),
+      message: e.target.getAttribute("validatemsg"),
+    };
+
+    validation(valid_obj).then((err) => {
+      setErrors({ ...errors, [name]: err });
+    });
   };
 
   const handleOnSumit = (e) => {
@@ -140,9 +242,14 @@ export default function EditJob() {
                               <span className="uploadButton-file-name" />
                             </div>
                             <div className="text">
-                              {image && (
+                              {image ? (
                                 <img
                                   src={URL.createObjectURL(image)}
+                                  alt="banner"
+                                />
+                              ) : (
+                                <img
+                                  src={BUCKET_DOMAIN + formData.banner}
                                   alt="banner"
                                 />
                               )}
@@ -150,6 +257,56 @@ export default function EditJob() {
                           </div>
                         </div>
                       </div>
+
+                      <div className="form-group col-lg-6 col-md-12">
+                        <label>Category </label>
+                        <span className="text-danger">*</span>
+
+                        <select
+                          name="category"
+                          required
+                          validaterule={["required"]}
+                          validatemsg={["category is required"]}
+                          value={formData.category}
+                          onChange={handleOnChange}
+                        >
+                          <option value="">Select Category</option>
+                          {jobCategory.map((category, key) => {
+                            return (
+                              <option key={key} value={category._id}>
+                                {category.category}
+                              </option>
+                            );
+                          })}
+                        </select>
+                        <p className="invalid_input">{errors.category}</p>
+                      </div>
+
+                      {subCategory.length > 0 && (
+                        <div className="form-group col-lg-6 col-md-12">
+                          <label>Subcategory </label>
+                          <span className="text-danger">*</span>
+
+                          <select
+                            name="sub_category"
+                            required
+                            validaterule={["required"]}
+                            validatemsg={["sub category is required"]}
+                            value={formData.sub_category}
+                            onChange={handleOnChange}
+                          >
+                            <option value="">Select Category</option>
+                            {subCategory.map((sub_cat, key) => {
+                              return (
+                                <option key={key} value={sub_cat}>
+                                  {sub_cat}
+                                </option>
+                              );
+                            })}
+                          </select>
+                          <p className="invalid_input">{errors.sub_category}</p>
+                        </div>
+                      )}
                     </div>
                   </form>
 
